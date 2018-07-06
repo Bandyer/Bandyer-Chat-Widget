@@ -57,6 +57,7 @@ BandyerChat.create({
 Configuration of a new widget instance is made by calling .create() method. The options required are the following:
 
 ### Create Parameters
+
 Parameter | Required | Default | Description
 --------- | :----------: | :------:| -----------
 userAlias | yes |"" | The widget who initialize the widget

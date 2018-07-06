@@ -58,13 +58,13 @@ Configuration of a new widget instance is made by calling .create() method. The 
 
 ### Create Parameters
 
-Parameter | Required | Default | Description
---------- | :----------: | :------:| -----------
-userAlias | yes |"" | The widget who initialize the widget
-appId | yes | "" | A valid appId. Please contact Bandyer to have a valid appId
-environment | yes | "" | Sandbox or production are the permitted values.
-hidden | no | false | Create the widget in hidden mode (not visibile in the HTML).
-screenSharingExtensionId | no | '' | Extension ID of the Screen Sharing Extension.
+| Parameter | Required | Default | Description |
+| --------- | :----------: | :------:| ----------- |
+| userAlias | yes |"" | The widget who initialize the widget |
+| appId | yes | "" | A valid appId. Please contact Bandyer to have a valid appId |
+| environment | yes | "" | Sandbox or production are the permitted values. |
+| hidden | no | false | Create the widget in hidden mode (not visibile in the HTML). |
+| screenSharingExtensionId | no | '' | Extension ID of the Screen Sharing Extension. |
 
 ##### Returns:
 ###### Type

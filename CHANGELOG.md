@@ -1,3 +1,7 @@
+# 1.2.0 (July 06, 2018)
+
+- Handle screen sharing installation
+
 # 1.1.1 (June 23, 2018)
 
 - Fixed bug in screen sharing button

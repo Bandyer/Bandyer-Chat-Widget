@@ -32,7 +32,7 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Screenshots
 
-<img src="https://s3-eu-west-1.amazonaws.com/sdk-bandyer/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" style="height: 300px;"/>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" style="height: 300px;"/>
 <img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-chat-open-600.jpg" alt="Drawing" style="height: 300px;"/>
 <img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-ringingin-600.jpg" alt="Drawing" style="height: 300px;"/>
 
@@ -180,9 +180,30 @@ To logout to the current istance of the widget, you can call the .logout() metho
 Promise.<(void|Error)>
 
 
-### Screen share
+### Screen sharing
 
-From the 1.1.x version the widget can publish a stream that uses a video view of your screen (instead of a camera) as the source. A client connected to the widget can subscribe to the stream (and view it), just as they would subscribe to a stream that uses a camera as the source.
+From the 1.1.0 and newer version the widget can publish a stream that uses a video view of your screen (instead of a camera) as the source. A client connected to the widget can subscribe to the stream (and view it), just as they would subscribe to a stream that uses a camera as the source.
 
-In Chrome, to publish a screen-sharing video, the client needs to add the Bandyer extension that enables publishing screen-sharing streams for your domain.
-You can install the extension [here](https://chrome.google.com/webstore/detail/bandyer-corporate-screens/moekifjbageihhhpbdgdaechbjomekpp).
+In Chrome, to publish a screen-sharing video, the client needs to add an extension that enables publishing screen-sharing streams for your domain.
+As of Firefox 52, an extension (or whitelist listing) is no longer needed for screen sharing. Firefox prompts the end user for access to a screen, window, or application, as it would for access to the camera. For more information, see this Mozilla blog post.
+
+**In all browsers, publishing a screen-sharing stream requires the page to be loaded over HTTPS.**
+
+#### Set url for extension install
+
+The method `BandyerChat.setExtensionUrl('URL_CHROME_WEBSTORE')` is used to redirect the user to the installation page in the chrome web store. It's important to set the url to enable the user to add the correct extension
+
+`Example: 
+BandyerChat.setExtensionUrl('https://chrome.google.com/webstore/detail/your-extension/your-extension-id')`
+
+If the user needs the extensions, the widget will display this alert:
+
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-extension-install.png" alt="Drawing" style="height: 300px;"/>
+
+#### Use screen sharing in development
+
+To support screen-sharing in Chrome, you must create a Chrome screen-sharing extension enabled for localhost or any other development domain. Please write an email to <a href="mailto:info@bandyer.com?subject=screen-sharing-widget-development">info@bandyer.com</a> to obtain it.
+
+#### Distributing a screen-sharing extension
+In order to use screen-sharing at your website, Chrome users need to install your screen-sharing extension.
+You must package your Chrome screen-sharing extension and register it in the Chrome Web Store. See the <a href="https://developer.chrome.com/webstore/publish" target="_blank">Chrome documentation</a> for details on publishing your extension in the Chrome Web Store.

@@ -29,6 +29,13 @@ type="text/javascript" ></script>`
 
 The widget attaches in the window object of the HTML page the **BandyerChat** global variable.
 
+#### Browser support
+
+This widget is supported by Google Chrome and Firefox without any plugin.
+For IE11 support you need to install a plugin and include the following polyfill: 
+`https://babeljs.io/docs/en/babel-polyfill`
+
+
 
 #### Screenshots
 
@@ -42,7 +49,7 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 > .create()
 
 ```javascript
-BandyerChat.create({
+const Client = BandyerChat.create({
 	userAlias: 'usr_123456', 
 	appId: 'wAppId_fake123456', 
 	environment: 'sandbox',
@@ -69,7 +76,145 @@ Configuration of a new widget instance is made by calling .create() method. The 
 ##### Returns:
 ###### Type
 
-Promise.<(void|Error)>
+Promise.<(Client|Error)>
+
+### Client 
+
+A Client is a starting point to access Bandyer Chat functionality. It is possible to listen events which are fired by the widget. A Client is returned by the create method.
+
+```javascript
+const Client = BandyerChat.create({
+	userAlias: 'usr_123456', 
+	appId: 'wAppId_fake123456', 
+	environment: 'sandbox',
+	hidden: false,
+	screenSharingExtensionId: 'id of your screen sharing extension'
+});
+
+```
+
+#### Events
+
+#### typingStarted
+
+```javascript
+Client.on('typing_started',(data) => {
+	// your logic
+});
+```
+
+Fired when a User has started typing.
+> Note: To optimise network traffic, Client endpoints will only send a Typing signal once every 5 seconds
+
+###### Type
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| userAlias | String | Alias of the user |
+| chat | String | Unique identifier of the chat |
+| participants | Array | Array of participants |
+
+#### messageSent
+
+```javascript
+Client.on('message_sent',(data) => {
+	// your logic
+});
+```
+
+Fired when a User has sent a message.
+
+###### Type
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| id | String | Unique identifier of the message |
+| chat | String | Unique identifier of the chat |
+| participants | Array | Array of participants |
+| text | String | Text of the message |
+| timestamp | Date | When message was created |
+| sender | String | User alias of the creator of the message |
+
+#### messageReceived
+
+```javascript
+Client.on('message_received',(data) => {
+	// your logic
+});
+```
+
+Fired when a User has received a message.
+
+###### Type
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| id | String | Unique identifier of the message |
+| chat | String | Unique identifier of the chat |
+| participants | Array | Array of participants |
+| text | String | Text of the message |
+| timestamp | Date | When message was created |
+| sender | String | User alias of the creator of the message |
+
+#### messageRead
+
+```javascript
+Client.on('message_read',(data) => {
+	// your logic
+});
+```
+
+Fired when a User has read a message.
+
+###### Type
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| id | String | Unique identifier of the message |
+| chat | String | Unique identifier of the chat |
+| participants | Array | Array of participants |
+| text | String | Text of the message |
+| timestamp | Date | When message was created |
+| sender | String | User alias of the creator of the message |
+
+#### User connection
+
+```javascript
+Client.on('user_connected',(data) => {
+	// your logic
+});
+```
+
+Fired when a User connects to the platform.
+
+###### Type
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| user.userAlias | String | User alias of the user |
+| user.firstName | String | Firstname of the user |
+| user.lastName | String |Lastname of the user |
+| user.email | String | Email of the user |
+| user.image | String | Image of the user |
+| user.role | Number | Role of the user |
+| status | String | Current status (ONLINE, OFFLINE, BUSY) |
+
+#### User disconnection
+
+```javascript
+Client.on('user_disconnected',(data) => {
+	// your logic
+});
+```
+
+Fired when a User disconnects to the platform.
+
+###### Type
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| user.userAlias | String | User alias of the user |
+| user.firstName | String | Firstname of the user |
+| user.lastName | String |Lastname of the user |
+| user.email | String | Email of the user |
+| user.image | String | Image of the user |
+| user.role | Number | Role of the user |
+| status | String | Current status (ONLINE, OFFLINE, BUSY) |
 
 
 ### Add chat
@@ -179,6 +324,124 @@ To logout to the current istance of the widget, you can call the .logout() metho
 ###### Type
 
 Promise.<(void|Error)>
+
+### toggleWidget
+> .toggleWidget()
+
+```javascript
+BandyerChat.toggleWidget();
+```
+
+`.toggleWidget()`
+
+Toggles the widget from open to close view or viceversa.
+
+##### Returns:
+###### Type
+
+Type: Boolean.(true|false)>
+
+### openWidget
+> .openWidget()
+
+```javascript
+BandyerChat.openWidget();
+```
+
+`.openWidget()`
+
+Opens the widget.
+
+##### Returns:
+###### Type
+
+Type: Boolean.(true|false)>
+
+### closeWidget
+> .closeWidget()
+
+```javascript
+BandyerChat.closeWidget();
+```
+
+`.closeWidget()`
+
+Closes the widget.
+
+##### Returns:
+###### Type
+
+Type: Boolean.(true|false)>
+
+### getLastMessageReceived
+> .getLastMessageReceived()
+
+```javascript
+BandyerChat.getLastMessageReceived();
+```
+
+`.getLastMessageReceived()`
+
+Get the last message received by the widget. 
+
+##### Returns:
+###### Type
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| id | String | Unique identifier of the message |
+| chat | String | Unique identifier of the chat |
+| participants | Array | Array of participants |
+| text | String | Text of the message |
+| timestamp | Date | When message was created |
+| sender | String | User alias of the creator of the message |
+
+### getLastMessageSent
+> .getLastMessageSent()
+
+```javascript
+BandyerChat.getLastMessageSent();
+```
+
+`.getLastMessageSent()`
+
+Get the last message sent by the widget. 
+
+##### Returns:
+###### Type
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| id | String | Unique identifier of the message |
+| chat | String | Unique identifier of the chat |
+| participants | Array | Array of participants |
+| text | String | Text of the message |
+| timestamp | Date | When message was created |
+| sender | String | User alias of the creator of the message |
+
+### getUser
+> .getUser(userAlias)
+
+```javascript
+BandyerChat.getUser(userAlias);
+```
+
+`.getUser(userAlias)`
+
+Get info e status about the user selected. 
+
+##### Returns:
+###### Type
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| user.userAlias | String | User alias of the user |
+| user.firstName | String | Firstname of the user |
+| user.lastName | String |Lastname of the user |
+| user.email | String | Email of the user |
+| user.image | String | Image of the user |
+| user.role | Number | Role of the user |
+| status | String | Current status (online, offline, busy) |
 
 
 ### Screen sharing

@@ -1,3 +1,12 @@
+# 1.4.0 (July 20, 2018)
+
+- Handle isTyping, messageSent and messageReceived events
+- New methods: getLastMessageSent, getLastMessageReceived, toggleWidget, closeWidget and openWidget
+
+# 1.3.0 (July 13, 2018)
+
+- Handle IE Plugin & Install (No ScreenSharing)
+
 # 1.2.0 (July 06, 2018)
 
 - Handle screen sharing installation

@@ -93,7 +93,7 @@ const Client = BandyerChat.create({
 
 ```
 
-#### Events
+## Events
 
 #### typingStarted
 
@@ -373,6 +373,41 @@ Closes the widget.
 
 Type: Boolean.(true|false)>
 
+## Widget Activities
+
+To built custom business logic based on Widget activities (message sent, received, etc), the widget gives useful methods. Here a list of them:
+
+| Method | Description |
+| --------- | :----------: | ----------- |
+| getUser | Get the user info and his current status (online, offline, busy) |
+| getLastMessageReceived | Get the last message received by the user |
+| getLastMessageSent | Get the last message sent by the user |
+| getUnreadMessages | Get all the unread messages of the user |
+
+### getUser
+> .getUser(userAlias)
+
+```javascript
+BandyerChat.getUser(userAlias);
+```
+
+`.getUser(userAlias)`
+
+Get info e status about the user selected. 
+
+##### Returns:
+###### Type
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| user.userAlias | String | User alias of the user |
+| user.firstName | String | Firstname of the user |
+| user.lastName | String |Lastname of the user |
+| user.email | String | Email of the user |
+| user.image | String | Image of the user |
+| user.role | Number | Role of the user |
+| status | String | Current status (online, offline, busy) |
+
 ### getLastMessageReceived
 > .getLastMessageReceived()
 
@@ -419,29 +454,26 @@ Get the last message sent by the widget.
 | timestamp | Date | When message was created |
 | sender | String | User alias of the creator of the message |
 
-### getUser
-> .getUser(userAlias)
+### getUnreadMessages
+> .getUnreadMessages()
 
 ```javascript
-BandyerChat.getUser(userAlias);
+BandyerChat.getUnreadMessages();
 ```
 
-`.getUser(userAlias)`
+`.getUnreadMessages()`
 
-Get info e status about the user selected. 
+Get the unread messages of the user. 
 
-##### Returns:
+##### Returns: 
 ###### Type
+
+Array of object: 
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| user.userAlias | String | User alias of the user |
-| user.firstName | String | Firstname of the user |
-| user.lastName | String |Lastname of the user |
-| user.email | String | Email of the user |
-| user.image | String | Image of the user |
-| user.role | Number | Role of the user |
-| status | String | Current status (online, offline, busy) |
+| chat | String | Unique identifier of the chat |
+| unreadMessages | Number | Array of participants |
 
 
 ### Screen sharing

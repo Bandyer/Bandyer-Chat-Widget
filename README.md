@@ -36,7 +36,6 @@ For IE11 support you need to install a plugin and include the following polyfill
 `https://babeljs.io/docs/en/babel-polyfill`
 
 
-
 #### Screenshots
 
 <img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" style="height: 300px;"/>
@@ -339,7 +338,7 @@ Toggles the widget from open to close view or viceversa.
 ##### Returns:
 ###### Type
 
-Type: Boolean.(true|false)>
+Type: Boolean.<(true|false)>
 
 ### openWidget
 > .openWidget()
@@ -355,7 +354,7 @@ Opens the widget.
 ##### Returns:
 ###### Type
 
-Type: Boolean.(true|false)>
+Type: Boolean.<(true|false)>
 
 ### closeWidget
 > .closeWidget()
@@ -371,9 +370,9 @@ Closes the widget.
 ##### Returns:
 ###### Type
 
-Type: Boolean.(true|false)>
+Type: Boolean.<(true|false)>
 
-## Widget Activities
+## Activities
 
 To build custom business logic based on Widget activities (message sent, received, etc), the widget gives useful methods. Here a list of them:
 

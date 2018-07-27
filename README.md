@@ -374,6 +374,7 @@ Closes the widget.
 Type: Boolean.(true|false)>
 
 ## Widget Activities
+
 To build custom business logic based on Widget activities (message sent, received, etc), the widget gives useful methods. Here a list of them:
 
 | Method | Description |

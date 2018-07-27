@@ -94,7 +94,17 @@ const Client = BandyerChat.create({
 
 ## Events
 
-#### typingStarted
+| Event | Description |
+| -------------- | :--------------------: |
+| typing_started | Fired when a User has started typing |
+| message_sent | Fired when a User has sent a message |
+| message_received | Fired when a User has received a message|
+| message_read | Fired when a User has read a message |
+| user_connected | Fired when a User connects to the platform |
+| user_disconnected | Fired when a User disconnects to the platform |
+
+
+#### Typing started
 
 ```javascript
 Client.on('typing_started',(data) => {
@@ -112,7 +122,7 @@ Fired when a User has started typing.
 | chat | String | Unique identifier of the chat |
 | participants | Array | Array of participants |
 
-#### messageSent
+#### Message sent
 
 ```javascript
 Client.on('message_sent',(data) => {
@@ -132,7 +142,7 @@ Fired when a User has sent a message.
 | timestamp | Date | When message was created |
 | sender | String | User alias of the creator of the message |
 
-#### messageReceived
+#### Message received
 
 ```javascript
 Client.on('message_received',(data) => {
@@ -152,7 +162,7 @@ Fired when a User has received a message.
 | timestamp | Date | When message was created |
 | sender | String | User alias of the creator of the message |
 
-#### messageRead
+#### Message read
 
 ```javascript
 Client.on('message_read',(data) => {

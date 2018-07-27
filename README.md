@@ -378,7 +378,7 @@ Type: Boolean.(true|false)>
 To built custom business logic based on Widget activities (message sent, received, etc), the widget gives useful methods. Here a list of them:
 
 | Method | Description |
-| --------- | :----------: | ----------- |
+| --------- | :----------: |
 | getUser | Get the user info and his current status (online, offline, busy) |
 | getLastMessageReceived | Get the last message received by the user |
 | getLastMessageSent | Get the last message sent by the user |

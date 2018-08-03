@@ -2,9 +2,6 @@
 
 Bandyer widget chat is a fast and effective way to offer live chat and videochat in your application.
 
-# FARE LA TOC
-
-
 ### Consuming a library
 You can consume the library from NPM:
 

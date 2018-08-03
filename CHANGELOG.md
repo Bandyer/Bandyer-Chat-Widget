@@ -1,3 +1,8 @@
+# 1.5.0 (July 20, 2018)
+
+- Configurable layout with different options (header, body, launcher, etc)
+- Bug fixes
+
 # 1.4.0 (July 20, 2018)
 
 - Handle isTyping, messageSent and messageReceived events

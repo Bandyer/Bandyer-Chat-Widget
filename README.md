@@ -2,6 +2,8 @@
 
 Bandyer widget chat is a fast and effective way to offer live chat and videochat in your application.
 
+# FARE LA TOC
+
 
 ### Consuming a library
 You can consume the library from NPM:
@@ -34,6 +36,7 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 This widget is supported by Google Chrome and Firefox without any plugin.
 For IE11 support you need to install a plugin and include the following polyfill: 
 `https://babeljs.io/docs/en/babel-polyfill`
+
 
 
 #### Screenshots
@@ -71,11 +74,51 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | environment | yes | "" | Sandbox or production are the permitted values. |
 | hidden | no | false | Create the widget in hidden mode (not visibile in the HTML). |
 | screenSharingExtensionId | no | '' | Extension ID of the Screen Sharing Extension. |
+| layout | no | {} | Specify the custom layout (see more [here](#custom-layout)) |
 
 ##### Returns:
 ###### Type
 
 Promise.<(Client|Error)>
+
+<a name="custom-layout"></a>
+#### Custom layout
+
+The widget has custom configurable layout to give the opportunity to match the look and feel you prefer.
+The layout option is composed by a list of other keys. The table above is the list of the available options:
+
+
+| Key | Options | Description |
+| --------- | :----------: | ---------------------------- |
+| header | background, color| Specify the background and color of the header |
+| headerButton | background, color| Specify the background and color of the header buttons |
+| body | background, color | Specify the background and color of the body |
+| launcher | background | Specify the background of the launcher |
+| messageSent | background, color | Specify the background and color of the messages you sent |
+| messageReceived | background, color | Specify the background and color messages you received |
+| dial | background, color | Specify the background and color of the dial view |
+| call | background, color | Specify the background and color of the call view |
+| fontFamily | font Family | Font family of the entire widget |
+
+Here an example: 
+
+```javascript 
+BandyerChat.create({
+userAlias: 'usr_123456', 
+appId: 'wAppId_fake123456', 
+environment: 'sandbox', 
+layout: {
+	body: {background: '#0069B4', color: '#000'}, 
+	dial:{background: '#003762', color: '#fff'}, 
+	call: {background: '#003762', color: '#fff'}, 
+	messageSent: {background: '#003762', color: '#fff'}, 
+	launcher: {background: '#0069B4'},
+	header: {background: '#003762', color: '#fff'},
+	headerButton: {background: '#0069B4', color: '#fff'}, 
+	fontFamily: '"Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif' 
+	}
+})
+```
 
 ### Client 
 
@@ -94,17 +137,7 @@ const Client = BandyerChat.create({
 
 ## Events
 
-| Event | Description |
-| -------------- | :--------------------: |
-| typing_started | Fired when a User has started typing |
-| message_sent | Fired when a User has sent a message |
-| message_received | Fired when a User has received a message|
-| message_read | Fired when a User has read a message |
-| user_connected | Fired when a User connects to the platform |
-| user_disconnected | Fired when a User disconnects to the platform |
-
-
-#### Typing started
+#### typingStarted
 
 ```javascript
 Client.on('typing_started',(data) => {
@@ -122,7 +155,7 @@ Fired when a User has started typing.
 | chat | String | Unique identifier of the chat |
 | participants | Array | Array of participants |
 
-#### Message sent
+#### messageSent
 
 ```javascript
 Client.on('message_sent',(data) => {
@@ -142,7 +175,7 @@ Fired when a User has sent a message.
 | timestamp | Date | When message was created |
 | sender | String | User alias of the creator of the message |
 
-#### Message received
+#### messageReceived
 
 ```javascript
 Client.on('message_received',(data) => {
@@ -162,7 +195,7 @@ Fired when a User has received a message.
 | timestamp | Date | When message was created |
 | sender | String | User alias of the creator of the message |
 
-#### Message read
+#### messageRead
 
 ```javascript
 Client.on('message_read',(data) => {
@@ -348,7 +381,7 @@ Toggles the widget from open to close view or viceversa.
 ##### Returns:
 ###### Type
 
-Type: Boolean.<(true|false)>
+Type: Boolean.(true|false)>
 
 ### openWidget
 > .openWidget()
@@ -364,7 +397,7 @@ Opens the widget.
 ##### Returns:
 ###### Type
 
-Type: Boolean.<(true|false)>
+Type: Boolean.(true|false)>
 
 ### closeWidget
 > .closeWidget()
@@ -380,14 +413,14 @@ Closes the widget.
 ##### Returns:
 ###### Type
 
-Type: Boolean.<(true|false)>
+Type: Boolean.(true|false)>
 
-## Activities
+## Widget Activities
 
-To build custom business logic based on Widget activities (message sent, received, etc), the widget gives useful methods. Here a list of them:
+To built custom business logic based on Widget activities (message sent, received, etc), the widget gives useful methods. Here a list of them:
 
 | Method | Description |
-| --------- | :----------: |
+| --------- | :----------: | ----------- |
 | getUser | Get the user info and his current status (online, offline, busy) |
 | getLastMessageReceived | Get the last message received by the user |
 | getLastMessageSent | Get the last message sent by the user |
@@ -416,6 +449,31 @@ Get info e status about the user selected.
 | user.image | String | Image of the user |
 | user.role | Number | Role of the user |
 | status | String | Current status (online, offline, busy) |
+
+### getChats()
+> . getChats()
+
+```javascript
+BandyerChat.getChats();
+```
+
+`.getChats()`
+
+Get all the chat of the client. 
+
+##### Returns:
+###### Type
+
+Array of object:
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| chat | String | Unique identifier of the chat |
+| unreadMessages | Number | Number of unread messages |
+| participants | Array | Array of participants |
+| lastMessage.author | String | User alias of the autor of the last message |
+| lastMessage.message | String | Text of the last message |
+| lastMessage.timestamp | Date | Timestamp of the last message |
 
 ### getLastMessageReceived
 > .getLastMessageReceived()
@@ -482,7 +540,7 @@ Array of object:
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
 | chat | String | Unique identifier of the chat |
-| unreadMessages | Number | Array of participants |
+| unreadMessages | Number | Number of unread messages |
 
 
 ### Screen sharing
@@ -512,3 +570,5 @@ To support screen-sharing in Chrome, you must create a Chrome screen-sharing ext
 #### Distributing a screen-sharing extension
 In order to use screen-sharing at your website, Chrome users need to install your screen-sharing extension.
 You must package your Chrome screen-sharing extension and register it in the Chrome Web Store. See the <a href="https://developer.chrome.com/webstore/publish" target="_blank">Chrome documentation</a> for details on publishing your extension in the Chrome Web Store.
+
+

@@ -146,6 +146,7 @@ Fired when a User has started typing.
 > Note: To optimise network traffic, Client endpoints will only send a Typing signal once every 5 seconds
 
 ###### Type
+
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
 | userAlias | String | Alias of the user |
@@ -163,6 +164,7 @@ Client.on('message_sent',(data) => {
 Fired when a User has sent a message.
 
 ###### Type
+
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
 | id | String | Unique identifier of the message |
@@ -183,6 +185,7 @@ Client.on('message_received',(data) => {
 Fired when a User has received a message.
 
 ###### Type
+
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
 | id | String | Unique identifier of the message |
@@ -203,6 +206,7 @@ Client.on('message_read',(data) => {
 Fired when a User has read a message.
 
 ###### Type
+
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
 | id | String | Unique identifier of the message |
@@ -223,6 +227,7 @@ Client.on('user_connected',(data) => {
 Fired when a User connects to the platform.
 
 ###### Type
+
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
 | user.userAlias | String | User alias of the user |

@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/X.X.X/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.5.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -33,6 +33,11 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 This widget is supported by Google Chrome and Firefox without any plugin.
 For IE11 support you need to install a plugin and include the following polyfill: 
 `https://babeljs.io/docs/en/babel-polyfill`
+
+#### Versions
+
+Last version available is: 1.5.0.
+[https://cdn.bandyer.com/sdk/js/chat/1.5.0/bandyer-widget.min.js]()
 
 
 

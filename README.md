@@ -36,8 +36,10 @@ For IE11 support you need to install a plugin and include the following polyfill
 
 #### Versions
 
-Last version available is: 1.5.0.
-[https://cdn.bandyer.com/sdk/js/chat/1.5.0/bandyer-widget.min.js]()
+Last version available is: 1.5.1.
+[https://cdn.bandyer.com/sdk/js/chat/1.5.1/bandyer-widget.min.js]()
+
+For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
 
 

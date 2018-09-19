@@ -1,3 +1,9 @@
+# 1.5.1 (September 19, 2018)
+
+- Notification badge fixed 
+- Notification badge for every channel in channel list view 
+- Bug fixes
+
 # 1.5.0 (July 20, 2018)
 
 - Configurable layout with different options (header, body, launcher, etc)

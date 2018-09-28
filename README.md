@@ -36,11 +36,10 @@ For IE11 support you need to install a plugin and include the following polyfill
 
 #### Versions
 
-Last version available is: 1.5.1.
-[https://cdn.bandyer.com/sdk/js/chat/1.5.1/bandyer-widget.min.js]()
+Last version available is: 1.6.0.
+[https://cdn.bandyer.com/sdk/js/chat/1.6.0/bandyer-widget.min.js]()
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
-
 
 
 #### Screenshots
@@ -141,7 +140,17 @@ const Client = BandyerChat.create({
 
 ## Events
 
-#### typingStarted
+| Event | Description |
+| -------------- | :--------------------: |
+| typing_started | Fired when a User has started typing |
+| message_sent | Fired when a User has sent a message |
+| message_received | Fired when a User has received a message|
+| message_read | Fired when a User has read a message |
+| user_connected | Fired when a User connects to the platform |
+| user_disconnected | Fired when a User disconnects to the platform |
+
+
+#### Typing started
 
 ```javascript
 Client.on('typing_started',(data) => {
@@ -160,7 +169,7 @@ Fired when a User has started typing.
 | chat | String | Unique identifier of the chat |
 | participants | Array | Array of participants |
 
-#### messageSent
+#### Message sent
 
 ```javascript
 Client.on('message_sent',(data) => {
@@ -181,7 +190,7 @@ Fired when a User has sent a message.
 | timestamp | Date | When message was created |
 | sender | String | User alias of the creator of the message |
 
-#### messageReceived
+#### Message received
 
 ```javascript
 Client.on('message_received',(data) => {
@@ -202,7 +211,7 @@ Fired when a User has received a message.
 | timestamp | Date | When message was created |
 | sender | String | User alias of the creator of the message |
 
-#### messageRead
+#### Message read
 
 ```javascript
 Client.on('message_read',(data) => {
@@ -390,7 +399,7 @@ Toggles the widget from open to close view or viceversa.
 ##### Returns:
 ###### Type
 
-Type: Boolean.(true|false)>
+Type: Boolean.<(true|false)>
 
 ### openWidget
 > .openWidget()
@@ -406,7 +415,7 @@ Opens the widget.
 ##### Returns:
 ###### Type
 
-Type: Boolean.(true|false)>
+Type: Boolean.<(true|false)>
 
 ### closeWidget
 > .closeWidget()
@@ -422,14 +431,14 @@ Closes the widget.
 ##### Returns:
 ###### Type
 
-Type: Boolean.(true|false)>
+Type: Boolean.<(true|false)>
 
-## Widget Activities
+## Activities
 
-To built custom business logic based on Widget activities (message sent, received, etc), the widget gives useful methods. Here a list of them:
+To build custom business logic based on Widget activities (message sent, received, etc), the widget gives useful methods. Here a list of them:
 
 | Method | Description |
-| --------- | :----------: | ----------- |
+| --------- | :----------: |
 | getUser | Get the user info and his current status (online, offline, busy) |
 | getLastMessageReceived | Get the last message received by the user |
 | getLastMessageSent | Get the last message sent by the user |

@@ -1,3 +1,8 @@
+# 1.6.0 (September 28, 2018)
+
+- Publish / unpublish logic for SS (not replaceTrack)
+- IE SS enabled
+
 # 1.5.1 (September 19, 2018)
 
 - Notification badge fixed 

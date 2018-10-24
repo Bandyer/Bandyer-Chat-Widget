@@ -78,6 +78,7 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | hidden | no | false | Create the widget in hidden mode (not visibile in the HTML). |
 | screenSharingExtensionId | no | '' | Extension ID of the Screen Sharing Extension. |
 | layout | no | {} | Specify the custom layout (see more [here](#custom-layout)) |
+| record | no | false | Specify if all the calls must be recorded |
 
 ##### Returns:
 ###### Type

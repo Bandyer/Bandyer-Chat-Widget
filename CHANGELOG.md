@@ -1,4 +1,4 @@
-# 1.6.0 (October 25, 2018)
+# 1.7.0 (October 25, 2018)
 
 - Widget supports record option in .create method
 

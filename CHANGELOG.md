@@ -1,6 +1,7 @@
 # 1.7.0 (October 25, 2018)
 
 - Widget supports record option in .create method
+- Responsive design for mobile support
 
 # 1.6.0 (September 28, 2018)
 

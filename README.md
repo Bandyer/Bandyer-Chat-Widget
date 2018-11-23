@@ -79,6 +79,15 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | screenSharingExtensionId | no | '' | Extension ID of the Screen Sharing Extension. |
 | layout | no | {} | Specify the custom layout (see more [here](#custom-layout)) |
 | record | no | false | Specify if all the calls must be recorded |
+| callType | no | audio_video | Specify the call type. Valid values are: "audio\_only", "audio\_upgradable", "audio\_video" |
+
+Call type options:
+
+ - audio\_only: the call is only audio and the participants can't use the webcam
+ - audio\_upgradable: the call begins with only audio but the participants can publish the webcam
+ - audio\_video: the call begins with audio and webcam
+
+ 
 
 ##### Returns:
 ###### Type

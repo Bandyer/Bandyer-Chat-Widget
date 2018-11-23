@@ -1,3 +1,10 @@
+# 2.0.0 (November 23, 2018)
+
+- Widget use new SDK @bandyer/web-core-av and @bandyer/web-communication-center
+- Delete channel directly in the frontend
+- Call type option in the create method with audio\_only, audio\_upgradable and audio\_video
+- Bug fixes
+
 # 1.7.0 (October 25, 2018)
 
 - Widget supports record option in .create method

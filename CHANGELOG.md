@@ -1,3 +1,9 @@
+# 1.9.0 (November 29, 2018)
+
+-   Enabled Edge videocall and Screen sharing
+-   Bug fix for answer and decline methods (action already taken error)
+-   Bug fix subscribe stream in room connected
+
 # 1.8.0 (November 23, 2018)
 
 -   Widget use new SDK [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) and [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center)

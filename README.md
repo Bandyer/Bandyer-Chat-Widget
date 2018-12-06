@@ -87,6 +87,11 @@ Call type options:
  - audio\_upgradable: the call begins with only audio but the participants can publish the webcam
  - audio\_video: the call begins with audio and webcam
 
+Hidden options: the widget chat is not visible in the frontend until it receives the following events: 
+
+1. addChat event
+2. incoming call event
+
  
 
 ##### Returns:

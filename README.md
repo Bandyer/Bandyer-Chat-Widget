@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.9.0/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.10.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -36,8 +36,8 @@ For IE11 support you need to install a plugin and include the following polyfill
 
 #### Versions
 
-Last version available is: 1.9.0.
-[https://cdn.bandyer.com/sdk/js/chat/1.9.0/bandyer-widget.min.js]()
+Last version available is: 1.10.0.
+[https://cdn.bandyer.com/sdk/js/chat/1.10.0/bandyer-widget.min.js]()
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -78,7 +78,7 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | hidden | no | false | Create the widget in hidden mode (not visibile in the HTML). |
 | screenSharingExtensionId | no | '' | Extension ID of the Screen Sharing Extension. |
 | layout | no | {} | Specify the custom layout (see more [here](#custom-layout)) |
-| record | no | false | Specify if all the calls must be recorded |
+| record | no | false | Specify if all the calls must be recorded. Remember that Safari ed Edge doesn't support the record option |
 | callType | no | audio_video | Specify the call type. Valid values are: "audio\_only", "audio\_upgradable", "audio\_video" |
 
 Call type options:
@@ -163,6 +163,10 @@ const Client = BandyerChat.create({
 | message_read | Fired when a User has read a message |
 | user_connected | Fired when a User connects to the platform |
 | user_disconnected | Fired when a User disconnects to the platform |
+| incoming\_call | Fired when a User create or receive a call |
+| call\_dial\_answered | Fired when a User answers a call |
+| call\_dial\_declined | Fired when a User declines a call |
+| call\_dial\_stopped | Fired when a Call ends |
 
 
 #### Typing started
@@ -290,6 +294,66 @@ Fired when a User disconnects to the platform.
 | user.image | String | Image of the user |
 | user.role | Number | Role of the user |
 | status | String | Current status (ONLINE, OFFLINE, BUSY) |
+
+
+#### Incoming call
+
+```javascript
+Client.on('incoming_call',(call) => {
+	// your logic
+});
+```
+
+Fired when a User create or receive a call.
+The data in the event is a call object as described here: [Call Object] (https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/call.html).
+
+#### Answered call
+
+```javascript
+Client.on('call_dial_answered',(call) => {
+	// your logic
+});
+```
+
+Fired when a User answers a call.
+The data in the event is a call object as described here: [Call Object] (https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/call.html).
+
+#### Declined call
+
+```javascript
+Client.on('call_dial_declined',(call) => {
+	// your logic
+});
+```
+
+Fired when a User declines a call.
+The data in the event is a call object as described here: [Call Object] (https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/call.html) and a reason string.
+
+###### Type
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| Call | Call Object | Call object: [Call Object] (https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/call.html) |
+| Reason | String | Valid reasons are: none, do\_not\_disturb, no\_answer, error or answered\_another\_call |
+
+#### Stopped call
+
+```javascript
+Client.on('call_dial_stopped',(call) => {
+	// your logic
+});
+```
+
+Fired when a call ends.
+The data in the event is a call object as described here: [Call Object] (https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/call.html) and a reason string.
+
+###### Type
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| Call | Call Object | Call object: [Call Object] (https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/call.html) |
+| Reason | String | Valid reasons are: hangup, answered\_on_another\_device, dial\_timeout or answered\_another\_call |
+
 
 
 ### Add chat

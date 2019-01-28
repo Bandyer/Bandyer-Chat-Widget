@@ -1,3 +1,21 @@
+# 1.11.0 (January 25, 2019)
+
+-   Forward call events in Client Object
+-   Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.2.5 version
+
+# 1.10.0 (January 9, 2019)
+
+-   Add platform info in channel and message
+-   Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.1.0 version
+
+# 1.9.2 (December 20, 2018)
+
+-   Bug fix in delete channel button (either in channels or conversation view)
+
+# 1.9.1 (December 19, 2018)
+
+-   Bug fix in mobile call (stream attributes)
+
 # 1.9.0 (November 29, 2018)
 
 -   Enabled Edge videocall and Screen sharing

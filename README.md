@@ -532,20 +532,25 @@ BandyerChat.getUser(userAlias);
 
 `.getUser(userAlias)`
 
-Get info e status about the user selected. 
+Get User structure inside Bandyer platform (see details: [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.html))
 
-##### Returns:
-###### Type
+##### Returns: 
+###### Type [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.htmlA)
 
-| Key | Type | Description |
-| --------- | :----------: | ----------- |
-| user.userAlias | String | User alias of the user |
-| user.firstName | String | Firstname of the user |
-| user.lastName | String |Lastname of the user |
-| user.email | String | Email of the user |
-| user.image | String | Image of the user |
-| user.role | Number | Role of the user |
-| status | String | Current status (online, offline, busy) |
+### getUsersStatusList
+> .getUsersStatusList()
+
+```javascript
+BandyerChat.getUsersStatusList();
+```
+
+`.getUser(userAlias)`
+
+Get connected users list inside Bandyer platform (see details: [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.html))
+
+##### Returns: 
+###### Type Array<[User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.htmlA)>
+
 
 ### getChats()
 > . getChats()

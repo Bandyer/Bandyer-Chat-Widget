@@ -1,3 +1,8 @@
+# 1.12.0 (January 31, 2019)
+
+-   Add getUsersList method
+-   Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.3.0 version
+
 # 1.11.0 (January 25, 2019)
 
 -   Forward call events in Client Object

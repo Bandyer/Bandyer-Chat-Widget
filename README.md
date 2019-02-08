@@ -414,14 +414,36 @@ To check if the current istance of the widget is authenticated, you need to call
 
 Type: boolean
 
+### Select chat
+
+> .selectChat()
+
+```javascript
+BandyerChat.selectChat('usr_fr55ga3');
+```
+
+`.selectChat('usr_fr55ga3')`
+
+To select a chat you need to call the .selectChat() method. The selectChat will select the chat between the user authenticated and the user specified as input of the method.
+
+##### Returns:
+###### Type
+
+Promise.<(void|Error)>
+
+##### Returns:
+###### Type
+
+Promise.<(void|Error)>
+
 ### Show widget
-> .showChat()
+> .showWidget()
 
 ```javascript
 BandyerChat.showWidget();
 ```
 
-`.showChat()`
+`.showWidget()`
 
 
 Show the widget in the html page.
@@ -432,13 +454,13 @@ Show the widget in the html page.
 Type: Boolean.(true|false)>
 
 ### Hide widget
-> .showChat()
+> .hideWidget()
 
 ```javascript
 BandyerChat.hideWidget();
 ```
 
-`.hideChat()`
+`.hideWidget()`
 
 
 hide the widget in the html page.

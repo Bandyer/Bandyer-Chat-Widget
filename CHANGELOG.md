@@ -1,7 +1,7 @@
-# 1.12.0 (January 31, 2019)
+# 1.13.0 (February 20, 2019)
 
--   Add getUsersList method
--   Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.3.0 version
+-   Call mode 'window' or 'embed'
+-   Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.4.1 version
 
 # 1.11.0 (January 25, 2019)
 

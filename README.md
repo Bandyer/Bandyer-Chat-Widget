@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.12.0/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.10.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -36,8 +36,8 @@ For IE11 support you need to install a plugin and include the following polyfill
 
 #### Versions
 
-Last version available is: 1.12.0.
-[https://cdn.bandyer.com/sdk/js/chat/1.12.0/bandyer-widget.min.js]()
+Last version available is: 1.10.0.
+[https://cdn.bandyer.com/sdk/js/chat/1.10.0/bandyer-widget.min.js]()
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -80,12 +80,19 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | layout | no | {} | Specify the custom layout (see more [here](#custom-layout)) |
 | record | no | false | Specify if all the calls must be recorded. Remember that Safari ed Edge doesn't support the record option |
 | callType | no | audio_video | Specify the call type. Valid values are: "audio\_only", "audio\_upgradable", "audio\_video" |
+| mode | no | embed | Specify the widget call mode. Valid values are: "embed" or "window" |
 
 Call type options:
 
  - audio\_only: the call is only audio and the participants can't use the webcam
  - audio\_upgradable: the call begins with only audio but the participants can publish the webcam
  - audio\_video: the call begins with audio and webcam
+
+Call type options:
+
+ - embed: the call is embedded in the widget view
+ - window: the call is accessible in a window popup
+
 
 Hidden options: the widget chat is not visible in the frontend until it receives the following events: 
 
@@ -414,36 +421,14 @@ To check if the current istance of the widget is authenticated, you need to call
 
 Type: boolean
 
-### Select chat
-
-> .selectChat()
-
-```javascript
-BandyerChat.selectChat('usr_fr55ga3');
-```
-
-`.selectChat('usr_fr55ga3')`
-
-To select a chat you need to call the .selectChat() method. The selectChat will select the chat between the user authenticated and the user specified as input of the method.
-
-##### Returns:
-###### Type
-
-Promise.<(void|Error)>
-
-##### Returns:
-###### Type
-
-Promise.<(void|Error)>
-
 ### Show widget
-> .showWidget()
+> .showChat()
 
 ```javascript
 BandyerChat.showWidget();
 ```
 
-`.showWidget()`
+`.showChat()`
 
 
 Show the widget in the html page.
@@ -454,13 +439,13 @@ Show the widget in the html page.
 Type: Boolean.(true|false)>
 
 ### Hide widget
-> .hideWidget()
+> .showChat()
 
 ```javascript
 BandyerChat.hideWidget();
 ```
 
-`.hideWidget()`
+`.hideChat()`
 
 
 hide the widget in the html page.
@@ -554,25 +539,20 @@ BandyerChat.getUser(userAlias);
 
 `.getUser(userAlias)`
 
-Get User structure inside Bandyer platform (see details: [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.html))
+Get info e status about the user selected. 
 
-##### Returns: 
-###### Type [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.htmlA)
+##### Returns:
+###### Type
 
-### getUsersStatusList
-> .getUsersStatusList()
-
-```javascript
-BandyerChat.getUsersStatusList();
-```
-
-`.getUser(userAlias)`
-
-Get connected users list inside Bandyer platform (see details: [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.html))
-
-##### Returns: 
-###### Type Array<[User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.htmlA)>
-
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| user.userAlias | String | User alias of the user |
+| user.firstName | String | Firstname of the user |
+| user.lastName | String |Lastname of the user |
+| user.email | String | Email of the user |
+| user.image | String | Image of the user |
+| user.role | Number | Role of the user |
+| status | String | Current status (online, offline, busy) |
 
 ### getChats()
 > . getChats()

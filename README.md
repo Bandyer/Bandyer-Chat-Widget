@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.10.0/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.13.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -36,8 +36,8 @@ For IE11 support you need to install a plugin and include the following polyfill
 
 #### Versions
 
-Last version available is: 1.10.0.
-[https://cdn.bandyer.com/sdk/js/chat/1.10.0/bandyer-widget.min.js]()
+Last version available is: 1.13.0.
+[https://cdn.bandyer.com/sdk/js/chat/1.13.0/bandyer-widget.min.js]()
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 

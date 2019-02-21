@@ -1,3 +1,7 @@
+# 1.13.4 (February 21, 2019)
+
+-   [Update](Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.4.3 version) - Fix handleRoomParticipantStatusChanged bug
+
 # 1.13.3 (February 20, 2019)
 
 -   Fixed header font size CSS rule

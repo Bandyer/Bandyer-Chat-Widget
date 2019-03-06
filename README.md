@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.13.3/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.14.1/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -36,8 +36,8 @@ For IE11 support you need to install a plugin and include the following polyfill
 
 #### Versions
 
-Last version available is: 1.13.3.
-[https://cdn.bandyer.com/sdk/js/chat/1.13.3/bandyer-widget.min.js]()
+Last version available is: 1.14.1.
+[https://cdn.bandyer.com/sdk/js/chat/1.14.1/bandyer-widget.min.js]()
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -168,6 +168,7 @@ const Client = BandyerChat.create({
 | message_sent | Fired when a User has sent a message |
 | message_received | Fired when a User has received a message|
 | message_read | Fired when a User has read a message |
+| chat_loaded | Fired when Chat channel is loaded |
 | user_connected | Fired when a User connects to the platform |
 | user_disconnected | Fired when a User disconnects to the platform |
 | incoming\_call | Fired when a User create or receive a call |
@@ -257,6 +258,29 @@ Fired when a User has read a message.
 | text | String | Text of the message |
 | timestamp | Date | When message was created |
 | sender | String | User alias of the creator of the message |
+
+#### Chat loaded 
+
+```javascript
+Client.on('chat_loaded',(data) => {
+	// your logic
+});
+```
+
+Fired when the chat channel is loaded
+
+###### Type
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| chat | String | Unique identifier of the chat |
+| participants | Array | Array of participants |
+| lastMessage.author | String | Author of the message |
+| lastMessage.message | String | Text of the message |
+| lastMessage.timestamp | String | Timestamp of the message |
+| dateCreated | Date | When channel was created |
+| createdBy | String | Creator of the channel |
+| unreadMessage | number | Number of unread messages |
 
 #### User connection
 

@@ -1,3 +1,26 @@
+# 1.14.1 (March 6, 2019)
+
+-   Fix upgrade video event from window
+-   "chat_loaded" event added
+
+# 1.14.0 (March 5, 2019)
+
+-   [Update](Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.4.8 version) - Fix participant status logic in call )
+-   [Update](Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.4.4 version) - Screen sharing in Chrome 72 without extension )
+
+# 1.13.7 (February 28, 2019)
+
+-   Fix call type audio_upgreadable when callType is audio_video#2
+
+# 1.13.6 (February 27, 2019)
+
+-   Fix call type audio_upgreadable when callType is audio_video
+
+# 1.13.5 (February 26, 2019)
+
+-   [Update](Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.4.4 version) - Fix handleRoomParticipantStatusChanged bug
+-   Fix double click actions in createRoom and answer
+
 # 1.13.4 (February 21, 2019)
 
 -   [Update](Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.4.3 version) - Fix handleRoomParticipantStatusChanged bug

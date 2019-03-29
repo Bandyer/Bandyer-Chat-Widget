@@ -1,3 +1,12 @@
+# 1.15.0 (March 29, 2019)
+
+-   [Update](Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.5.1 version) - Firefox min version 52 )
+
+# 1.14.2 (March 15, 2019)
+
+-   [Update](Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.5.0 version) - GUM with no mic )
+-   Bug fix
+
 # 1.14.1 (March 6, 2019)
 
 -   Fix upgrade video event from window

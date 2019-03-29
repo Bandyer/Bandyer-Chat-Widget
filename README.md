@@ -81,6 +81,7 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | record | no | false | Specify if all the calls must be recorded. Remember that Safari ed Edge doesn't support the record option |
 | callType | no | audio_video | Specify the call type. Valid values are: "audio\_only", "audio\_upgradable", "audio\_video" |
 | mode | no | embed | Specify the widget call mode. Valid values are: "embed" or "window" |
+| language | no | it | Specify the language of the widget. Valid values are: "it" or "en" |
 
 Call type options:
 

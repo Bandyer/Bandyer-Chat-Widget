@@ -1,3 +1,7 @@
+# 1.16.0 (April 10, 2019)
+
+-   [Feature]: widget handles the user presence with a badge indicator.
+  
 # 1.15.0 (March 29, 2019)
 
 -   [Update](Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.5.1 version) - Firefox min version 52 )

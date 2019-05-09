@@ -1,3 +1,11 @@
+# 1.16.2(April 16, 2019)
+
+-   [Bug]: bug fix for channels with old attributes structure
+  
+# 1.16.1 (April 10, 2019)
+
+-   [Bug]: minor bug fix
+
 # 1.16.0 (April 10, 2019)
 
 -   [Feature]: widget handles the user presence with a badge indicator.

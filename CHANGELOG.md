@@ -1,7 +1,23 @@
-# 1.16.2(April 16, 2019)
+# 1.17.0 (October 14, 2019)
+
+- [Feature]: Add createCall programmatically
+- [Feature]: Add possibility to back to chats when there is an active call
+- [Feature]: Add reconnect view that inform the user if there is a network issue
+
+- [Bug]: Bug fix for translation
+- [Bug]: Bug fix for renew twilio token
+- [Bug]: Bug fix for online status
+- [Bug]: Bug fix for keep update multi-instance message sent by the same user
+- [Bug]: Bug fix for recording feature
+- [Bug]: Bug fix for stop screen-sharing using browser Stop button
+
+- [Update]: (Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.6.0 version)
+- [Update]: (Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.5.1 version)
+
+# 1.16.2 (April 16, 2019)
 
 -   [Bug]: bug fix for channels with old attributes structure
-  
+
 # 1.16.1 (April 10, 2019)
 
 -   [Bug]: minor bug fix
@@ -9,7 +25,7 @@
 # 1.16.0 (April 10, 2019)
 
 -   [Feature]: widget handles the user presence with a badge indicator.
-  
+
 # 1.15.0 (March 29, 2019)
 
 -   [Update](Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.5.1 version) - Firefox min version 52 )

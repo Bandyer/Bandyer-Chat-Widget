@@ -146,6 +146,22 @@ layout: {
 })
 ```
 
+### logout
+> .logout()
+
+```javascript
+BandyerChat.logout();
+```
+
+`.logout()`
+
+To logout to the current istance of the widget, you can call the .logout() method. The logout() method will unmount the widget component.
+
+##### Returns:
+###### Type
+
+Promise.<(void|Error)>
+
 ### Client 
 
 A Client is a starting point to access Bandyer Chat functionality. It is possible to listen events which are fired by the widget. A Client is returned by the create method.
@@ -160,6 +176,105 @@ const Client = BandyerChat.create({
 });
 
 ```
+
+### Add chat
+> .addChat()
+
+```javascript
+BandyerChat.addChat('usr_fr55ga3');
+```
+
+`.addChat('usr_fr55ga3')`
+
+To enable the chat with another user of your platform, you need to call the .addChat() method. 
+The addChat method expect a valid user alias (it must be a user already created). Once the method is called, the widget will display the chat added.
+
+**Note:** if the widget is in hidden mode, the addChat method mode will display the widget.
+
+##### Returns:
+###### Type
+
+Promise.<(void|Error)>
+
+### Remove chat
+
+> .removeChat()
+
+```javascript
+BandyerChat.removeChat('usr_fr55ga3');
+```
+
+`.removeChat('usr_fr55ga3')`
+
+To remove a chat you need to call the .removeChat() method. The removeChat will remove the chat between the user authenticated and the user specified as input of the method. All the messages between them will be deleted permanently.
+
+##### Returns:
+###### Type
+
+Promise.<(void|Error)>
+
+##### Returns:
+###### Type
+
+Promise.<(void|Error)>
+
+### isAuthenticated
+> .isAuthenticated()
+
+```javascript
+BandyerChat.isAuthenticated();
+```
+
+`.isAuthenticated()`
+
+
+To check if the current istance of the widget is authenticated, you need to call the .isAuthenticated() method. The method will return **true** if the widget is authenticated, false otherwise.
+
+##### Returns:
+###### Type
+
+Type: boolean
+
+### Select chat
+
+> .selectChat()
+
+```javascript
+BandyerChat.selectChat('usr_fr55ga3');
+```
+
+`.selectChat('usr_fr55ga3')`
+
+To select a chat you need to call the .selectChat() method. The selectChat will select the chat between the user authenticated and the user specified as input of the method.
+
+##### Returns:
+###### Type
+
+Promise.<(void|Error)>
+
+##### Returns:
+###### Type
+
+Promise.<(void|Error)>
+
+### createCall
+> .createCall(Array<User>, options)
+
+```javascript
+BandyerChat.createCall(['usr_fr55ga3'], {'call_type':'audio_video'});
+```
+
+Create a call with arbitrary call options with the users specified in the array (Only one user)
+
+**Note:** if the widget is in hidden mode, the createCall method mode will display the widget.
+
+
+##### Returns:
+###### Type
+
+Promise.<(void|Error)>
+
+
 
 ## Events
 
@@ -386,87 +501,15 @@ The data in the event is a call object as described here: [Call Object] (https:/
 | Call | Call Object | Call object: [Call Object] (https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/call.html) |
 | Reason | String | Valid reasons are: hangup, answered\_on_another\_device, dial\_timeout or answered\_another\_call |
 
+##Widget Operations
 
-
-### Add chat
-> .addChat()
-
-```javascript
-BandyerChat.addChat('usr_fr55ga3');
-```
-
-`.addChat('usr_fr55ga3')`
-
-To enable the chat with another user of your platform, you need to call the .addChat() method. 
-The addChat method expect a valid user alias (it must be a user already created). Once the method is called, the widget will display the chat added.
-
-**Note:** if the widget is in hidden mode, the addChat method mode will display the widget.
-
-##### Returns:
-###### Type
-
-Promise.<(void|Error)>
-
-### Remove chat
-
-> .removeChat()
-
-```javascript
-BandyerChat.removeChat('usr_fr55ga3');
-```
-
-`.removeChat('usr_fr55ga3')`
-
-To remove a chat you need to call the .removeChat() method. The removeChat will remove the chat between the user authenticated and the user specified as input of the method. All the messages between them will be deleted permanently.
-
-##### Returns:
-###### Type
-
-Promise.<(void|Error)>
-
-##### Returns:
-###### Type
-
-Promise.<(void|Error)>
-
-### isAuthenticated
-> .isAuthenticated()
-
-```javascript
-BandyerChat.isAuthenticated();
-```
-
-`.isAuthenticated()`
-
-
-To check if the current istance of the widget is authenticated, you need to call the .isAuthenticated() method. The method will return **true** if the widget is authenticated, false otherwise.
-
-##### Returns:
-###### Type
-
-Type: boolean
-
-### Select chat
-
-> .selectChat()
-
-```javascript
-BandyerChat.selectChat('usr_fr55ga3');
-```
-
-`.selectChat('usr_fr55ga3')`
-
-To select a chat you need to call the .selectChat() method. The selectChat will select the chat between the user authenticated and the user specified as input of the method.
-
-##### Returns:
-###### Type
-
-Promise.<(void|Error)>
-
-##### Returns:
-###### Type
-
-Promise.<(void|Error)>
+| Operation | Description |
+| -------------- | :--------------------: |
+| Show widget | Show the widget in the html page |
+| Hide widget | Hide the widget in the html page |
+| Toggle widget | Toggles the widget from open to close view or viceversa |
+| Open widget | Opens the widget |
+| Close widget | Closes the widget |
 
 ### Show widget
 > .showWidget()
@@ -495,28 +538,12 @@ BandyerChat.hideWidget();
 `.hideWidget()`
 
 
-hide the widget in the html page.
+Hide the widget in the html page.
 
 ##### Returns:
 ###### Type
 
 Type: Boolean.(true|false)>
-
-### logout
-> .logout()
-
-```javascript
-BandyerChat.logout();
-```
-
-`.logout()`
-
-To logout to the current istance of the widget, you can call the .logout() method. The logout() method will unmount the widget component.
-
-##### Returns:
-###### Type
-
-Promise.<(void|Error)>
 
 ### toggleWidget
 > .toggleWidget()
@@ -640,7 +667,7 @@ BandyerChat.getLastMessageReceived();
 
 `.getLastMessageReceived()`
 
-Get the last message received by the widget. 
+Get the last message received by the widget in the current session. 
 
 ##### Returns:
 ###### Type
@@ -663,7 +690,7 @@ BandyerChat.getLastMessageSent();
 
 `.getLastMessageSent()`
 
-Get the last message sent by the widget. 
+Get the last message sent by the widget in the current session. 
 
 ##### Returns:
 ###### Type
@@ -726,5 +753,3 @@ To support screen-sharing in Chrome, you must create a Chrome screen-sharing ext
 #### Distributing a screen-sharing extension
 In order to use screen-sharing at your website, Chrome users need to install your screen-sharing extension.
 You must package your Chrome screen-sharing extension and register it in the Chrome Web Store. See the <a href="https://developer.chrome.com/webstore/publish" target="_blank">Chrome documentation</a> for details on publishing your extension in the Chrome Web Store.
-
-

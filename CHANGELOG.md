@@ -1,3 +1,7 @@
+# 1.17.1 (October 15,2019)
+
+- [Feature]: Add search channel component
+
 # 1.17.0 (October 14, 2019)
 
 - [Feature]: Add createCall programmatically

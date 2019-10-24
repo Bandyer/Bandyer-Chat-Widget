@@ -1,3 +1,16 @@
+# 1.18.0 (October 22,2019)
+
+- [Feature]: Add usersDetailsProvider
+- [Feature]: Add usersDetailsFormatter
+- [Feature]: Add back to call button in channels view
+- [Feature]: Add notification on back to chat button
+
+- [Bug]: Bug fix for screenShare
+- [Bug]: Bug fix for toolTip
+- [Bug]: Bug fix traduction for search component
+
+- [Update]: (Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.7.0 version)
+
 # 1.17.1 (October 15,2019)
 
 - [Feature]: Add search channel component

@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.16.2/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.18.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -36,8 +36,8 @@ For IE11 support you need to install a plugin and include the following polyfill
 
 #### Versions
 
-Last version available is: 1.16.2.
-[https://cdn.bandyer.com/sdk/js/chat/1.16.2/bandyer-widget.min.js]()
+Latest version available is: 1.18.0.
+[https://cdn.bandyer.com/sdk/js/chat/1.18.0/bandyer-widget.min.js]()
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -82,6 +82,8 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | callType | no | audio_video | Specify the call type. Valid values are: "audio\_only", "audio\_upgradable", "audio\_video" |
 | mode | no | embed | Specify the widget call mode. Valid values are: "embed" or "window" |
 | language | no | it | Specify the language of the widget. Valid values are: "it" or "en" |
+| userDetailsProvider | no | default user provider | Specify the information for each user (see more [here](#userdetailsprovider)) |
+| userDetailsFormatter | no | default user formatter | Specify how the user identity is formatted in the UI  (see more [here](#userdetailsformatter))|
 
 Call type options:
 
@@ -100,7 +102,6 @@ Hidden options: the widget chat is not visible in the frontend until it receives
 1. addChat event
 2. incoming call event
 
- 
 
 ##### Returns:
 ###### Type
@@ -128,23 +129,96 @@ The layout option is composed by a list of other keys. The table above is the li
 
 Here an example: 
 
-```javascript 
+```javascript
 BandyerChat.create({
-userAlias: 'usr_123456', 
-appId: 'wAppId_fake123456', 
-environment: 'sandbox', 
-layout: {
-	body: {background: '#0069B4', color: '#000'}, 
-	dial:{background: '#003762', color: '#fff'}, 
-	call: {background: '#003762', color: '#fff'}, 
-	messageSent: {background: '#003762', color: '#fff'}, 
-	launcher: {background: '#0069B4'},
-	header: {background: '#003762', color: '#fff'},
-	headerButton: {background: '#0069B4', color: '#fff'}, 
-	fontFamily: '"Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif' 
+	userAlias: 'usr_123456', 
+	appId: 'wAppId_fake123456', 
+	environment: 'sandbox', 
+	layout: {
+		body: {background: '#0069B4', color: '#000'}, 
+		dial:{background: '#003762', color: '#fff'}, 
+		call: {background: '#003762', color: '#fff'}, 
+		messageSent: {background: '#003762', color: '#fff'}, 
+		launcher: {background: '#0069B4'},
+		header: {background: '#003762', color: '#fff'},
+		headerButton: {background: '#0069B4', color: '#fff'}, 
+		fontFamily: '"Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif' 
 	}
 })
 ```
+
+<a name="userdetailsprovider"></a>
+#### userDetailsProvider 
+
+The widget has a custom configurable function that allows customizing the users' information, which later will be displayed in the UI.
+
+The userDetailsProvider is optional, but if defined must be a function.
+
+This function takes an array of String (userAlias) as the only input parameter and must return a Promise that contains an Array of objects, one object for each userAlias provided as input.
+
+**Performance considerations**
+The userDetailsProvider function is called and waited internally for up to 1200 ms, otherwise it default to the default provider logic.
+For this reason your logic will be applied only if it is faster then 1200 ms.
+
+Every single object representing a user and must contain a userAlias key(otherwise the object will be ignored) and optionally other keys that can be used to define the logic used in your custom userDetailFormatter.
+
+Here an example:
+
+```javascript
+
+yourProviderFunction = async function (usersAlias){
+	const userObjPromises = [];
+	usersAlias.forEach( (alias) => {
+		// Your logic here
+		const user = await yourAsyncFetchFunction(alias);
+		// Example of yourAsyncFetchFunction promise return
+		/*{
+			userAlias: alias,
+			firstName: myFirstName,
+			lastName: myLastName,
+			image: myImage
+		};*/
+		usersObjPromises.push(user);
+	});
+	return Promise.all(userObjPromises);
+}
+
+BandyerChat.create({
+	userAlias: 'usr_123456',
+	appId: 'wAppId_fake123456',
+	environment: 'sandbox',
+	userDetailsProvider: yourProviderFunction
+})
+```
+N.B define a userDetailsProvider without the relative userDetailsFormatter is useless since the displayed result will be the userAlias as it is the default logic of userDetailsFormatter.
+
+<a name="userdetailsformatter"></a>
+#### userDetailsFormatter
+
+The widget has a custom configurable function that lets you customize how users name are displayed in the UI.
+The userDetailsFormatter is optional, but if defined, it must be a function.
+
+This function takes as input parameter an Object that represents one user and must return a String that represents how the user identity must be displayed in the UI.
+
+If the return value is not a String or the logic fails, the displayed information will be the userAlias.
+
+Here an example:
+
+```javascript
+
+yourFormatterFunction = function (user){
+	return user.firstName + " " + user.lastName;
+}
+
+BandyerChat.create({
+	userAlias: 'usr_123456',
+	appId: 'wAppId_fake123456',
+	environment: 'sandbox',
+	userDetailsFormatter: yourFormatterFunction
+})
+```
+N.B define a userDetailsFormatter without the relative userDetailsProvider can be useless since the displayed result will use the information provided at user creation.
+
 
 ### logout
 > .logout()

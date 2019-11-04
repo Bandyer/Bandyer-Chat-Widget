@@ -1,3 +1,20 @@
+# 1.19.1 (November 4,2019)
+
+- [Bug]: Fix babel setting
+
+# 1.19.0 (November 4,2019)
+
+- [Feature]: Add new graphics for call view
+- [Feature]: New carousel logic, now bottom to top
+- [Feature]: Add new unread message logic
+- [Feature]: New error message on socket call error
+
+- [Bug]: Fix polyfill system for IE
+- [Bug]: Fix notification on back to call button
+- [Bug]: Various UI adjustment
+
+- [Update]: (Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.7.1 version)
+
 # 1.18.0 (October 22,2019)
 
 - [Feature]: Add usersDetailsProvider

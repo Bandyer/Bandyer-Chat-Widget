@@ -1,3 +1,10 @@
+# 1.19.2 (November 6,2019)
+
+- [Bug]: Fix audio on back to chat from call
+- [Bug]: Fix icon change on unpublish screenshare from chrome toolbar
+- [Bug]: Fix notification on back to chat icon in call window
+- [Bug]: Fix UI for reconnect loader
+
 # 1.19.1 (November 4,2019)
 
 - [Bug]: Fix babel setting

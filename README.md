@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.19.2/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.19.3/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -36,8 +36,8 @@ For IE11 support you need to install a plugin and include the following polyfill
 
 #### Versions
 
-Latest version available is: 1.19.2.
-[https://cdn.bandyer.com/sdk/js/chat/1.19.2/bandyer-widget.min.js]()
+Latest version available is: 1.19.3.
+[https://cdn.bandyer.com/sdk/js/chat/1.19.3/bandyer-widget.min.js]()
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -74,7 +74,7 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | --------- | :----------: | :------:| ----------- |
 | userAlias | yes |"" | The widget who initialize the widget |
 | appId | yes | "" | A valid appId. Please contact Bandyer to have a valid appId |
-| environment | yes | "" | Sandbox or production are the permitted values. |
+| environment | yes | "" | 'sandbox' or 'production' are the permitted values. |
 | hidden | no | false | Create the widget in hidden mode (not visibile in the HTML). |
 | screenSharingExtensionId | no | '' | Extension ID of the Screen Sharing Extension. |
 | layout | no | {} | Specify the custom layout (see more [here](#custom-layout)) |
@@ -227,7 +227,6 @@ N.B define a userDetailsFormatter without the relative userDetailsProvider can b
 BandyerChat.logout();
 ```
 
-`.logout()`
 
 To logout to the current istance of the widget, you can call the .logout() method. The logout() method will unmount the widget component.
 
@@ -235,6 +234,22 @@ To logout to the current istance of the widget, you can call the .logout() metho
 ###### Type
 
 Promise.<(void|Error)>
+
+
+### version
+> .version()
+
+```javascript
+BandyerChat.version();
+```
+
+
+Return the current version of the widget
+
+##### Returns:
+###### Type
+
+String
 
 ### Client 
 

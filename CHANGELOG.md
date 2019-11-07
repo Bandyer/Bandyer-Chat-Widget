@@ -1,3 +1,8 @@
+# 1.19.3 (November 7,2019)
+
+- [Feature]: Add version getter
+- [Bug]: Add babel runtime polyfill
+
 # 1.19.2 (November 6,2019)
 
 - [Bug]: Fix audio on back to chat from call

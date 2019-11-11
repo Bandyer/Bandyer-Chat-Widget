@@ -1,3 +1,10 @@
+# 1.19.4 (November 11,2019)
+
+- [Feature]: Add screenSharingExtensionURL parameter in create function
+- [Bug]: Fix notification in conversation view
+- [Bug]: Fix launcher icon
+- [Bug]: Fix translation for install screenShare extension page
+
 # 1.19.3 (November 7,2019)
 
 - [Feature]: Add version getter

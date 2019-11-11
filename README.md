@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.19.3/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.19.4/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -36,17 +36,17 @@ For IE11 support you need to install a plugin and include the following polyfill
 
 #### Versions
 
-Latest version available is: 1.19.3.
-[https://cdn.bandyer.com/sdk/js/chat/1.19.3/bandyer-widget.min.js]()
+Latest version available is: 1.19.4.
+[https://cdn.bandyer.com/sdk/js/chat/1.19.4/bandyer-widget.min.js]()
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
 
 #### Screenshots
 
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" style="height: 300px;"/>
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-chat-open-600.jpg" alt="Drawing" style="height: 300px;"/>
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-ringingin-600.jpg" alt="Drawing" style="height: 300px;"/>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" style="height: 500px;"/>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-chat-open-600.jpg" alt="Drawing" style="height: 500px;"/>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-ringingin-600.jpg" alt="Drawing" style="height: 500px;"/>
 
 
 
@@ -76,7 +76,8 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | appId | yes | "" | A valid appId. Please contact Bandyer to have a valid appId |
 | environment | yes | "" | 'sandbox' or 'production' are the permitted values. |
 | hidden | no | false | Create the widget in hidden mode (not visibile in the HTML). |
-| screenSharingExtensionId | no | '' | Extension ID of the Screen Sharing Extension. |
+| screenSharingExtensionId | no | '' | Extension ID of the Screen Sharing Extension. (see more [here](#screen-sharing) |
+| screenSharingExtensionURL | no | '' | The URL from witch download your custom extension (see more [here](#screen-sharing) |
 | layout | no | {} | Specify the custom layout (see more [here](#custom-layout)) |
 | record | no | false | Specify if all the calls must be recorded. Remember that Safari ed Edge doesn't support the record option |
 | callType | no | audio_video | Specify the call type. Valid values are: "audio\_only", "audio\_upgradable", "audio\_video" |
@@ -705,7 +706,7 @@ BandyerChat.getUser(userAlias);
 Get User structure inside Bandyer platform (see details: [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.html))
 
 ##### Returns: 
-###### Type [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.htmlA)
+###### Type [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.html)
 
 ### getUsersStatusList
 > .getUsersStatusList()
@@ -719,7 +720,7 @@ BandyerChat.getUsersStatusList();
 Get connected users list inside Bandyer platform (see details: [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.html))
 
 ##### Returns: 
-###### Type Array<[User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.htmlA)>
+###### Type Array<[User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.html)>
 
 
 ### getChats()
@@ -816,29 +817,140 @@ Array of object:
 
 
 ### Screen sharing
+<a src="screen-sharing"></a>
 
-From the 1.1.0 and newer version the widget can publish a stream that uses a video view of your screen (instead of a camera) as the source. A client connected to the widget can subscribe to the stream (and view it), just as they would subscribe to a stream that uses a camera as the source.
+From version 1.1.0 the widget allows to publish a screen as the video source. A client connected to the widget can subscribe to the stream (and view it), just as they would subscribe to a stream that uses a camera as the source.
 
-In Chrome, to publish a screen-sharing video, the client needs to add an extension that enables publishing screen-sharing streams for your domain.
-As of Firefox 52, an extension (or whitelist listing) is no longer needed for screen sharing. Firefox prompts the end user for access to a screen, window, or application, as it would for access to the camera. For more information, see this Mozilla blog post.
+In Chrome with a version lower than 72, to publish a screen-sharing video, the client needs to add an extension that enables publishing screen-sharing streams for your domain.
+As of Firefox 52, an extension (or whitelist listing) is no longer needed for screen sharing. Firefox prompts the end user for access to a screen, window, or application, as it would for access to the camera.
 
 **In all browsers, publishing a screen-sharing stream requires the page to be loaded over HTTPS.**
 
 #### Set url for extension install
 
-The method `BandyerChat.setExtensionUrl('URL_CHROME_WEBSTORE')` is used to redirect the user to the installation page in the chrome web store. It's important to set the url to enable the user to add the correct extension
+The `BandyerChat.create()` parameter `screenSharingExtensionURL` or the function `BandyerChat.setExtensionUrl('URL_CHROME_WEBSTORE')` is used to specify the URL where to download the screensharing extension from the chrome web store. It's important to set the url to allow the user to add a custom extension. ([How to build a custom extension](#build-a-customized-screensharing-chrome-extension))
 
-`Example: 
-BandyerChat.setExtensionUrl('https://chrome.google.com/webstore/detail/your-extension/your-extension-id')`
+```javascript
+BandyerChat.create({
+	userAlias: 'usr_123456',
+	appId: 'wAppId_fake123456',
+	environment: 'sandbox',
+	screenSharingExtensionURL: 'https://chrome.google.com/webstore/detail/your-extension/your-extension-id'
+})
+```
 
-If the user needs the extensions, the widget will display this alert:
+or
 
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-extension-install.png" alt="Drawing" style="height: 300px;"/>
+```javascript
+BandyerChat.setExtensionUrl('https://chrome.google.com/webstore/detail/your-extension/your-extension-id')
+```
 
-#### Use screen sharing in development
+If the user requires to share the screen and hasn't installed the extension yet, the widget will display this alert:
 
-To support screen-sharing in Chrome, you must create a Chrome screen-sharing extension enabled for localhost or any other development domain. Please write an email to <a href="mailto:info@bandyer.com?subject=screen-sharing-widget-development">info@bandyer.com</a> to obtain it.
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-extension-install.png" alt="Drawing" style="height: 400px;"/>
+
+#### Build a customized screensharing chrome extension
+<a src='build-a-customized-screensharing-chrome-extension'></a>
+
+To support screen-sharing in Chrome older than v72, a Chrome screen-sharing extension must be created.
+Notice that the extension must be built to work in your own domain.
+A template extension to use as the base to build your own custom extension can be found in the extra folder.
+Download and unzip the ScreenShareExtension.zip file and follow this guidelines:
+
+##### Modify manifest.json file
+
+First of all open the manifest.json file, it look like this
+```json
+{
+   "author": "Bandyer srl",
+   "background": {
+      "persistent": true,
+      "scripts": [ "background-script.js" ]
+   },
+   "description": "Extension to allow screen sharing in Bandyer playground application.",
+   "homepage_url": "https://playground.bandyer.com",
+   "icons": {
+      "128": "icon.png"
+   },
+   "externally_connectable": {
+      "matches": ["*://localhost/*", "*://*.bandyer.com/*"]
+   },
+   "manifest_version": 2,
+   "minimum_chrome_version": "34",
+   "name": "Bandyer Playground Screensharing",
+   "permissions": [ "desktopCapture"],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.0",
+   "web_accessible_resources": [ "icon.png" ]
+}
+```
+
+Edit the following parameter:
+
+- author: Insert your author parameter
+- description: Briefly explain what the extension does
+- homepage_url: Link to your home page
+- <b>matches: This field is the most important. List here all the domains that should have permission to access to that extension, note that the '*' character.</b>
+
+Further explaination
+
+```json
+   "background": {
+      "persistent": true,
+      "scripts": [ "background-script.js" ]
+   },
+
+```
+In this section there are two parameters:
+- persistent: set to true, it allows the extension to keep staying active even if the user is not interacting with the page.
+- scripts: specify the script name that will be executed.
+
+##### Load a new icon
+
+Substitute the icon in the directory of the extension that you have downloaded with your own. Notice that chrome require an icon for every extension.
+<b>Be aware of the fact that the icon name must be exactly icon.png</b> (This because the system uses the icon name as input to check if the extension is properly installed on the client)
+
+##### Install an unpacked/unpublished extension into chrome browser (for development purposes)
+
+- Navigate to chrome://extensions in your browser. You can also access this page by clicking on the Chrome menu on the top right side of the Omnibox, hovering over More Tools and selecting Extensions.
+- Check the box next to Developer Mode.
+- Click Load Unpacked Extension and select the directory for your "Custom Extension" extension.
+
+<b>Please take note of the extension id and remember that this id changes every time the unpacked extension is installed on a client.</b> Once the extension has been published to the chrome web store the id will remain the same for each installation.
+
+- Insert the extension id during the widget creation phase
+
+
+```javascript
+BandyerChat.create({
+	userAlias: 'usr_123456',
+	appId: 'wAppId_fake123456',
+	environment: 'sandbox',
+	screenSharingExtensionId: 'Your extension id'
+})
+```
+
 
 #### Distributing a screen-sharing extension
-In order to use screen-sharing at your website, Chrome users need to install your screen-sharing extension.
-You must package your Chrome screen-sharing extension and register it in the Chrome Web Store. See the <a href="https://developer.chrome.com/webstore/publish" target="_blank">Chrome documentation</a> for details on publishing your extension in the Chrome Web Store.
+In order to enable screen-sharing on your website, users with a Chrome version lower than 72, need to install your custom screen-sharing extension.
+Once completed the previous steps, the extension is ready to be published on the chrome web store.
+Pack (zip) the Chrome extension folder and <a src="https://developer.chrome.com/webstore/get_started_simple#step6">publish it in the Chrome Web Store</a>.
+
+<b>Before continue, remember to remove unwanted hosts from the manifest </b>
+
+- Decide which Google Account is your developer account—the account that you'll use to verify ownership and publish your app. Instead of using your personal Gmail account, you might want to create a dedicated account for your apps. For details, see Choose a developer account in Publishing Your App.
+Note: If you created a blog, choose the account that you used to create that blog.
+
+- Go to the Chrome Developer Dashboard, and sign into your developer account.
+Once you sign in, you'll see a list of any installable web apps, extensions, and themes that you've already uploaded.
+
+- Click the Add new item button in the dashboard.
+If you've never uploaded an installable web app, extension, or theme before, you need to accept the developer agreement before going on.
+- Click Choose file, choose the ZIP file you created in Step 5, and click Upload.
+If you see an error message, fix the error, zip up the directory again, and upload the ZIP file.
+
+Within seconds you should see the Edit page for your app. At the top, you might see a warning that you must verify ownership for whatever sites you specified in the "urls" and "web_url" fields. That warning has a link that takes you to Google Webmaster Tools, where you can verify ownership at any time before you publish the app.
+
+<b>After a successfull publication, your extension will have a unique id, that can be used as parameter in the `BandyerChat.create()` function to use it in yuor own integration.</b>
+
+For further info visit <a src="https://developer.chrome.com/webstore/get_started_simple"> Chrome Developer tutorial</a>

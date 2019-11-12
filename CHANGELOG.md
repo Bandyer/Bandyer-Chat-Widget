@@ -1,3 +1,7 @@
+# 1.19.5 (November 12,2019)
+
+- [Bug]: Fix get members in addChannels
+
 # 1.19.4 (November 11,2019)
 
 - [Feature]: Add screenSharingExtensionURL parameter in create function

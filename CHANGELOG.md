@@ -1,3 +1,9 @@
+# 1.19.6 (November 13,2019)
+
+- [Bug]: Fixed call termination bug on call socket disconnection, updated web-communication-center to remove reconnection
+
+- [Update]: (Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.5.2 version)
+
 # 1.19.5 (November 12,2019)
 
 - [Bug]: Fix get members in addChannels

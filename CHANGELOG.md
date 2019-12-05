@@ -1,3 +1,21 @@
+# 1.20.0 (Dicember 06,2019)
+
+- [Feature]: Add Gear(settings) : possibility to select input devices
+- [Feature]: New permission logic
+- [Feature]: Call with no audio/no video
+- [Feature]: Fallback procedure for call: audio/video => audio upgradable => no audio/no video
+- [Feature]: New box-sizing:border box rule for a better integration with other framework
+- [Feature]: Red Audio and video ButtonIcon on permission denied
+- [Feature]: Notify users of failures during call with informative snackbars
+
+- [Bug]: Fix visualization for old channels type
+- [Bug]: Fix close stream on pending getUserMedia after disconnected call
+- [Bug]: Fix loader visualization when back to chat button is pressed
+- [Bug]: Fix search in channels view, now the list is updated runtime
+- [Bug]: Fix UI
+
+- [Update]: (Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.8.0 version)
+
 # 1.19.6 (November 13,2019)
 
 - [Bug]: Fixed call termination bug on call socket disconnection, updated web-communication-center to remove reconnection

@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.20.0/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.23.1/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -36,8 +36,8 @@ For IE11 support you need to install a plugin and include the following polyfill
 
 #### Versions
 
-Latest version available is: 1.20.0.
-[https://cdn.bandyer.com/sdk/js/chat/1.20.0/bandyer-widget.min.js]()
+Latest version available is: 1.23.1
+[https://cdn.bandyer.com/sdk/js/chat/1.23.1/bandyer-widget.min.js]()
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -46,7 +46,8 @@ For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/
 
 <img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" style="height: 500px;"/>
 <img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-chat-open-600.jpg" alt="Drawing" style="height: 500px;"/>
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-ringingin-600.jpg" alt="Drawing" style="height: 500px;"/>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-ringingin-600.jpg" alt="Drawing" style="height: 400px;"/>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-gear-open-600.jpg" alt="Drawing" style="height: 400px;"/>
 
 
 
@@ -155,7 +156,7 @@ The widget has a custom configurable function that allows customizing the users'
 
 The userDetailsProvider is optional, but if defined must be a function.
 
-This function takes an array of String (userAlias) as the only input parameter and must return a Promise that contains an Array of objects, one object for each userAlias provided as input.
+This function takes an array of string (userAlias) as the only input parameter and must return a Promise that contains an Array of objects, one object for each userAlias provided as input.
 
 **Performance considerations**
 The userDetailsProvider function is called and waited internally for up to 1200 ms, otherwise it default to the default provider logic.
@@ -199,9 +200,9 @@ N.B define a userDetailsProvider without the relative userDetailsFormatter is us
 The widget has a custom configurable function that lets you customize how users name are displayed in the UI.
 The userDetailsFormatter is optional, but if defined, it must be a function.
 
-This function takes as input parameter an Object that represents one user and must return a String that represents how the user identity must be displayed in the UI.
+This function takes as input parameter an Object that represents one user and must return a string that represents how the user identity must be displayed in the UI.
 
-If the return value is not a String or the logic fails, the displayed information will be the userAlias.
+If the return value is not a string or the logic fails, the displayed information will be the userAlias.
 
 Here an example:
 
@@ -250,7 +251,7 @@ Return the current version of the widget
 ##### Returns:
 ###### Type
 
-String
+string
 
 ### Client 
 
@@ -268,7 +269,7 @@ const Client = BandyerChat.create({
 ```
 
 ### Add chat
-> .addChat()
+> .addChat(userAlias)
 
 ```javascript
 BandyerChat.addChat('usr_fr55ga3');
@@ -281,6 +282,12 @@ The addChat method expect a valid user alias (it must be a user already created)
 
 **Note:** if the widget is in hidden mode, the addChat method mode will display the widget.
 
+##### Arguments:
+
+| Name | Type | Description |
+| --------- | :----------: | ----------- |
+| userAlias | string | User whose chat is to be added|
+
 ##### Returns:
 ###### Type
 
@@ -288,7 +295,7 @@ Promise.<(void|Error)>
 
 ### Remove chat
 
-> .removeChat()
+> .removeChat(userAlias)
 
 ```javascript
 BandyerChat.removeChat('usr_fr55ga3');
@@ -298,10 +305,11 @@ BandyerChat.removeChat('usr_fr55ga3');
 
 To remove a chat you need to call the .removeChat() method. The removeChat will remove the chat between the user authenticated and the user specified as input of the method. All the messages between them will be deleted permanently.
 
-##### Returns:
-###### Type
+##### Arguments:
 
-Promise.<(void|Error)>
+| Name | Type | Description |
+| --------- | :----------: | ----------- |
+| userAlias | string | User whose chat is to be removed|
 
 ##### Returns:
 ###### Type
@@ -327,7 +335,7 @@ Type: boolean
 
 ### Select chat
 
-> .selectChat()
+> .selectChat(userAlias)
 
 ```javascript
 BandyerChat.selectChat('usr_fr55ga3');
@@ -337,10 +345,12 @@ BandyerChat.selectChat('usr_fr55ga3');
 
 To select a chat you need to call the .selectChat() method. The selectChat will select the chat between the user authenticated and the user specified as input of the method.
 
-##### Returns:
-###### Type
+##### Arguments:
 
-Promise.<(void|Error)>
+| Name | Type | Description |
+| --------- | :----------: | ----------- |
+| userAlias | string | User whose chat is to be selected|
+
 
 ##### Returns:
 ###### Type
@@ -356,7 +366,15 @@ BandyerChat.createCall(['usr_fr55ga3'], {'call_type':'audio_video'});
 
 Create a call with arbitrary call options with the users specified in the array (Only one user)
 
-**Note:** if the widget is in hidden mode, the createCall method mode will display the widget.
+**Note:** If the widget is in hidden mode, the createCall method mode will display the widget.
+
+##### Arguments:
+
+| Name | Type | Description |
+| --------- | :----------: | ----------- |
+| usersAlias | Array of string | List of users with whom you want to start a call |
+| options | Object | Call option, specify the call type |
+
 
 
 ##### Returns:
@@ -364,6 +382,74 @@ Create a call with arbitrary call options with the users specified in the array 
 
 Promise.<(void|Error)>
 
+### joinCallURL
+> .joinCallURL(url)
+
+```javascript
+BandyerChat.joinCallURL('https://sandbox.bandyer.com/connect/rest-call-handler/mycustomtoken');
+```
+
+Join a one to one call from an URL.
+
+The widget must be authenticated and the url must be coupled with the user authenticated on the widget.
+
+
+Join call URLs can be created using the dedicated  `/rest/room/create` API . 
+Documentation can be found [here](https://docs.bandyer.com/Bandyer-RESTAPI/#create-a-room)
+
+
+
+**Note:** If the widget is in hidden mode, the joinCallURL method mode will display the widget.
+
+##### Arguments:
+
+| Name | Type | Description |
+| --------- | :----------: | ----------- |
+| url | string | Rest link to the call |
+
+
+
+
+##### Returns:
+###### Type
+
+Promise.<(void|Error)>
+
+######Error types:
+
+- **join_call_invalid_url**: the given url is not correct.
+- **join_call_invalid_mtm**: for now is not possibile to enter in a many to many call.
+- **join_call_request_failed**: user is busy or network error.
+
+
+### composeMessage
+> .composeMessage(userAlias, message, send)
+
+```javascript
+BandyerChat.composeMessage('usr_fr55ga3', 'How are you?', true);
+```
+Compose and optionally send a message to a user.
+
+If ` send === true` the specified message is sent directly to the specified user chat without trigger UI changes.
+Otherwise (` send === false`), the widget will display the chat and fill the input text with the specified message, letting the user decide wether edit it before send it.
+
+**Note:** If the widget is in hidden mode, the message is sent anyway.
+
+##### Arguments:
+
+| Name | Type | Description
+| --------- | :----------: | ----------- |
+| userAlias | string | User to whom compose o send message |
+| message | string | Text of the message |
+| send | boolean | If true, directly send the message otherwise inflate the message in the UI |
+
+
+
+
+##### Returns:
+###### Type
+
+Promise.<(void|Error)>
 
 
 ## Events
@@ -398,8 +484,8 @@ Fired when a User has started typing.
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| userAlias | String | Alias of the user |
-| chat | String | Unique identifier of the chat |
+| userAlias | string | Alias of the user |
+| chat | string | Unique identifier of the chat |
 | participants | Array | Array of participants |
 
 #### Message sent
@@ -416,12 +502,12 @@ Fired when a User has sent a message.
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| id | String | Unique identifier of the message |
-| chat | String | Unique identifier of the chat |
+| id | string | Unique identifier of the message |
+| chat | string | Unique identifier of the chat |
 | participants | Array | Array of participants |
-| text | String | Text of the message |
+| text | string | Text of the message |
 | timestamp | Date | When message was created |
-| sender | String | User alias of the creator of the message |
+| sender | string | User alias of the creator of the message |
 
 #### Message received
 
@@ -437,12 +523,12 @@ Fired when a User has received a message.
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| id | String | Unique identifier of the message |
-| chat | String | Unique identifier of the chat |
+| id | string | Unique identifier of the message |
+| chat | string | Unique identifier of the chat |
 | participants | Array | Array of participants |
-| text | String | Text of the message |
+| text | string | Text of the message |
 | timestamp | Date | When message was created |
-| sender | String | User alias of the creator of the message |
+| sender | string | User alias of the creator of the message |
 
 #### Message read
 
@@ -458,12 +544,12 @@ Fired when a User has read a message.
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| id | String | Unique identifier of the message |
-| chat | String | Unique identifier of the chat |
+| id | string | Unique identifier of the message |
+| chat | string | Unique identifier of the chat |
 | participants | Array | Array of participants |
-| text | String | Text of the message |
+| text | string | Text of the message |
 | timestamp | Date | When message was created |
-| sender | String | User alias of the creator of the message |
+| sender | string | User alias of the creator of the message |
 
 #### Chat loaded 
 
@@ -479,13 +565,13 @@ Fired when the chat channel is loaded
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| chat | String | Unique identifier of the chat |
+| chat | string | Unique identifier of the chat |
 | participants | Array | Array of participants |
-| lastMessage.author | String | Author of the message |
-| lastMessage.message | String | Text of the message |
-| lastMessage.timestamp | String | Timestamp of the message |
+| lastMessage.author | string | Author of the message |
+| lastMessage.message | string | Text of the message |
+| lastMessage.timestamp | string | Timestamp of the message |
 | dateCreated | Date | When channel was created |
-| createdBy | String | Creator of the channel |
+| createdBy | string | Creator of the channel |
 | unreadMessage | number | Number of unread messages |
 
 #### User connection
@@ -502,13 +588,13 @@ Fired when a User connects to the platform.
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| user.userAlias | String | User alias of the user |
-| user.firstName | String | Firstname of the user |
-| user.lastName | String |Lastname of the user |
-| user.email | String | Email of the user |
-| user.image | String | Image of the user |
+| user.userAlias | string | User alias of the user |
+| user.firstName | string | Firstname of the user |
+| user.lastName | string |Lastname of the user |
+| user.email | string | Email of the user |
+| user.image | string | Image of the user |
 | user.role | Number | Role of the user |
-| status | String | Current status (ONLINE, OFFLINE, BUSY) |
+| status | string | Current status (ONLINE, OFFLINE, BUSY) |
 
 #### User disconnection
 
@@ -524,13 +610,13 @@ Fired when a User disconnects to the platform.
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| user.userAlias | String | User alias of the user |
-| user.firstName | String | Firstname of the user |
-| user.lastName | String |Lastname of the user |
-| user.email | String | Email of the user |
-| user.image | String | Image of the user |
+| user.userAlias | string | User alias of the user |
+| user.firstName | string | Firstname of the user |
+| user.lastName | string |Lastname of the user |
+| user.email | string | Email of the user |
+| user.image | string | Image of the user |
 | user.role | Number | Role of the user |
-| status | String | Current status (ONLINE, OFFLINE, BUSY) |
+| status | string | Current status (ONLINE, OFFLINE, BUSY) |
 
 
 #### Incoming call
@@ -571,7 +657,7 @@ The data in the event is a call object as described here: [Call Object] (https:/
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
 | Call | Call Object | Call object: [Call Object] (https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/call.html) |
-| Reason | String | Valid reasons are: none, do\_not\_disturb, no\_answer, error or answered\_another\_call |
+| Reason | string | Valid reasons are: none, do\_not\_disturb, no\_answer, error or answered\_another\_call |
 
 #### Stopped call
 
@@ -589,7 +675,7 @@ The data in the event is a call object as described here: [Call Object] (https:/
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
 | Call | Call Object | Call object: [Call Object] (https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/call.html) |
-| Reason | String | Valid reasons are: hangup, answered\_on_another\_device, dial\_timeout or answered\_another\_call |
+| Reason | string | Valid reasons are: hangup, answered\_on_another\_device, dial\_timeout or answered\_another\_call |
 
 ##Widget Operations
 
@@ -608,7 +694,6 @@ The data in the event is a call object as described here: [Call Object] (https:/
 BandyerChat.showWidget();
 ```
 
-`.showWidget()`
 
 
 Show the widget in the html page.
@@ -625,7 +710,6 @@ Type: Boolean.(true|false)>
 BandyerChat.hideWidget();
 ```
 
-`.hideWidget()`
 
 
 Hide the widget in the html page.
@@ -642,7 +726,6 @@ Type: Boolean.(true|false)>
 BandyerChat.toggleWidget();
 ```
 
-`.toggleWidget()`
 
 Toggles the widget from open to close view or viceversa.
 
@@ -658,7 +741,6 @@ Type: Boolean.<(true|false)>
 BandyerChat.openWidget();
 ```
 
-`.openWidget()`
 
 Opens the widget.
 
@@ -674,7 +756,6 @@ Type: Boolean.<(true|false)>
 BandyerChat.closeWidget();
 ```
 
-`.closeWidget()`
 
 Closes the widget.
 
@@ -701,9 +782,14 @@ To build custom business logic based on Widget activities (message sent, receive
 BandyerChat.getUser(userAlias);
 ```
 
-`.getUser(userAlias)`
-
 Get User structure inside Bandyer platform (see details: [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.html))
+
+##### Arguments:
+
+| Name | Type | Description |
+| --------- | :----------: | ----------- |
+| userAlias | string | User of whom you want to find information |
+
 
 ##### Returns: 
 ###### Type [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.html)
@@ -715,7 +801,6 @@ Get User structure inside Bandyer platform (see details: [User](https://docs.ban
 BandyerChat.getUsersStatusList();
 ```
 
-`.getUser(userAlias)`
 
 Get connected users list inside Bandyer platform (see details: [User](https://docs.bandyer.com/Bandyer-Web-Communication-Center/classes/user.html))
 
@@ -730,7 +815,6 @@ Get connected users list inside Bandyer platform (see details: [User](https://do
 BandyerChat.getChats();
 ```
 
-`.getChats()`
 
 Get all the chat of the client. 
 
@@ -741,11 +825,11 @@ Array of object:
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| chat | String | Unique identifier of the chat |
+| chat | string | Unique identifier of the chat |
 | unreadMessages | Number | Number of unread messages |
 | participants | Array | Array of participants |
-| lastMessage.author | String | User alias of the autor of the last message |
-| lastMessage.message | String | Text of the last message |
+| lastMessage.author | string | User alias of the autor of the last message |
+| lastMessage.message | string | Text of the last message |
 | lastMessage.timestamp | Date | Timestamp of the last message |
 
 ### getLastMessageReceived
@@ -755,7 +839,6 @@ Array of object:
 BandyerChat.getLastMessageReceived();
 ```
 
-`.getLastMessageReceived()`
 
 Get the last message received by the widget in the current session. 
 
@@ -764,12 +847,12 @@ Get the last message received by the widget in the current session.
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| id | String | Unique identifier of the message |
-| chat | String | Unique identifier of the chat |
+| id | string | Unique identifier of the message |
+| chat | string | Unique identifier of the chat |
 | participants | Array | Array of participants |
-| text | String | Text of the message |
+| text | string | Text of the message |
 | timestamp | Date | When message was created |
-| sender | String | User alias of the creator of the message |
+| sender | string | User alias of the creator of the message |
 
 ### getLastMessageSent
 > .getLastMessageSent()
@@ -778,7 +861,6 @@ Get the last message received by the widget in the current session.
 BandyerChat.getLastMessageSent();
 ```
 
-`.getLastMessageSent()`
 
 Get the last message sent by the widget in the current session. 
 
@@ -787,12 +869,12 @@ Get the last message sent by the widget in the current session.
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| id | String | Unique identifier of the message |
-| chat | String | Unique identifier of the chat |
+| id | string | Unique identifier of the message |
+| chat | string | Unique identifier of the chat |
 | participants | Array | Array of participants |
-| text | String | Text of the message |
+| text | string | Text of the message |
 | timestamp | Date | When message was created |
-| sender | String | User alias of the creator of the message |
+| sender | string | User alias of the creator of the message |
 
 ### getUnreadMessages
 > .getUnreadMessages()
@@ -801,7 +883,6 @@ Get the last message sent by the widget in the current session.
 BandyerChat.getUnreadMessages();
 ```
 
-`.getUnreadMessages()`
 
 Get the unread messages of the user. 
 
@@ -812,7 +893,7 @@ Array of object:
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| chat | String | Unique identifier of the chat |
+| chat | string | Unique identifier of the chat |
 | unreadMessages | Number | Number of unread messages |
 
 
@@ -934,7 +1015,7 @@ BandyerChat.create({
 #### Distributing a screen-sharing extension
 In order to enable screen-sharing on your website, users with a Chrome version lower than 72, need to install your custom screen-sharing extension.
 Once completed the previous steps, the extension is ready to be published on the chrome web store.
-Pack (zip) the Chrome extension folder and <a src="https://developer.chrome.com/webstore/get_started_simple#step6">publish it in the Chrome Web Store</a>.
+Pack (zip) the Chrome extension folder and [publish it in the Chrome Web Store](https://developer.chrome.com/webstore/get_started_simple#step6)
 
 <b>Before continue, remember to remove unwanted hosts from the manifest </b>
 
@@ -953,4 +1034,4 @@ Within seconds you should see the Edit page for your app. At the top, you might 
 
 <b>After a successfull publication, your extension will have a unique id, that can be used as parameter in the `BandyerChat.create()` function to use it in yuor own integration.</b>
 
-For further info visit <a src="https://developer.chrome.com/webstore/get_started_simple"> Chrome Developer tutorial</a>
+For further info visit [Chrome Developer tutorial](https://developer.chrome.com/webstore/get_started_simple)

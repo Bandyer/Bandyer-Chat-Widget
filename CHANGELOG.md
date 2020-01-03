@@ -1,4 +1,42 @@
-# 1.20.0 (Dicember 06,2019)
+# 1.23.1 (January 02, 2020)
+
+- [Bug]: handle error on many to many calls using joinCallURL API
+
+- [Update]: (Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.6.1 version)
+
+# 1.23.0 (Dicember 19,2019)
+
+- [Feature]: add joinCallURL API
+
+- [Update]: (Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.6.0 version)
+
+# 1.22.1 (Dicember 18,2019)
+
+- [Bug]: Fix background issue on conversation container
+- [Bug]: Fix translations and spacing in dial in-out
+
+# 1.22.0 (Dicember 17,2019)
+
+- [Feature]: New composeMessage API
+- [Feature]: Change default color and online badge UI
+
+- [Bug]: Fix scroll icon
+- [Bug]: Fix 'now' label for incoming messages
+
+# 1.21.0 (Dicember 12,2019)
+
+- [Feature]: Widget responsive
+- [Feature]: Reduced bundle size
+
+- [Bug]: Fix provider logic on selectChat
+
+- [Update]: (Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.9.0 version)
+
+# 1.20.1 (Dicember 06,2019)
+
+- [Bug]: Fix translation for canVideo tooltip
+
+# 1.20.0 (Dicember 05,2019)
 
 - [Feature]: Add Gear(settings) : possibility to select input devices
 - [Feature]: New permission logic

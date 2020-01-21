@@ -1,3 +1,28 @@
+# 1.24.1 (January 21, 2020)
+
+- [Feature]: Added timeout  in message fetch  for a better usability
+
+- [Bug]: Fix channel creation, now the channels are private and use a REST API for the creation
+- [Bug]: Updating dependencies to resolve vulnerabilities
+
+# 1.24.0 (January 17, 2020)
+
+- [Feature]: Add reconnect during the call
+- [Feature]: New reconnecting loader during the call in case of disconnection
+- [Feature]: Add local 'cache' system for messages
+- [Feature]: Add pagination system for messages, fetch on scroll
+- [Feature]: New info-bar for chat socket disconnected
+
+- [Bug]: Fix change view on hang up call in window mode
+- [Bug]: Fix UI during call in window mode on small screen
+- [Bug]: Fix screen-share cut
+- [Bug]: Fix snackbar visualization on IE
+- [Bug]: Fix scrollToBottom on new message in case of change resolution
+- [Bug]: Fix pending ringing audio after call answer and then call hang up
+
+- [Update]: (Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.7.0 version)
+- [Update]: (Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.10.0 version)
+
 # 1.23.1 (January 02, 2020)
 
 - [Bug]: handle error on many to many calls using joinCallURL API

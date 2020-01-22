@@ -1,3 +1,7 @@
+# 1.24.2 (January 22, 2020)
+
+- [Bug]: Fix createCall input validation
+
 # 1.24.1 (January 21, 2020)
 
 - [Feature]: Added timeout  in message fetch  for a better usability

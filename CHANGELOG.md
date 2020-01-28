@@ -1,3 +1,13 @@
+# 1.25.0 (January 28, 2020)
+
+- [Feature]: Handle new access-denied error in call
+- [Feature]: New error for widget not initialized
+- [Feature]: Add new UI for verification event
+- [Feature]: User info in call view
+
+- [Update]: (Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.8.0 version)
+- [Update]: (Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.10.1 version)
+
 # 1.24.2 (January 22, 2020)
 
 - [Bug]: Fix createCall input validation

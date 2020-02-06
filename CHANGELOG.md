@@ -1,53 +1,100 @@
-# 1.25.0 (January 28, 2020)
+# Changelog
 
-- [Feature]: Handle new access-denied error in call
-- [Feature]: New error for widget not initialized
-- [Feature]: Add new UI for verification event
-- [Feature]: User info in call view
+All notable changes to this project will be documented in this file.
 
-- [Update]: (Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.8.0 version)
-- [Update]: (Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.10.1 version)
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-# 1.24.2 (January 22, 2020)
+## [1.26.0] - 2020-02-06
 
-- [Bug]: Fix createCall input validation
+### Added
 
-# 1.24.1 (January 21, 2020)
+- Send update attributes on mute audio/video
+- New filter by status
 
-- [Feature]: Added timeout  in message fetch  for a better usability
+### Changed
 
-- [Bug]: Fix channel creation, now the channels are private and use a REST API for the creation
-- [Bug]: Updating dependencies to resolve vulnerabilities
+- New UI on mute video
 
-# 1.24.0 (January 17, 2020)
+### Fixed
 
-- [Feature]: Add reconnect during the call
-- [Feature]: New reconnecting loader during the call in case of disconnection
-- [Feature]: Add local 'cache' system for messages
-- [Feature]: Add pagination system for messages, fetch on scroll
-- [Feature]: New info-bar for chat socket disconnected
+- Fixed channel status on user already online
+- Fixed animation on call button
 
-- [Bug]: Fix change view on hang up call in window mode
-- [Bug]: Fix UI during call in window mode on small screen
-- [Bug]: Fix screen-share cut
-- [Bug]: Fix snackbar visualization on IE
-- [Bug]: Fix scrollToBottom on new message in case of change resolution
-- [Bug]: Fix pending ringing audio after call answer and then call hang up
+## [1.25.0] - 2020-01-28
 
-- [Update]: (Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.7.0 version)
-- [Update]: (Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.10.0 version)
+### Added
 
-# 1.23.1 (January 02, 2020)
+- Handle new access-denied error in call
+- New error for widget not initialized
+- Add new UI for verification event
+- User info in call view
 
-- [Bug]: handle error on many to many calls using joinCallURL API
+### Changed
 
-- [Update]: (Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.6.1 version)
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.8.0 version
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.10.1 version
 
-# 1.23.0 (Dicember 19,2019)
+## [1.24.2] - 2020-01-22
 
-- [Feature]: add joinCallURL API
+### Fixed
 
-- [Update]: (Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.6.0 version)
+- Fix createCall input validation
+
+## [1.24.1] - 2020-01-21
+
+### Changed
+
+- Added timeout  in message fetch  for a better usability
+
+### Fixed
+
+- Fix channel creation, now the channels are private and use a REST API for the creation
+- Updating dependencies to resolve vulnerabilities
+
+## [1.24.0] - 2020-01-17
+
+### Added
+
+- Add reconnect during the call
+- New reconnecting loader during the call in case of disconnection
+- Add local 'cache' system for messages
+- Add pagination system for messages, fetch on scroll
+
+### Changed
+
+- New info-bar for chat socket disconnected
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.7.0 version
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.10.0 version
+
+### Fixed
+
+- Fix change view on hang up call in window mode
+- Fix UI during call in window mode on small screen
+- Fix screen-share cut
+- Fix snackbar visualization on IE
+- Fix scrollToBottom on new message in case of change resolution
+- Fix pending ringing audio after call answer and then call hang up
+
+## [1.23.1] - 2020-01-02
+
+### Fixed
+
+- handle error on many to many calls using joinCallURL API
+
+### Changed
+
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.6.1 version
+
+## [1.23.0] - 2019-012-19
+
+### Added
+
+- add joinCallURL API
+
+### Changed
+
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.6.0 version
 
 # 1.22.1 (Dicember 18,2019)
 

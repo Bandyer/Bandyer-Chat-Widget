@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.27.0] - 2020-02-21
+
+### Added
+
+- New file share feature in call
+- Notification badge on new downloadable file
+
+### Changed
+
+- Info message when there are no chats
+- New default UI for messages in conversation
+- Removed delete option from conversation header
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.9.0 version
+
+### Fixed
+
+- Fixed avatar issue in mobile devices
+- Fix language for online filter
+- Fix remove chat
+- Fix error message on add and remove chat from API
+- Fix UI
+
 ## [1.26.3] - 2020-02-18
 
 ### Fixed
@@ -35,6 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - New UI on mute video
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.10.2 version
 
 ### Fixed
 
@@ -106,7 +129,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.6.1 version
 
-## [1.23.0] - 2019-012-19
+## [1.23.0] - 2019-12-19
 
 ### Added
 
@@ -116,95 +139,140 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.6.0 version
 
-# 1.22.1 (Dicember 18,2019)
+## [1.22.1] - 2019-12-18
 
-- [Bug]: Fix background issue on conversation container
-- [Bug]: Fix translations and spacing in dial in-out
+### Fixed
 
-# 1.22.0 (Dicember 17,2019)
+- Fix background issue on conversation container
+- Fix translations and spacing in dial in-out
 
-- [Feature]: New composeMessage API
-- [Feature]: Change default color and online badge UI
+## [1.22.0] - 2019-12-17
 
-- [Bug]: Fix scroll icon
-- [Bug]: Fix 'now' label for incoming messages
+### Added
 
-# 1.21.0 (Dicember 12,2019)
+- New composeMessage API
+- Change default color and online badge UI
 
-- [Feature]: Widget responsive
-- [Feature]: Reduced bundle size
+### Fixed
 
-- [Bug]: Fix provider logic on selectChat
+- Fix scroll icon
+- Fix 'now' label for incoming messages
 
-- [Update]: (Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.9.0 version)
+## [1.21.0] - 2019-12-12
 
-# 1.20.1 (Dicember 06,2019)
+### Added
 
-- [Bug]: Fix translation for canVideo tooltip
+- Widget responsive
 
-# 1.20.0 (Dicember 05,2019)
+### Chnaged
 
-- [Feature]: Add Gear(settings) : possibility to select input devices
-- [Feature]: New permission logic
-- [Feature]: Call with no audio/no video
-- [Feature]: Fallback procedure for call: audio/video => audio upgradable => no audio/no video
-- [Feature]: New box-sizing:border box rule for a better integration with other framework
-- [Feature]: Red Audio and video ButtonIcon on permission denied
-- [Feature]: Notify users of failures during call with informative snackbars
+- Reduced bundle size
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.9.0 version
 
-- [Bug]: Fix visualization for old channels type
-- [Bug]: Fix close stream on pending getUserMedia after disconnected call
-- [Bug]: Fix loader visualization when back to chat button is pressed
-- [Bug]: Fix search in channels view, now the list is updated runtime
-- [Bug]: Fix UI
+### Fixed
 
-- [Update]: (Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.8.0 version)
+- Fix provider logic on selectChat
 
-# 1.19.6 (November 13,2019)
+## [1.20.1] - 2019-12-06
 
-- [Bug]: Fixed call termination bug on call socket disconnection, updated web-communication-center to remove reconnection
+### Fixed
 
-- [Update]: (Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.5.2 version)
+- Fix translation for canVideo tooltip
 
-# 1.19.5 (November 12,2019)
+## [1.20.0] - 2019-12-05
 
-- [Bug]: Fix get members in addChannels
+### Added
+- Add Gear(settings) : possibility to select input devices
+- Permission logic
+- Call with no audio/no video
+- Fallback procedure for call: audio/video => audio upgradable => no audio/no video
+- Red Audio and video ButtonIcon on permission denied
+- Notify users of failures during call with informative snackbars
 
-# 1.19.4 (November 11,2019)
+### Changed
 
-- [Feature]: Add screenSharingExtensionURL parameter in create function
-- [Bug]: Fix notification in conversation view
-- [Bug]: Fix launcher icon
-- [Bug]: Fix translation for install screenShare extension page
+- New box-sizing:border box rule for a better integration with other framework
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.8.0 version
 
-# 1.19.3 (November 7,2019)
+### Fixed
+- Fix visualization for old channels type
+- Fix close stream on pending getUserMedia after disconnected call
+- Fix loader visualization when back to chat button is pressed
+- Fix search in channels view, now the list is updated runtime
+- Fix UI
 
-- [Feature]: Add version getter
-- [Bug]: Add babel runtime polyfill
+## [1.19.6] - 2019-11-13
 
-# 1.19.2 (November 6,2019)
+### Changed
 
-- [Bug]: Fix audio on back to chat from call
-- [Bug]: Fix icon change on unpublish screenshare from chrome toolbar
-- [Bug]: Fix notification on back to chat icon in call window
-- [Bug]: Fix UI for reconnect loader
+(Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.5.2 version
 
-# 1.19.1 (November 4,2019)
+### Fixed
 
-- [Bug]: Fix babel setting
+- Fixed call termination bug on call socket disconnection, updated web-communication-center to remove reconnection
 
-# 1.19.0 (November 4,2019)
+## [1.19.5] - 2019-11-12
 
-- [Feature]: Add new graphics for call view
-- [Feature]: New carousel logic, now bottom to top
-- [Feature]: Add new unread message logic
-- [Feature]: New error message on socket call error
+### Fixed
 
-- [Bug]: Fix polyfill system for IE
-- [Bug]: Fix notification on back to call button
-- [Bug]: Various UI adjustment
+- Fix get members in addChannels
 
-- [Update]: (Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.7.1 version)
+## [1.19.4] - 2019-11-11
+
+### Added
+
+- Add screenSharingExtensionURL parameter in create function
+
+### Fixed
+
+- Fix notification in conversation view
+- Fix launcher icon
+- Fix translation for install screenShare extension page
+
+## [1.19.3] - 2019-11-07
+
+### Added
+
+- Add version getter
+
+### Changed
+
+- Add babel runtime polyfill
+
+## [1.19.2] - 2019-11-06
+
+### Fixed
+
+- Fix audio on back to chat from call
+- Fix icon change on unpublish screenshare from chrome toolbar
+- Fix notification on back to chat icon in call window
+- Fix UI for reconnect loader
+
+
+## [1.19.1] - 2019-11-04
+
+### Fixed
+
+- Fix babel setting
+
+# [1.19.0] - 2019-11-04
+
+### Added
+
+- Add new graphics for call view
+- Add new unread message logic
+- New error message on socket call error
+
+### Changed
+
+- New carousel logic, now bottom to top
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.7.1 version
+
+### Fixed
+
+- Fix polyfill system for IE
+- Fix notification on back to call button
+- Various UI adjustment
 
 # 1.18.0 (October 22,2019)
 

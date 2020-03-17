@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.28.0] - 2020-03-17
+
+### Changed
+
+- Changed call events ( incoming_call, call_dial_answered, call_dial_declined, call_dial_stopped ) return value [ see notes for further information ]
+
+
+### Fixed
+
+- Fix call events
+
+### Notes
+
+The return values ​​of the following call-related events have been filtered
+- incoming_call
+- call_dial_answered
+- call_dial_declined
+- call_dial_stopped
+
+The structure of returned objects will have the following information:
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| callAlias | String | Unique alias of the current call |
+| callParticipants | Array | Array of userAlias of the participants |
+| callOptions | Object | Basic information about the call |
+
+
 ## [1.27.1] - 2020-03-16
 
 ### Fixed

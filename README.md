@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.28.0/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.29.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -36,8 +36,8 @@ For IE11 support you need to install a plugin and include the following polyfill
 
 #### Versions
 
-Latest version available is: 1.28.0
-[https://cdn.bandyer.com/sdk/js/chat/1.28.0/bandyer-widget.min.js]()
+Latest version available is: 1.29.0
+[https://cdn.bandyer.com/sdk/js/chat/1.29.0/bandyer-widget.min.js]()
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -633,10 +633,11 @@ The data in the event is a call object:
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
 | callAlias | String | Unique alias of the current call |
+| callDirection | String | Direction of the call (incoming | outgoing) |
 | callParticipants | Array | Array of userAlias of the participants |
 | callOptions | Object | Basic information about the call|
 
-#####CallOptions :
+##### CallOptions :
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
@@ -645,8 +646,61 @@ The data in the event is a call object:
 | callType | String | audio_only, audio_upgradable, audio_video |
 | live | Boolean | This param defines whether the link should trigger widget and mobile ringing or not. |
 
+#### Call started
 
-#### Answered call
+```javascript
+Client.on('call_started',(call) => {
+	// your logic
+});
+```
+
+Fired when the call start.
+The data in the event is a call object:
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| callAlias | String | Unique alias of the current call |
+| callDirection | String | Direction of the call (incoming | outgoing) |
+| callParticipants | Array | Array of userAlias of the participants |
+| callOptions | Object | Basic information about the call|
+
+##### CallOptions :
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| record | Boolean | True if the call has been initialized with recording |
+| creationDate | Date | Date and time of the created call |
+| callType | String | audio_only, audio_upgradable, audio_video |
+| live | Boolean | This param defines whether the link should trigger widget and mobile ringing or not. |
+
+#### Call ended
+
+```javascript
+Client.on('call_ended',(call) => {
+	// your logic
+});
+```
+
+Fired when the call ends.
+The data in the event is a call object:
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| callAlias | String | Unique alias of the current call |
+| callDirection | String | Direction of the call (incoming | outgoing) |
+| callParticipants | Array | Array of userAlias of the participants |
+| callOptions | Object | Basic information about the call|
+
+##### CallOptions :
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| record | Boolean | True if the call has been initialized with recording |
+| creationDate | Date | Date and time of the created call |
+| callType | String | audio_only, audio_upgradable, audio_video |
+| live | Boolean | This param defines whether the link should trigger widget and mobile ringing or not. |
+
+#### Dial Answered
 
 ```javascript
 Client.on('call_dial_answered',(call) => {
@@ -654,17 +708,19 @@ Client.on('call_dial_answered',(call) => {
 });
 ```
 
-Fired when a User answers a call.
+Fired when the user answered on a dial event.
+This event is generated for both the users, check the callDirection to understand if it is an internal event or if it is refers to the other user
 The data in the event is a call object: [
 
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
 | callAlias | String | Unique alias of the current call |
+| callDirection | String | Direction of the call (incoming | outgoing) |
 | callParticipants | Array | Array of userAlias of the participants |
 | callOptions | Object | Basic information about the call|
 
-#####CallOptions :
+##### CallOptions :
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
@@ -674,7 +730,7 @@ The data in the event is a call object: [
 | live | Boolean | This param defines whether the link should trigger widget and mobile ringing or not. |
 
 
-#### Declined call
+#### Dial Declined
 
 ```javascript
 Client.on('call_dial_declined',(call) => {
@@ -683,17 +739,19 @@ Client.on('call_dial_declined',(call) => {
 ```
 
 Fired when a User declines a call.
+This event is generated for both the users, check the callDirection to understand if it is an internal event or if it is refers to the other user
 The data in the event is a call object:
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
 | callAlias | String | Unique alias of the current call |
+| callDirection | String | Direction of the call (incoming | outgoing) |
 | callParticipants | Array | Array of userAlias of the participants |
 | callOptions | Object | Basic information about the call |
 | reason | String | Valid reasons are: none, do\_not\_disturb, no\_answer, error or answered\_another\_call |
 
 
-#####CallOptions :
+##### CallOptions :
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
@@ -703,7 +761,7 @@ The data in the event is a call object:
 | live | Boolean | This param defines whether the link should trigger widget and mobile ringing or not. |
 
 
-#### Stopped call
+#### Dial stopped
 
 ```javascript
 Client.on('call_dial_stopped',(call) => {
@@ -712,16 +770,18 @@ Client.on('call_dial_stopped',(call) => {
 ```
 
 Fired when a call ends.
+This event is generated for both the users, check the callDirection to understand if it is an internal event or if it is refers to the other user
 The data in the event is a call object:
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
 | callAlias | String | Unique alias of the current call |
+| callDirection | String | Direction of the call (incoming | outgoing) |
 | callParticipants | Array | Array of userAlias of the participants |
 | callOptions | Object | Basic information about the call |
 
 
-#####CallOptions :
+##### CallOptions :
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
@@ -730,7 +790,7 @@ The data in the event is a call object:
 | callType | String | audio_only, audio_upgradable, audio_video |
 | live | Boolean | This param defines whether the link should trigger widget and mobile ringing or not. |
 
-##Widget Operations
+## Widget Operations
 
 | Operation | Description |
 | -------------- | :--------------------: |

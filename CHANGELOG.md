@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.29.0] - 2020-04-07
+
+### Added
+
+- Added call_started and call_ended events
+- Added callDirection on all call events
+
+### Changed
+
+- Changed emit for call events, now all the events are generated for both users
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.10.0 version
+
+### Fixed
+
+- Fix call events when it is in window mode
+
+
 ## [1.28.0] - 2020-03-17
 
 ### Changed

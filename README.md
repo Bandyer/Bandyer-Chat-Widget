@@ -464,9 +464,11 @@ Promise.<(void|Error)>
 | user_connected | Fired when a User connects to the platform |
 | user_disconnected | Fired when a User disconnects to the platform |
 | incoming\_call | Fired when a User create or receive a call |
-| call\_dial\_answered | Fired when the other User answers a call |
-| call\_dial\_declined | Fired when  the other User declines a call |
-| call\_dial\_stopped | Fired when a Call ends |
+| call\_dial\_answered | Emitted when a user answers a dial |
+| call\_dial\_declined | Emitted when a user declines a dial  |
+| call\_dial\_stopped | Emitted when a user stop a dial  |
+| call\_started | Fired when a call start
+| call\_ended | Fired when a call end
 
 
 #### Typing started

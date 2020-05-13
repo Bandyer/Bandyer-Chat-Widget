@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.29.0/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.30.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -36,8 +36,8 @@ For IE11 support you need to install a plugin and include the following polyfill
 
 #### Versions
 
-Latest version available is: 1.29.0
-[https://cdn.bandyer.com/sdk/js/chat/1.29.0/bandyer-widget.min.js]()
+Latest version available is: 1.30.0
+[https://cdn.bandyer.com/sdk/js/chat/1.30.0/bandyer-widget.min.js]()
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -80,7 +80,7 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | screenSharingExtensionId | no | '' | Extension ID of the Screen Sharing Extension. (see more [here](#screen-sharing) |
 | screenSharingExtensionURL | no | '' | The URL from witch download your custom extension (see more [here](#screen-sharing) |
 | layout | no | {} | Specify the custom layout (see more [here](#custom-layout)) |
-| record | no | false | Specify if all the calls must be recorded. Remember that Safari ed Edge doesn't support the record option |
+| record | no | false | Specify if all the calls must be recorded.|
 | callType | no | audio_video | Specify the call type. Valid values are: "audio\_only", "audio\_upgradable", "audio\_video" |
 | mode | no | embed | Specify the widget call mode. Valid values are: "embed" or "window" |
 | language | no | it | Specify the language of the widget. Valid values are: "it" or "en" |
@@ -168,7 +168,7 @@ Here an example:
 
 ```javascript
 
-yourProviderFunction =  function (usersAlias){
+yourProviderFunction = function (usersAlias){
 	const userObjPromises = [];
 	usersAlias.forEach( (alias) => {
 		// Your logic here
@@ -584,19 +584,14 @@ Client.on('user_connected',(data) => {
 });
 ```
 
-Fired when a User connects to the platform.
+Fired when a user connects one platform
 
 ###### Type
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| user.userAlias | string | User alias of the user |
-| user.firstName | string | Firstname of the user |
-| user.lastName | string |Lastname of the user |
-| user.email | string | Email of the user |
-| user.image | string | Image of the user |
-| user.role | Number | Role of the user |
-| status | string | Current status (ONLINE, OFFLINE, BUSY) |
+| userAlias | string | User alias of the user |
+| status | string | Current status ('online', 'offline') |
 
 #### User disconnection
 
@@ -606,19 +601,14 @@ Client.on('user_disconnected',(data) => {
 });
 ```
 
-Fired when a User disconnects to the platform.
+Fired when a user disconnects all the platforms
 
 ###### Type
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
-| user.userAlias | string | User alias of the user |
-| user.firstName | string | Firstname of the user |
-| user.lastName | string |Lastname of the user |
-| user.email | string | Email of the user |
-| user.image | string | Image of the user |
-| user.role | Number | Role of the user |
-| status | string | Current status (ONLINE, OFFLINE, BUSY) |
+| userAlias | string | User alias of the user |
+| status | string | Current status ('online', 'offline') |
 
 
 #### Incoming call

@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.30.0] - 2020-05-13
+
+### Added
+
+- Add obfuscation to all CSS className
+- Add prefix on materialUI classes for a better integration
+- Add chat loadings information
+- Add error on action already taken from another device on dial view
+- Disable screesharing feature on ipadOS
+
+### Changed
+
+- Change polyfill, remove global polyfill for a better integration
+- Hide the widget after a call when the previous state was hidden
+- Change user_connected and user_disconnected events
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.11.1 version
+
+### Fixed
+
+- Fix full-screen style
+- Fix call UI in mobile view
+- Fix video muted in gear
+- Fix IE plugin install prompt and lifecycle
+
+
 ## [1.29.0] - 2020-04-07
 
 ### Added

@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.31.0] - 2020-05-15
+
+### Added
+
+- Add return obj on createCall, add the possibility to hangUp the call
+
+### Changed
+
+- Changed getUser, now return an object{userAlias, status}
+
+### Fixed
+
+- Fix getUsersStatusList
+- Fix errors on createCall
+
 ## [1.30.0] - 2020-05-13
 
 ### Added

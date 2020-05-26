@@ -30,14 +30,21 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Browser support
 
-This widget is supported by Google Chrome and Firefox without any plugin.
-For IE11 support you need to install a plugin and include the following polyfill: 
-`https://babeljs.io/docs/en/babel-polyfill`
+| Browser 	| min version | Plugin requested|
+| --------- | :----------: | :------:|
+| Chrome	| 56		  | Screenshare extension for Chrome <72 |
+| Firefox	| 54		  |  |
+| Safari	| 11		  |  |
+| Edge old	| 17	  | |
+| Edge new	| All	  | |
+| Internet Explorer	| 11  | Temasys WebRTC Plugin for Call |
+
+
 
 #### Versions
 
 Latest version available is: 1.31.2
-[https://cdn.bandyer.com/sdk/js/chat/1.31.2/bandyer-widget.min.js]()
+[https://cdn.bandyer.com/sdk/js/chat/1.31.2/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.31.2/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 

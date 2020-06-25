@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.31.4] - 2020-06-25
+
+### Fixed
+- Fix issue on userDetailsProvider during  ongoingCall when the chat isn't added
+- Fix issue on createCall using userDetailsFormatter without the chat initilized
+
+## [1.31.3] - 2020-06-11
+
+### Fixed
+- Fix muteAudio while moving a video from a container to another
+
 ## [1.31.2] - 2020-05-22
 
 ### Fixed

@@ -34,9 +34,9 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 | --------- | :----------: | :------:|
 | Chrome	| 56		  | Screenshare extension for Chrome <72 |
 | Firefox	| 54		  |  |
-| Safari	| 11		  |  |
+| Safari	| 12		  |  |
 | Edge old	| 17	  | |
-| Edge new	| All	  | |
+| Edge new	| 79	  | |
 | Internet Explorer	| 11  | Temasys WebRTC Plugin for Call |
 
 
@@ -93,7 +93,7 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | language | no | it | Specify the language of the widget. Valid values are: "it" or "en" |
 | userDetailsProvider | no | default user provider | Specify the information for each user (see more [here](#userdetailsprovider)) |
 | userDetailsFormatter | no | default user formatter | Specify how the user identity is formatted in the UI  (see more [here](#userdetailsformatter))|
-| chat | no | true | If false disable the chat module, so the widget is able to receive the calls and create the call only from THe createCall API  
+| chat | no | true | If false it disables the chat module so that the widget is only able to receive calls and create calls through the createCall API
 
 Call type options:
 

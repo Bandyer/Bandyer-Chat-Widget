@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.31.4/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.32.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -43,8 +43,8 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Versions
 
-Latest version available is: 1.31.4
-[https://cdn.bandyer.com/sdk/js/chat/1.31.4/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.31.4/bandyer-widget.min.js)
+Latest version available is: 1.32.0
+[https://cdn.bandyer.com/sdk/js/chat/1.32.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.32.0/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -93,6 +93,7 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | language | no | it | Specify the language of the widget. Valid values are: "it" or "en" |
 | userDetailsProvider | no | default user provider | Specify the information for each user (see more [here](#userdetailsprovider)) |
 | userDetailsFormatter | no | default user formatter | Specify how the user identity is formatted in the UI  (see more [here](#userdetailsformatter))|
+| chat | no | true | If false disable the chat module, so the widget is able to receive the calls and create the call only from THe createCall API  
 
 Call type options:
 
@@ -288,6 +289,7 @@ To enable the chat with another user of your platform, you need to call the .add
 The addChat method expect a valid user alias (it must be a user already created). Once the method is called, the widget will display the chat added.
 
 **Note:** if the widget is in hidden mode, the addChat method mode will display the widget.
+**Note:** if the widget is initialized with chat: false this method returns an error: 'Chat module not initialized'
 
 ##### Arguments:
 
@@ -311,6 +313,8 @@ BandyerChat.removeChat('usr_fr55ga3');
 `.removeChat('usr_fr55ga3')`
 
 To remove a chat you need to call the .removeChat() method. The removeChat will remove the chat between the user authenticated and the user specified as input of the method. All the messages between them will be deleted permanently.
+
+**Note:** if the widget is initialized with chat: false this method returns an error: 'Chat module not initialized'
 
 ##### Arguments:
 
@@ -351,6 +355,8 @@ BandyerChat.selectChat('usr_fr55ga3');
 `.selectChat('usr_fr55ga3')`
 
 To select a chat you need to call the .selectChat() method. The selectChat will select the chat between the user authenticated and the user specified as input of the method.
+
+**Note:** if the widget is initialized with chat: false this method returns an error: 'Chat module not initialized'
 
 ##### Arguments:
 
@@ -468,6 +474,7 @@ If ` send === true` the specified message is sent directly to the specified user
 Otherwise (` send === false`), the widget will display the chat and fill the input text with the specified message, letting the user decide wether edit it before send it.
 
 **Note:** If the widget is in hidden mode, the message is sent anyway.
+**Note:** if the widget is initialized with chat: false this method returns an error: 'Chat module not initialized'
 
 ##### Arguments:
 

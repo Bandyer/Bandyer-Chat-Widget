@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.32.2] - 2020-07-15
+### Added
+- Add pointer-events: none to the container
+- Add pointer-events: all to all the sub components
+
+### Fixed
+- Fix css dimensions
+
 ## [1.32.1] - 2020-07-08
 ### Fixed
 - Fix subscribe streams in data only

@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.33.3/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.33.4/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -43,8 +43,8 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Versions
 
-Latest version available is: 1.33.3
-[https://cdn.bandyer.com/sdk/js/chat/1.33.3/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.33.3/bandyer-widget.min.js)
+Latest version available is: 1.33.4
+[https://cdn.bandyer.com/sdk/js/chat/1.33.4/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.33.4/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -447,19 +447,40 @@ Documentation can be found [here](https://docs.bandyer.com/Bandyer-RESTAPI/#crea
 | --------- | :----------: | ----------- |
 | url | String | Rest link to the call |
 
-
-
-
 ##### Returns:
 ###### Type
 
-Promise.<(void|Error)>
+Promise.<(Call|Error)>
 
-######Error types:
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| callAlias | String | Unique alias of the current call |
+| callDirection | String | Direction of the call (incoming | outgoing) |
+| callParticipants | Array | Array of userAlias of the participants |
+| callStatus | String | Status of the call, can be dialing, connected, ended |
+| hangUp | Function | Allow to hangUp the call |
+| callOptions | Object | Basic information about the call|
 
-- **join_call_invalid_url**: the given url is not correct.
-- **join_call_invalid_mtm**: for now is not possibile to enter in a many to many call.
-- **join_call_request_failed**: user is busy or network error.
+##### CallOptions:
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| record | Boolean | True if the call has been initialized with recording |
+| creationDate | Date | Date and time of the created call |
+| callType | String | audio_only, audio_upgradable, audio_video |
+| live | Boolean | This param defines whether the link should trigger widget and mobile ringing or not. |
+
+##### Error:
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| ANOTHER_CALL_IN_PROGRESS | String | There are another active call |
+| JOIN_CALL_REQUEST_FAILED | String | The user is busy or there is a network error |
+| JOIN_CALL_INVALID_URL | String |The given url is not correct |
+| JOIN_CALL_INVALID_MTM| String | Impossible to start a many to many call |
+| HANG_UP_ON_ENDED_CALL | String | When try to call hangUp on an ended call |
+| GENERIC_CALL_ERROR | String | Something went wrong, please retry |
+
 
 
 ### composeMessage

@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [1.34.0] - 2020-09-18
+### Added
+- Add manual recording functionality in gear when the room has manual recording enabled and the user is admin
+
+### Changed
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.12.0 version
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.11.0
+
 ## [1.33.5] - 2020-09-11
 ### Fixed
  - Fix recording for incoming recording call

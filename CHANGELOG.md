@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.34.2] - 2020-09-30
 ### Changed
-- Change twilio authenticate phase, add lazy loading 
+- Improve chat initialization
 
 ## [1.34.1] - 2020-09-22
 ### Changed

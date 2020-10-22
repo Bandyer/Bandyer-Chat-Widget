@@ -5,9 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.35.1] - 2020-10-22
+### Changed
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.13.1 version
+
+### Fixed
+- Remove virtualbackground feature in Safari due to a bug 
+- Fixed replace background freeze
+
 ## [1.35.0] - 2020-10-20
 ### Added
 - Add virtual background capability that allows blurring or replace the background
+
+### Changed
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.12.0
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.13.0 version
 
 ## [1.34.2] - 2020-09-30
 ### Changed

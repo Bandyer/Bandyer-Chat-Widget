@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.35.1/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.36.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -43,8 +43,8 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Versions
 
-Latest version available is: 1.35.1
-[https://cdn.bandyer.com/sdk/js/chat/1.35.1/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.35.1/bandyer-widget.min.js)
+Latest version available is: 1.36.0
+[https://cdn.bandyer.com/sdk/js/chat/1.36.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.36.0/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -94,6 +94,7 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | userDetailsProvider | no | default user provider | Specify the information for each user (see more [here](#userdetailsprovider)) |
 | userDetailsFormatter | no | default user formatter | Specify how the user identity is formatted in the UI  (see more [here](#userdetailsformatter))|
 | chat | no | true | If false it disables the chat module so that the widget is only able to receive calls and create calls through the createCall API
+| virtualBackground | no | null | Allowed params are 'blur' | 'image', allows to publish the local webcam with the blur or the replacement of the background as default
 
 Call type options:
 

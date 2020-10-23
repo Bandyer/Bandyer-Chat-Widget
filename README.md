@@ -94,7 +94,7 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | userDetailsProvider | no | default user provider | Specify the information for each user (see more [here](#userdetailsprovider)) |
 | userDetailsFormatter | no | default user formatter | Specify how the user identity is formatted in the UI  (see more [here](#userdetailsformatter))|
 | chat | no | true | If false it disables the chat module so that the widget is only able to receive calls and create calls through the createCall API
-| virtualBackground | no | null | Allowed params are 'blur' | 'image', allows to publish the local webcam with the blur or the replacement of the background as default
+| virtualBackground | no | null | Allowed params are 'blur' or 'image', allows to publish the local webcam with the blur or the replacement of the background as default
 
 Call type options:
 

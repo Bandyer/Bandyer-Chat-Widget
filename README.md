@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.36.0/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.36.1/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -43,18 +43,23 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Versions
 
-Latest version available is: 1.36.0
-[https://cdn.bandyer.com/sdk/js/chat/1.36.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.36.0/bandyer-widget.min.js)
+Latest version available is: 1.36.1
+[https://cdn.bandyer.com/sdk/js/chat/1.36.1/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.36.1/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
 
 #### Screenshots
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" height=400px/>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-chat-open-600.jpg" alt="Drawing" height=400px/>
+<br>
 
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" style="height: 500px;"/>
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-chat-open-600.jpg" alt="Drawing" style="height: 500px;"/>
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-ringingin-600.jpg" alt="Drawing" style="height: 400px;"/>
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-gear-open-600.jpg" alt="Drawing" style="height: 400px;"/>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-ringingin-600.jpg" alt="Drawing" height=300px/>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-callout-600.jpg" alt="Drawing" height=300px/>
+<br>
+
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-call-600.jpg" alt="Drawing" height=300px/>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-gear-open-600.jpg" alt="Drawing" height=300px/>
 
 
 

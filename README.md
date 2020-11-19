@@ -50,16 +50,16 @@ For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/
 
 
 #### Screenshots
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" height="400px" />
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-chat-open-600.jpg" alt="Drawing" height="400px" />
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" height="400" />
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-chat-open-600.jpg" alt="Drawing" height="400" />
 <br>
 
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-ringingin-600.jpg" alt="Drawing" height="300px" />
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-callout-600.jpg" alt="Drawing" height="300px" />
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-ringingin-600.jpg" alt="Drawing" height="300" />
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-callout-600.jpg" alt="Drawing" height="300" />
 <br>
 
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-call-600.jpg" alt="Drawing" height="300px" />
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-gear-open-600.jpg" alt="Drawing" height="300px" />
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-call-600.jpg" alt="Drawing" height="300" />
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-gear-open-600.jpg" alt="Drawing" height="300" />
 
 
 

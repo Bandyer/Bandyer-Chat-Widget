@@ -50,6 +50,7 @@ For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/
 
 
 #### Screenshots
+<p>
 <img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" height="400" width="240" />
 <img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-chat-open-600.jpg" alt="Drawing" height="400" width="240"/>
 <br>
@@ -60,7 +61,7 @@ For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/
 
 <img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-call-600.jpg" alt="Drawing" height="300" width="320" />
 <img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-gear-open-600.jpg" alt="Drawing" height="300"  width="320"/>
-
+</p>
 
 
 ### Create 

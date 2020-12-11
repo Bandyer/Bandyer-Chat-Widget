@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.37.0] - 2020-12-11
+### Changed
+- Split audio/video tag
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.15.0 version
+
+### Fixed
+- Fix video in gear on apple mobile devices
+
 ## [1.36.1] - 2020-11-19
 ### Fixed 
 - Fix chat authentication

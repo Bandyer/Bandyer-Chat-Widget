@@ -50,24 +50,25 @@ For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/
 
 
 #### Screenshots
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" height=400px/>
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-chat-open-600.jpg" alt="Drawing" height=400px/>
+<p>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-channels-open-600.jpg" alt="Drawing" height="400" width="240" />
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-chat-open-600.jpg" alt="Drawing" height="400" width="240"/>
 <br>
 
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-ringingin-600.jpg" alt="Drawing" height=300px/>
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-callout-600.jpg" alt="Drawing" height=300px/>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-ringingin-600.jpg" alt="Drawing" height="300" width="270"/>
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-callout-600.jpg" alt="Drawing" height="300" width="270" />
 <br>
 
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-call-600.jpg" alt="Drawing" height=300px/>
-<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-gear-open-600.jpg" alt="Drawing" height=300px/>
-
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-call-600.jpg" alt="Drawing" height="300" width="320" />
+<img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-gear-open-600.jpg" alt="Drawing" height="300"  width="320"/>
+</p>
 
 
 ### Create 
 > .create()
 
 ```javascript
-const Client = BandyerChat.create({
+const Client = await BandyerChat.create({
 	userAlias: 'usr_123456', 
 	appId: 'wAppId_fake123456', 
 	environment: 'sandbox',
@@ -98,26 +99,91 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | language | no | it | Specify the language of the widget. Valid values are: "it" or "en" |
 | userDetailsProvider | no | default user provider | Specify the information for each user (see more [here](#userdetailsprovider)) |
 | userDetailsFormatter | no | default user formatter | Specify how the user identity is formatted in the UI  (see more [here](#userdetailsformatter))|
-| chat | no | true | If false it disables the chat module so that the widget is only able to receive calls and create calls through the createCall API
-| virtualBackground | no | null | Allowed params are 'blur' or 'image', allows to publish the local webcam with the blur or the replacement of the background as default
+| tools| no | All tools enabled | Allows you to enable the available tools during the call and the chat for the widget (embed and window mode)(See more [here](#tools-option)) |
+| virtualBackground | no | false | Allowed params are 'blur' or 'image', allows to publish the local webcam with the blur or the replacement of the background as default (embed and window mode)
 
-Call type options:
+#### Deprecated parameters — Deprecation date: 26/11/20
+| Parameter | Required | Default | Description |
+| --------- | :----------: | :------:| ----------- |
+| chat | no | true | If false it disables the chat module so that the widget is only able to receive calls and create calls through the createCall API
+
+
+#### Call type options:
 
  - audio\_only: the call is only audio and the participants can't use the webcam
  - audio\_upgradable: the call begins with only audio but the participants can publish the webcam
  - audio\_video: the call begins with audio and webcam
 
-Call type options:
+#### Mode options:
 
  - embed: the call is embedded in the widget view
  - window: the call is accessible in a window popup
 
 
-Hidden options: the widget chat is not visible in the frontend until it receives the following events: 
+#### Hidden options
+
+The widget chat is not visible in the frontend until it receives the following events: 
 
 1. addChat event
 2. incoming call event
 
+<a name="tools-option"></a>
+#### Tools option
+
+By default, if no tools are provided (missing field), all the tools are enabled.
+If the tools field is defined but empty, all the tools are disabled.
+
+
+#### List of available tools
+
+Name            | Mode | Description 
+--------------- | :------: | :------: |
+chat            | Window & Embed | Enable the chat feature
+screen_sharing  | Window & Embed | Enable the screen_sharing feature
+file_upload     | Window & Embed | Enable the capability to send file
+whiteboard      | Window | If true enable all the whiteboard tools. Can be an object of [whiteboard tools](#whiteboard-tools)
+snapshot        | Window | Enable the snapshot feature
+live_edit       | Window | Enable the live_edit feature
+live_pointer    | Window | Enable to send pointer-events to others participants (always active in reception)
+
+The whiteboard(WB), snapshot(SN) and live_edit(LE) tools are strictly correlated, so use it accordingly as follow:
+
+Combination                              | Receive live_edit | Collaborate | Snapshot & Gallery | Open whiteboard |
+---------------------------------------- | :--------------:  | :---------: | :----------------: | :-------------: |
+SN+ LE + WB                              |     ✅            |   ✅       |         ✅         |      ✅        |
+SN                                       |     ❌            |   ❌       |         ✅         |      ❌        |
+SN + WB (default LE active in reception) |     ✅            |   ❌       |         ✅         |      ✅        |
+WB (default LE active in reception)      |     ✅            |   ❌       |         ❌         |      ✅        |
+NONE                                     |     ❌            |   ❌       |         ❌         |      ❌        |
+
+<a name="whiteboard-tools"></a>
+#### Whiteboard tools
+
+```json
+{
+    "tools": {
+        "whiteboard": {
+            "wb_add_file": true,
+            "wb_cursor": true,
+            "wb_text": true,
+            "wb_shape": true,
+            "wb_pen": true,
+            "wb_eraser" : true
+        }
+    }
+}
+```
+
+The whiteboard tools object is included in the tools parameter
+
+Name            | Description
+--------------- | :------: |
+wb_add_file     | Allows to add files on the whiteboard
+wb_cursor       | Allows to send the cursor events to the other participants
+wb_text         | Allows to add text on the whiteboard
+wb_shape        | Allows to add shape on the whiteboard
+wb_pen          | Allows to using the pen on the whiteboard
+wb_eraser       | Allows to erase a previous draw on the whiteboard
 
 ##### Returns:
 ###### Type

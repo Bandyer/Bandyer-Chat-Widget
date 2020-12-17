@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.38.0] - 2020-12-17
+### Added
+- Add tools param in create api
+- Add forwarding of tools in window mode
+- Add forwarding of virtualBackground param in window mode
+
+### Changed
+- Deprecate chat param, now is included in tools
+
+### Fixed
+- Fix an error that causes the unexpected closure of the call window while forwarding the provided user details
+
 ## [1.37.1] - 2020-12-16
 ### Changed
 - Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.15.1 version

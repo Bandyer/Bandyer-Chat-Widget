@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.39.2/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.39.3/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -43,8 +43,8 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Versions
 
-Latest version available is: 1.39.2
-[https://cdn.bandyer.com/sdk/js/chat/1.39.2/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.39.2/bandyer-widget.min.js)
+Latest version available is: 1.39.3
+[https://cdn.bandyer.com/sdk/js/chat/1.39.3/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.39.3/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 

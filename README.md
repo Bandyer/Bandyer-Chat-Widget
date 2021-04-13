@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.39.7/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.40.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -43,8 +43,8 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Versions
 
-Latest version available is: 1.39.7
-[https://cdn.bandyer.com/sdk/js/chat/1.39.7/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.39.7/bandyer-widget.min.js)
+Latest version available is: 1.40.0
+[https://cdn.bandyer.com/sdk/js/chat/1.40.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.40.0/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -744,6 +744,9 @@ Fired when a user disconnects all the platforms
 | userAlias | String | User alias of the user |
 | status | String | Current status ('online', 'offline') |
 
+### Dial Events
+
+The dial events let you know when one of the two users takes an action that will bring the call into a new state
 
 #### Incoming call
 
@@ -754,66 +757,32 @@ Client.on('incoming_call',(call) => {
 ```
 
 Fired when a User create or receive a call.
+
+To discriminate whether the call has been created or received, it is necessary to refer to the callDirection, outgoing in case of creation, incoming in case of reception
+
+##### call object:
 The data in the event is a call object:
 
-| Key | Type | Description |
-| --------- | :----------: | ----------- |
-| callAlias | String | Unique alias of the current call |
-| callDirection | String | Direction of the call (incoming | outgoing) |
-| callParticipants | Array | Array of userAlias of the participants |
-| callOptions | Object | Basic information about the call|
-
-##### CallOptions:
-
-| Key | Type | Description |
-| --------- | :----------: | ----------- |
-| record | Boolean | True if the call has been initialized with recording |
-| creationDate | Date | Date and time of the created call |
-| callType | String | audio_only, audio_upgradable, audio_video |
-| live | Boolean | This param defines whether the link should trigger widget and mobile ringing or not. |
-
-#### Call started
-
-```javascript
-Client.on('call_started',(call) => {
-	// your logic
-});
+```json
+{
+  "event": "incoming_call",
+  "callAlias": "room_027b9312e9a5",
+  "callDirection": "outgoing",
+  "callParticipants": ["user1", "user2"],
+  "callOptions": {
+    "record": false,
+    "creationDate": "2021-04-13T08:31:03.916Z",
+    "callType": "audio_video", 
+    "live": true
+  }
+}
 ```
 
-Fired when the call start.
-The data in the event is a call object:
-
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
+| event | String | Event name |
 | callAlias | String | Unique alias of the current call |
-| callDirection | String | Direction of the call (incoming | outgoing) |
-| callParticipants | Array | Array of userAlias of the participants |
-| callOptions | Object | Basic information about the call|
-
-##### CallOptions:
-
-| Key | Type | Description |
-| --------- | :----------: | ----------- |
-| record | Boolean | True if the call has been initialized with recording |
-| creationDate | Date | Date and time of the created call |
-| callType | String | audio_only, audio_upgradable, audio_video |
-| live | Boolean | This param defines whether the link should trigger widget and mobile ringing or not. |
-
-#### Call ended
-
-```javascript
-Client.on('call_ended',(call) => {
-	// your logic
-});
-```
-
-Fired when the call ends.
-The data in the event is a call object:
-
-| Key | Type | Description |
-| --------- | :----------: | ----------- |
-| callAlias | String | Unique alias of the current call |
-| callDirection | String | Direction of the call (incoming | outgoing) |
+| callDirection | String | Direction of the call (incoming/outgoing) |
 | callParticipants | Array | Array of userAlias of the participants |
 | callOptions | Object | Basic information about the call|
 
@@ -834,15 +803,34 @@ Client.on('call_dial_answered',(call) => {
 });
 ```
 
-Fired when the user answered on a dial event.
-This event is generated for both the users, check the callDirection to understand if it is an internal event or if it is refers to the other user
-The data in the event is a call object: [
+Fired when the user(executor) answered on a dial event.
 
+This event is raised for both users. The 'executor' field allows you to understand which user performed the action
 
+##### call object:
+The data in the event is a call object:
+
+```json
+{
+  "event": "call_dial_answered",
+  "executor": "user2",
+  "callAlias": "room_027b9312e9a5",
+  "callDirection": "outgoing",
+  "callParticipants": ["user1", "user2"],
+  "callOptions": {
+    "record": false,
+    "creationDate": "2021-04-13T08:31:03.916Z",
+    "callType": "audio_video",
+    "live": true
+  }
+}
+```
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
+| event | String | Event name
 | callAlias | String | Unique alias of the current call |
-| callDirection | String | Direction of the call (incoming | outgoing) |
+| executor | String | UserAlias of the participant that have performed the action
+| callDirection | String | Direction of the call (incoming/outgoing) |
 | callParticipants | Array | Array of userAlias of the participants |
 | callOptions | Object | Basic information about the call|
 
@@ -864,14 +852,35 @@ Client.on('call_dial_declined',(call) => {
 });
 ```
 
-Fired when a User declines a call.
-This event is generated for both the users, check the callDirection to understand if it is an internal event or if it is refers to the other user
+Fired when a user declines a call.
+
+This event is raised for both users. The 'executor' field allows you to understand which user performed the action
+
+##### call object:
 The data in the event is a call object:
+
+```json
+{
+  "event": "call_dial_declined",
+  "executor": "user2",
+  "callAlias": "room_027b9312e9a5",
+  "callDirection": "outgoing",
+  "callParticipants": ["user1", "user2"],
+  "callOptions": {
+    "record": false,
+    "creationDate": "2021-04-13T08:31:03.916Z",
+    "callType": "audio_video",
+    "live": true
+  }
+}
+```
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
+| event | String | Event name
 | callAlias | String | Unique alias of the current call |
-| callDirection | String | Direction of the call (incoming | outgoing) |
+| executor | String | UserAlias of the participant that have performed the action
+| callDirection | String | Direction of the call (incoming\outgoing) |
 | callParticipants | Array | Array of userAlias of the participants |
 | callOptions | Object | Basic information about the call |
 | reason | String | Valid reasons are: none, do\_not\_disturb, no\_answer, error or answered\_another\_call |
@@ -896,16 +905,136 @@ Client.on('call_dial_stopped',(call) => {
 ```
 
 Fired when a call ends.
-This event is generated for both the users, check the callDirection to understand if it is an internal event or if it is refers to the other user
+
+This event is raised for both users. The 'executor' field allows you to understand which user performed the action
+
+##### call object:
 The data in the event is a call object:
+
+```json
+{
+  "event": "call_dial_stopped",
+  "executor": "user2",
+  "callAlias": "room_027b9312e9a5",
+  "callDirection": "outgoing",
+  "callParticipants": ["user1", "user2"],
+  "callOptions": {
+    "record": false,
+    "creationDate": "2021-04-13T08:31:03.916Z",
+    "callType": "audio_video",
+    "live": true
+  }
+}
+```
 
 | Key | Type | Description |
 | --------- | :----------: | ----------- |
+| event | String | Event name
 | callAlias | String | Unique alias of the current call |
-| callDirection | String | Direction of the call (incoming | outgoing) |
+| executor | String | UserAlias of the participant that have performed the action
+| callDirection | String | Direction of the call (incoming\outgoing) |
 | callParticipants | Array | Array of userAlias of the participants |
 | callOptions | Object | Basic information about the call |
 
+
+##### CallOptions:
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| record | Boolean | True if the call has been initialized with recording |
+| creationDate | Date | Date and time of the created call |
+| callType | String | audio_only, audio_upgradable, audio_video |
+| live | Boolean | This param defines whether the link should trigger widget and mobile ringing or not. |
+
+
+### Call events
+
+
+#### Call started
+
+```javascript
+Client.on('call_started',(call) => {
+	// your logic
+});
+```
+
+Fired when the call start, this event is raised only after a call_dial_answered event.
+
+This event is raised for both the users but don't have an executor because is a general event that represents when both the users are in call.
+
+##### call object:
+The data in the event is a call object:
+
+```json
+{
+  "event": "call_started",
+  "callAlias": "room_027b9312e9a5",
+  "callDirection": "outgoing",
+  "callParticipants": ["user1", "user2"],
+  "callOptions": {
+    "record": false,
+    "creationDate": "2021-04-13T08:31:03.916Z",
+    "callType": "audio_video",
+    "live": true
+  }
+}
+```
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| event | String | Event name
+| callAlias | String | Unique alias of the current call |
+| callDirection | String | Direction of the call (incoming/outgoing) |
+| callParticipants | Array | Array of userAlias of the participants |
+| callOptions | Object | Basic information about the call|
+
+##### CallOptions:
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| record | Boolean | True if the call has been initialized with recording |
+| creationDate | Date | Date and time of the created call |
+| callType | String | audio_only, audio_upgradable, audio_video |
+| live | Boolean | This param defines whether the link should trigger widget and mobile ringing or not. |
+
+#### Call ended
+
+```javascript
+Client.on('call_ended',(call) => {
+	// your logic
+});
+```
+
+Fired when the call ends.
+
+This event is raised for both users. The 'executor' field allows you to understand which user performed the action
+
+##### call object:
+The data in the event is a call object:
+
+```json
+{
+  "event": "call_ended",
+  "executor": "user2",
+  "callAlias": "room_027b9312e9a5",
+  "callDirection": "outgoing",
+  "callParticipants": ["user1", "user2"],
+  "callOptions": {
+    "record": false,
+    "creationDate": "2021-04-13T08:31:03.916Z",
+    "callType": "audio_video",
+    "live": true
+  }
+}
+```
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| event | String | Event name
+| callAlias | String | Unique alias of the current call |
+| executor | String | UserAlias of the participant that have performed the action
+| callDirection | String | Direction of the call (incoming\outgoing) |
+| callParticipants | Array | Array of userAlias of the participants |
+| callOptions | Object | Basic information about the call|
 
 ##### CallOptions:
 

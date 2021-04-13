@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.40.0] - 2021-04-13
+### Added
+- Add event and executor information to dial and call events
+
+### Changed
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.13.0
+
+
 ## [1.39.7] - 2021-04-09
 ### Fixed
 - Fix notifications on select chat when the chat is closed

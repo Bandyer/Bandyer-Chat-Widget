@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.41.0] - 2021-04-26
+### Added
+- Add virtual background capability on safari on macOS
+- Add virtual background capability on supported android browsers
+
+### Changed
+- Improve virtual background
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.17.0 version
+
 ## [1.40.0] - 2021-04-13
 ### Added
 - Add event and executor information to dial and call events

@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.41.1] - 2021-05-12
+### Fixed
+- Fix stream recovery on a stream fail
+- FIx stream close on room disconnect
+- Fix unexpected crash when the window mode is closed for network issues
+
 ## [1.41.0] - 2021-04-26
 ### Added
 - Add virtual background capability on safari on macOS

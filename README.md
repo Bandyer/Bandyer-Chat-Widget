@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.41.0/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.41.1/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -43,8 +43,8 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Versions
 
-Latest version available is: 1.41.0
-[https://cdn.bandyer.com/sdk/js/chat/1.41.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.41.0/bandyer-widget.min.js)
+Latest version available is: 1.41.1
+[https://cdn.bandyer.com/sdk/js/chat/1.41.1/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.41.1/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -86,7 +86,7 @@ Configuration of a new widget instance is made by calling .create() method. The 
 
 | Parameter | Required | Default | Description |
 | --------- | :----------: | :------:| ----------- |
-| userAlias | yes |"" | The widget who initialize the widget |
+| userAlias | yes |"" | The widget who initialize the widget. Needs to create a user via [rest API](https://docs.bandyer.com/Bandyer-RESTAPI/#create-user) |
 | appId | yes | "" | A valid appId. Please contact Bandyer to have a valid appId |
 | environment | yes | "" | 'sandbox' or 'production' are the permitted values. |
 | hidden | no | false | Create the widget in hidden mode (not visibile in the HTML). |

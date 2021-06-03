@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.41.4] - 2021-06-03
+### Changed
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.13.5
+### Fixed
+- Fix error after a multiple call in window mode
+
 ## [1.41.3] - 2021-05-28
 ### Fixed
 - Fix channels visualization when the twilio channels limit is reached

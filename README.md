@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.41.7/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.42.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -43,8 +43,8 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Versions
 
-Latest version available is: 1.41.7
-[https://cdn.bandyer.com/sdk/js/chat/1.41.7/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.41.7/bandyer-widget.min.js)
+Latest version available is: 1.42.0
+[https://cdn.bandyer.com/sdk/js/chat/1.42.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.42.0/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -93,6 +93,8 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | screenSharingExtensionURL | no | '' | The URL from witch download your custom extension (see more [here](#screen-sharing) |
 | layout | no | {} | Specify the custom layout (see more [here](#custom-layout)) |
 | record | no | false | Specify if all the calls must be recorded.|
+| recordingType | no | 'automatic' | Allowed params are 'manual' or 'automatic', allows to define the recording type for all the calls
+| isAdmin | no | false | Specify if the logged user is an admin, this capability allow to trigger the start/stop of the manual recording
 | callType | no | audio_video | Specify the call type. Valid values are: "audio\_only", "audio\_upgradable", "audio\_video" |
 | mode | no | embed | Specify the widget call mode. Valid values are: "embed" or "window" |
 | language | no | it | Specify the language of the widget. Valid values are: "it" or "en" |
@@ -457,7 +459,19 @@ Create a call with arbitrary call options with the users specified in the array 
 | Name | Type | Description |
 | --------- | :----------: | ----------- |
 | usersAlias | Array of String | List of users with whom you want to start a call |
-| options | Object | Call option, specify the call type |
+| options | Object | Call options |
+
+##### Options
+
+| Name | Default | Type | Description |
+| --------- | --------- | :----------: | ----------- |
+| callType | inherit from the config | string | Can be 'audio_only', 'audio_upgradable', 'audio_video' |
+| record or recording | inherit from the config | boolean | Allow to define if the call start with recording |
+| recordingType | inherit from the config | string | Can be 'manual' or 'automatic' |
+| isAdmin | inherit from the config | boolean | Allow the user to control the manual recording capabilities |
+
+N.B. if the call is {recording: true, recordingType: 'manual', isAdmin: false} create a call with the recording capability but no-one is able to start the recording.
+In order to do that create this type of call with isAdmin: true
 
 ##### Returns:
 ###### Type

@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+## [1.42.0] - 2021-10-12
+### Added
+- Add isAdmin and recordingType param in config
+### Changed
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.14.0
+- Update createCall API, allow record, recording, recordingType and isAdmin param in option field
+
 ## [1.41.7] - 2021-09-27
 ### Fixed
 - Fix joinCallUrl in window mode

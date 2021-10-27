@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.42.0/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.43.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -43,8 +43,8 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Versions
 
-Latest version available is: 1.42.0
-[https://cdn.bandyer.com/sdk/js/chat/1.42.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.42.0/bandyer-widget.min.js)
+Latest version available is: 1.43.0
+[https://cdn.bandyer.com/sdk/js/chat/1.43.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.43.0/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -616,6 +616,7 @@ Promise.<(void|Error)>
 | call\_dial\_stopped | Emitted when a user stop a dial  |
 | call\_started | Fired when a call start
 | call\_ended | Fired when a call end
+| force\_disconnect | Fired when the server close the connection due to a user disable or delete
 
 
 #### Typing started
@@ -1057,6 +1058,21 @@ The data in the event is a call object:
 | creationDate | Date | Date and time of the created call |
 | callType | String | audio_only, audio_upgradable, audio_video |
 | live | Boolean | This param defines whether the link should trigger widget and mobile ringing or not. |
+
+#### Force disconnect
+
+```javascript
+Client.on('force_disconnect',(data) => {
+	// your logic
+});
+```
+
+Fired when a server close the connection due to a user disable or delete.
+The data in the event is an object:
+
+| Key | Type | Description |
+| --------- | :----------: | ----------- |
+| reason | String | Can be user_deleted or user_disabled, specify the reason of the force disconnect  |
 
 ## Widget Operations
 

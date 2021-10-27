@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [1.43.0] - 2021-10-27
+### Added
+- Add view that handle for force disconnect event
+### Changed
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.15.0
+
 ## [1.42.0] - 2021-10-12
 ### Added
 - Add isAdmin and recordingType param in config

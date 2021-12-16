@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [1.44.0] - 2021-12-03
+### Added
+- New feedback view
+- New feedback param in config, default to false
+- New chat sdk
+- New status info in chat
+### Changed
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.16.0
+### Fixed
+- Fix Ui bugs for chat
+- Participants limit in createCall
+
 ## [1.43.0] - 2021-10-27
 ### Added
 - Add view that handle for force disconnect event

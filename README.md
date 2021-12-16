@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.43.0/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.44.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -43,8 +43,8 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Versions
 
-Latest version available is: 1.43.0
-[https://cdn.bandyer.com/sdk/js/chat/1.43.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.43.0/bandyer-widget.min.js)
+Latest version available is: 1.44.0
+[https://cdn.bandyer.com/sdk/js/chat/1.44.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.44.0/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -102,6 +102,7 @@ Configuration of a new widget instance is made by calling .create() method. The 
 | userDetailsFormatter | no | default user formatter | Specify how the user identity is formatted in the UI  (see more [here](#userdetailsformatter))|
 | tools| no | All tools enabled | Allows you to enable the available tools during the call and the chat for the widget (embed and window mode)(See more [here](#tools-option)) |
 | virtualBackground | no | false | Allowed params are 'blur' or 'image', allows to publish the local webcam with the blur or the replacement of the background as default (embed and window mode)
+| feedback | no | false | Allowed to show a feedback view after the call
 
 #### Deprecated parameters — Deprecation date: 26/11/20
 | Parameter | Required | Default | Description |
@@ -722,7 +723,7 @@ Fired when the chat channel is loaded
 | lastMessage.timestamp | String | Timestamp of the message |
 | dateCreated | Date | When channel was created |
 | createdBy | String | Creator of the channel |
-| unreadMessage | Number | Number of unread messages |
+| unreadMessages | Number | Number of unread messages |
 
 #### User connection
 

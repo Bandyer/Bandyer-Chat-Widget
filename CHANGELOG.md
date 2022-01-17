@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [1.45.0] - 2022-01-17
+### Added
+- Authentication with accessToken
+- Add inactive view for a session expired
+### Changed
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to 1.17.0
+### Fixed
+- Logout for chat
+- Notification after a re-login
+
 ## [1.44.2] - 2021-12-20
 ### Fixed
 - Chat update token after disconnection

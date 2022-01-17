@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.44.2/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.45.0/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -43,8 +43,8 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Versions
 
-Latest version available is: 1.44.2
-[https://cdn.bandyer.com/sdk/js/chat/1.44.2/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.44.2/bandyer-widget.min.js)
+Latest version available is: 1.45.0
+[https://cdn.bandyer.com/sdk/js/chat/1.45.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.45.0/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -63,21 +63,21 @@ For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/
 <img src="https://cdn.bandyer.com/sdk/js/resources/screenshots/bandyer-chat-widget-widget-gear-open-600.jpg" alt="Drawing" height="300"  width="320"/>
 </p>
 
-
+<a name="create"></a>
 ### Create 
 > .create()
 
 ```javascript
 const Client = await BandyerChat.create({
-	userAlias: 'usr_123456', 
-	appId: 'wAppId_fake123456', 
-	environment: 'sandbox',
-	hidden: false,
+ 
+    accessToken: 'jwt',
+    environment: 'sandbox',
+    hidden: false
 });
 
 ```
 
-`.create({userAlias: 'usr_123456', appId: 'wAppId_fake123456', environment: 'sandbox', hidden: false})`
+`.create({accessToken: 'jwt', environment: 'sandbox', hidden: false})`
 
 Configuration of a new widget instance is made by calling .create() method. The options required are the following:
 
@@ -85,8 +85,7 @@ Configuration of a new widget instance is made by calling .create() method. The 
 
 | Parameter | Required | Default | Description |
 | --------- | :----------: | :------:| ----------- |
-| userAlias | yes |"" | The widget who initialize the widget. Needs to create a user via [rest API](https://docs.bandyer.com/Bandyer-RESTAPI/#create-user) |
-| appId | yes | "" | A valid appId. Please contact Bandyer to have a valid appId |
+| accessToken | yes |  | accessToken obtained server side (see more [here](#authentication))
 | environment | yes | "" | 'sandbox' or 'production' are the permitted values. |
 | hidden | no | false | Create the widget in hidden mode (not visibile in the HTML). |
 | screenSharingExtensionId | no | '' | Extension ID of the Screen Sharing Extension. (see more [here](#screen-sharing) |
@@ -107,7 +106,77 @@ Configuration of a new widget instance is made by calling .create() method. The 
 #### Deprecated parameters — Deprecation date: 26/11/20
 | Parameter | Required | Default | Description |
 | --------- | :----------: | :------:| ----------- |
+| userAlias | yes |"" | The widget who initialize the widget. Needs to create a user via [rest API](https://docs.bandyer.com/Bandyer-RESTAPI/#create-user) |
+| appId | yes | "" | A valid appId. Please contact Bandyer to have a valid appId |
 | chat | no | true | If false it disables the chat module so that the widget is only able to receive calls and create calls through the createCall API
+
+<a name="authentication"></a>
+### Authentication
+
+The authentication require the use of an accessToken obtained from your own server using the following api :
+
+
+```shell
+curl -X POST "https://sandbox.bandyer.com/rest/sdk/credentials" \
+     -H "apikey: COMPANY_APIKEY" \
+     -H "Content-Type: application/json" \
+     -d '{
+        {user_id: "user_xxx", expires_in: 360}
+     }'
+```
+
+> Example Response
+
+```json
+{
+    "access_token": "valid jwt for the user",
+    "expires_at": "2022-01-10T11:41:19.000Z",
+    "user_id": "user_xxx"
+}
+```
+Return a valid accessToken to provide to the clients that needs a sdk authentication, please DO NOT request the token client side in order to not expose the api_key.
+If you expose the api_key the credential's generation for your company became unsafe.
+
+#### HTTP Request
+
+`POST https://sandbox.bandyer.com/rest/sdk/credentials`
+
+#### Header Parameters
+Parameter | Required | Default | Description
+--------- | :----------: | :------:| -----------
+apikey | yes | "" | Every request must have the API Key.
+
+#### Body Parameters
+Parameter | Required | Default | Description
+--------- | :----------: | :------:| -----------
+user_id | yes | "" | user that you want to authenticate
+expires_in | no | 360 | Seconds after that the token expires
+
+### Error
+
+| Status | Name | Code | Reason
+| --------- | --------- | ---------  | ------|
+| 401 | invalid_api_key | invalid_api_key | Apikey is not valid
+| 422 | validation_error| invalid_token_expirations | The expires_in must be between 360 (6 minutes) and 86400 (24 hours)
+
+
+Once you have obtained the access token you are able to authenticate the sdk, in order to maintain the connected state
+you need to bind two events to the Client object(see [Create](#Create)):
+- access_token_is_about_to_expire
+- access_token_expired
+
+```javascript
+client.on('access_token_is_about_to_expire', async (data) => { // data: {expiresAt: "2022-01-10T11:41:19.000Z"'}
+    const accessToken = await yourAsyncFunction(); // async function that allow you to ask a new accessToken to the server
+    // Provide the obtained accessToken to the sdk
+    const { expiresAt } = await BandyerChat.updateAccessToken(accessToken); // return the new expiration date
+
+})
+client.on('access_token_expired', () => {
+   // the session expired, for some reason the update token process is failed, you need to re-initilize the sdk
+})
+
+```
 
 
 #### Call type options:
@@ -209,6 +278,7 @@ The layout option is composed by a list of other keys. The table above is the li
 | messageReceived | background, color | Specify the background and color messages you received |
 | dial | background, color | Specify the background and color of the dial view |
 | call | background, color | Specify the background and color of the call view |
+| feedback | body: {background, color}, buttons: {background, color} | Specify the theme for the feedback view |
 | fontFamily | font Family | Font family of the entire widget |
 
 Here an example: 
@@ -226,6 +296,7 @@ BandyerChat.create({
 		launcher: {background: '#0069B4'},
 		header: {background: '#003762', color: '#fff'},
 		headerButton: {background: '#0069B4', color: '#fff'}, 
+        feedback: {body: {background: '#0069B4', color: '#fff'}, buttons: {background: '#0069B4', color: '#fff'}},
 		fontFamily: '"Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif' 
 	}
 })
@@ -1385,10 +1456,14 @@ Edit the following parameter:
 Further explaination
 
 ```json
-   "background": {
-      "persistent": true,
-      "scripts": [ "background-script.js" ]
-   },
+   {
+  "background": {
+    "persistent": true,
+    "scripts": [
+      "background-script.js"
+    ]
+  }
+}
 
 ```
 In this section there are two parameters:

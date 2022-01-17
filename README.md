@@ -69,7 +69,6 @@ For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/
 
 ```javascript
 const Client = await BandyerChat.create({
- 
     accessToken: 'jwt',
     environment: 'sandbox',
     hidden: false

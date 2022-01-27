@@ -120,7 +120,7 @@ curl -X POST "https://sandbox.bandyer.com/rest/sdk/credentials" \
      -H "apikey: COMPANY_APIKEY" \
      -H "Content-Type: application/json" \
      -d '{
-        {user_id: "user_xxx", expires_in: 360}
+        {user_id: "user_xxx", expires_in: 3600}
      }'
 ```
 
@@ -149,7 +149,7 @@ apikey | yes | "" | Every request must have the API Key.
 Parameter | Required | Default | Description
 --------- | :----------: | :------:| -----------
 user_id | yes | "" | user that you want to authenticate
-expires_in | no | 360 | Seconds after that the token expires
+expires_in | no | 3600 | Seconds after that the token expires
 
 ### Error
 

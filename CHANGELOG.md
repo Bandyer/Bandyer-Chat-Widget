@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [1.45.1] - 2022-03-15
+### Fixed
+- Avoid incorrect behavior for getUserStatus
+
 ## [1.45.0] - 2022-01-17
 ### Added
 - Authentication with accessToken

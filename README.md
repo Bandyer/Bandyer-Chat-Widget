@@ -20,7 +20,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 	<body>
-	<script src="https://cdn.bandyer.com/sdk/js/chat/1.45.0/bandyer-widget.min.js" type="text/javascript" >
+	<script src="https://cdn.bandyer.com/sdk/js/chat/1.45.1/bandyer-widget.min.js" type="text/javascript" >
 	</script>
 	</body>
 </html>
@@ -43,8 +43,8 @@ The widget attaches in the window object of the HTML page the **BandyerChat** gl
 
 #### Versions
 
-Latest version available is: 1.45.0
-[https://cdn.bandyer.com/sdk/js/chat/1.45.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.45.0/bandyer-widget.min.js)
+Latest version available is: 1.45.1
+[https://cdn.bandyer.com/sdk/js/chat/1.45.1/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/1.45.1/bandyer-widget.min.js)
 
 For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/Bandyer-Chat-Widget/blob/gh-pages/CHANGELOG.md)
 
@@ -69,6 +69,7 @@ For the complete list of versions visit: [CHANGELOG](https://github.com/Bandyer/
 
 ```javascript
 const Client = await BandyerChat.create({
+ 
     accessToken: 'jwt',
     environment: 'sandbox',
     hidden: false
@@ -120,7 +121,7 @@ curl -X POST "https://sandbox.bandyer.com/rest/sdk/credentials" \
      -H "apikey: COMPANY_APIKEY" \
      -H "Content-Type: application/json" \
      -d '{
-        {user_id: "user_xxx", expires_in: 3600}
+        {user_id: "user_xxx", expires_in: 360}
      }'
 ```
 
@@ -149,7 +150,7 @@ apikey | yes | "" | Every request must have the API Key.
 Parameter | Required | Default | Description
 --------- | :----------: | :------:| -----------
 user_id | yes | "" | user that you want to authenticate
-expires_in | no | 3600 | Seconds after that the token expires
+expires_in | no | 360 | Seconds after that the token expires
 
 ### Error
 

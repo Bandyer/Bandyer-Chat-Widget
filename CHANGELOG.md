@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+
+## [2.0.0-beta.0] - 2022-04-26
+### Added
+- New library exposure
+- New configuration method
+- Client object with new lifecycle, methods and events
+- CallView and Call object with new methods and events
+- ChannelView and Channel object with new methods and events
+- Message object
+- Information for recording call in dialing UI
+- New authentication based on appId, region, environment, userId and accessToken
+- New indian region support
+
+### Changed
+- Updated [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to v3.1.0
+- Update bandyer-chat-sdk to v2.1.0
+- Rename record to recording in configuration
+- Change default language to 'en'
+- Change default tools behavior 
+- Library name from BandyerChat to BandyerSDK
+- Change all userAlias reference to userId
+- Error system
+
+### Removed
+- Remove all the previous api from the BandyerChat
+- Remove deprecated parameters
+- Remove all the previous events
+- Remove support for old authentications
+
+### Fixed
+- Window mode close
+- Fix css problems with headers
+
 ## [1.45.1] - 2022-03-15
 ### Fixed
 - Avoid incorrect behavior for getUserStatus

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [2.0.0-beta.1] - 2022-04-26
+### Fixed
+- Widget initialization with no tools
+- Fix destroyClient
 
 ## [2.0.0-beta.0] - 2022-04-26
 ### Added

@@ -19,7 +19,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 <body>
-<script src="https://cdn.bandyer.com/sdk/js/chat/2.0.0-beta.1/bandyer-widget.min.js" type="text/javascript" >
+<script src="https://cdn.bandyer.com/sdk/js/chat/2.0.0/bandyer-widget.min.js" type="text/javascript" >
 </script>
 </body>
 </html>
@@ -42,8 +42,8 @@ The script attaches in the window object the global variable **BandyerSDK** from
 
 #### Versions
 
-The latest version is: 2.0.0-beta.1
-[https://cdn.bandyer.com/sdk/js/chat/2.0.0-beta.1/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.0.0-beta.1/bandyer-widget.min.js)
+The latest version is: 2.0.0
+[https://cdn.bandyer.com/sdk/js/chat/2.0.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.0.0/bandyer-widget.min.js)
 
 > if you're upgrading from v1.x.x you can find the migration guide [here](#migration)
 
@@ -98,24 +98,23 @@ The configuration of a new BandyerSDK instance is made by calling the `BandyerSD
 
 ##### Parameters
 
-| Parameter            | Required |        Default         | Description|
-|----------------------|:--------:|:----------------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| region               |   yes    |                        | Region on witch your account belongs. Allowed parameters are `eu` or `in`                                                                                                          |
-| environment          |   yes    |                        | Allowed values are: `sandbox` or `production`                                                                                                                   |
-| appId                |   yes    |                        | A valid appId associated to your account                                                                                                   |
-| hidden               |    no    |         false          | Configure the widget to start in hidden mode (not visible in the HTML)                                                                                                   |
-| layout               |    no    |   default layout          | Specify the custom layout (see more [here](#custom-layout))                                                                                                    |
-| recording            |    no    |         false          | Specify if calls initiated from the widget must be recorded or not                                                                                                                     |
-| recordingType        |    no    |      'automatic'       | Wether the recording starts automatically at the beginning of a call or must be started manually. Allowed values are: `manual` or `automatic`                                                            |
-| isAdmin              |    no    |         false          | Specify wether the logged user is admin of the calls initiated from the widget. Admin users are able to start/stop the recording when is manual                                              |
-| callType             |    no    |      audio\_video       | Specify the call type. Allowed values are: `audio_only`, `audio_upgradable`, `audio_video`                                                                    |
-| mode                 |    no    |         embed          | Specify the widget call mode. Allowed values are: `embed` or `window`                                                                                            |
-| language             |    no    |           'en'           | Specify the language of the widget Allowed values are: `en` or `it`                                                                                            |
-| userDetailsProvider  |    no    | default user provider  | Specify the data for each user (see more [here](#userdetailsprovider))                                                                                  |
-| userDetailsFormatter |    no    | default user formatter | Specify how user data is formatted in the UI  (see more [here](#userdetailsformatter))                                                                 |
-| tools                |    no    |   All tools disabled   | Specify the tools to enable during the call (embed and window mode)(See more [here](#tools-option))                                               |
-| virtualBackground    |    no    |         false          | It allows to publish the local webcam with blurred or the replaced background by default (embed and window mode). Allowed values are: `blur` or `image` |
-| feedback             |    no    |         false          | Specify wether to show the view to leave a feedback at the end of the call                                                                                                                 |
+| Parameter            | Required |        Default         | Description                                                                                                                                                                                   |
+|----------------------|:--------:|:----------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| region               |   yes    |                        | Region on witch your account belongs. Allowed parameters are `eu` or `in`                                                                                                                     |
+| environment          |   yes    |                        | Allowed values are: `sandbox` or `production`                                                                                                                                                 |
+| appId                |   yes    |                        | A valid appId associated to your account                                                                                                                                                      |
+| hidden               |    no    |         false          | Configure the widget to start in hidden mode (not visible in the HTML)                                                                                                                        |
+| layout               |    no    |     default layout     | Specify the custom layout (see more [here](#custom-layout))                                                                                                                                   |
+| recordingType        |    no    |         'none'         | Wether the recording is disable (none) or starts automatically at the beginning of a call(automatic) or must be started manually(manual). Allowed values are: `none`, `manual` or `automatic` |
+| isAdmin              |    no    |         false          | Specify wether the logged user is admin of the calls initiated from the widget. Admin users are able to start/stop the recording when is manual                                               |
+| callType             |    no    |      audio\_video      | Specify the call type. Allowed values are: `audio_only`, `audio_upgradable`, `audio_video`                                                                                                    |
+| mode                 |    no    |         embed          | Specify the widget call mode. Allowed values are: `embed` or `window`                                                                                                                         |
+| language             |    no    |          'en'          | Specify the language of the widget Allowed values are: `en` or `it`                                                                                                                           |
+| userDetailsProvider  |    no    | default user provider  | Specify the data for each user (see more [here](#userdetailsprovider))                                                                                                                        |
+| userDetailsFormatter |    no    | default user formatter | Specify how user data is formatted in the UI  (see more [here](#userdetailsformatter))                                                                                                        |
+| tools                |    no    |   All tools disabled   | Specify the tools to enable during the call (embed and window mode)(See more [here](#tools-option))                                                                                           |
+| virtualBackground    |    no    |         false          | It allows to publish the local webcam with blurred or the replaced background by default (embed and window mode). Allowed values are: `blur` or `image`                                       |
+| feedback             |    no    |         false          | Specify wether to show the view to leave a feedback at the end of the call                                                                                                                    |
 
 
 ##### Errors
@@ -1021,21 +1020,33 @@ On this object you can perform all the logical operation like answer, end, get s
 <a name="call-status"></a>
 ### Properties
 
-| Name         |      Type      | Description                                                                                                                  |
-|--------------|:--------------:|------------------------------------------------------------------------------------------------------------------------------|
-| roomId       |     String     | RoomId of the call, can be used in out rest api to retrieve information                                                      |
-| options      |     Object     | Contains callType: string, live: boolean, recording:boolean and recordingType: string                                        |
-| creationDate |  string(ISO)   | Creation date of the call                                                                                                    |
-| participants |    string[]    | Array of userId that participate to the call                                                                                 |
-| direction    |     string     | 'incoming' or 'outgoing'                                                                                                     |
-| status       |     string     | can be 'dialing', 'connecting' 'connected' or 'ended'                                                                        |
-| endReason    | string or null | Filled if the call is in the end state, should be 'declined', 'canceled', 'answered\_of\_another\_device', 'hang\_up', 'timeout' | 
+| Name           |      Type      | Description                                                                                                                      |
+|----------------|:--------------:|----------------------------------------------------------------------------------------------------------------------------------|
+| roomId         |     String     | RoomId of the call, can be used in out rest api to retrieve information                                                          |
+| options        |     Object     | Contains call information about his initialization and status                                                                    |
+| creationDate   |  string(ISO)   | Creation date of the call                                                                                                        |
+| participants   |    string[]    | Array of userId that participate to the call                                                                                     |
+| direction      |     string     | 'incoming' or 'outgoing'                                                                                                         |
+| status         |     string     | can be 'dialing', 'connecting' 'connected' or 'ended'                                                                            |
+| recordingState | String  | 'started' if the recording was started, 'stopped' otherwise |
+| endReason      | string or null | Filled if the call is in the end state, should be 'declined', 'canceled', 'answered\_of\_another\_device', 'hang\_up', 'timeout' | 
+
+
+#### Options object
+| Name            |  Type   | Description                                                 |
+|-----------------|:-------:|-------------------------------------------------------------|
+| callType        | String  | Can be 'audio\_video', 'audio\_upgradable', 'audio\_only'   |
+| recordingType   | String  | Can be 'none', 'automatic' or 'manual'                      |
+| live            | String  | If the call trigger the incoming call event or hook         |
+
+
 
 ### Events
 
-| Name | Description |
-| -----| ------------ |
-| status:changed | Triggered  when a call change his status |
+| Name                    | Description                               |
+|-------------------------|-------------------------------------------|
+| status:changed          | Triggered  when a call change his status  |
+| recording:state:changed | Triggered  when the recordingState change |
 
 A call have some events that allow to retrieve real time information
 
@@ -1044,6 +1055,12 @@ A call have some events that allow to retrieve real time information
 // Triggered  when a call change his status
 Call.on('status:changed', (status: string) => {
   // your logic
+  
+})
+
+// Triggered  when the recording state was changed
+Call.on('recording:state:changed', ({ recordingState: string }) => {
+// your logic
 })
 ```
 
@@ -1153,11 +1170,11 @@ BandyerSDK.destroyClient(); // destroys the client allowing a new configuration
 
 ## Configuration parameters changes
 
-| old value  | new value | change                                      |
-| --------- |----------  |------------------------------------------------|
-| record    | recording | Parameter key                                         | 
-| tools | tools | Not specifying tools now means that the user will have none|
-|language| language | The current default is `en` |
+| old value  | new value     | change                                      |
+| --------- |---------------|------------------------------------------------|
+| record    | recordingType | Parameter key                                         | 
+| tools | tools         | Not specifying tools now means that the user will have none|
+|language| language      | The current default is `en` |
 
 
 ### Migrate Chat methods

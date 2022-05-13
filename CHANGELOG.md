@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [2.0.0] - 2022-05-13
+### Added
+- Snackbar for recording state
+### Changed
+- Remove recording parameter in config
+- Add 'none' to recordingType parameter
+- Update [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to v3.2.2
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.19.0 version
+### Fixed
+- Window mode dismiss
+- Improve widget lifecycle
+- Avoid click during manual recording pending request
+
 ## [2.0.0-beta.1] - 2022-04-26
 ### Fixed
 - Widget initialization with no tools

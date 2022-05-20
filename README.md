@@ -19,7 +19,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 <body>
-<script src="https://cdn.bandyer.com/sdk/js/chat/2.0.0/bandyer-widget.min.js" type="text/javascript" >
+<script src="https://cdn.bandyer.com/sdk/js/chat/2.1.0/bandyer-widget.min.js" type="text/javascript" >
 </script>
 </body>
 </html>
@@ -42,8 +42,8 @@ The script attaches in the window object the global variable **BandyerSDK** from
 
 #### Versions
 
-The latest version is: 2.0.0
-[https://cdn.bandyer.com/sdk/js/chat/2.0.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.0.0/bandyer-widget.min.js)
+The latest version is: 2.1.0
+[https://cdn.bandyer.com/sdk/js/chat/2.1.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.1.0/bandyer-widget.min.js)
 
 > if you're upgrading from v1.x.x you can find the migration guide [here](#migration)
 
@@ -100,7 +100,7 @@ The configuration of a new BandyerSDK instance is made by calling the `BandyerSD
 
 | Parameter            | Required |        Default         | Description                                                                                                                                                                                   |
 |----------------------|:--------:|:----------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| region               |   yes    |                        | Region on witch your account belongs. Allowed parameters are `eu` or `in`                                                                                                                     |
+| region               |   yes    |                        | Region on witch your account belongs. Allowed parameters are `eu`, `in` or `us`                                                                                                                |
 | environment          |   yes    |                        | Allowed values are: `sandbox` or `production`                                                                                                                                                 |
 | appId                |   yes    |                        | A valid appId associated to your account                                                                                                                                                      |
 | hidden               |    no    |         false          | Configure the widget to start in hidden mode (not visible in the HTML)                                                                                                                        |

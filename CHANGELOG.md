@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [2.1.0] - 2022-05-20
+### Added
+- Support for us region
+### Fixed
+- npm package
+
 ## [2.0.0] - 2022-05-13
 ### Added
 - Snackbar for recording state

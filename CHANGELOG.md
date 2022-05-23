@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [2.1.2] - 2022-05-23
+### Fixed
+- fix window mode
+
+## [2.1.1] - 2022-05-20
+### Fixed
+- npm build version
+
 ## [2.1.0] - 2022-05-20
 ### Added
 - Support for us region

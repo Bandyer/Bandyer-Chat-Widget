@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [2.1.3] - 2022-05-24
+### Fixed
+- Fix dependencies for npm and yarn install
+
 ## [2.1.2] - 2022-05-23
 ### Fixed
 - fix window mode

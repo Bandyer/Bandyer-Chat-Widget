@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [2.1.4] - 2022-06-25
+### Fixed
+- Fix call window hangup that crash in some condition
+- Fix memory leak on recording events
+
 ## [2.1.3] - 2022-05-24
 ### Fixed
 - Fix dependencies for npm and yarn install

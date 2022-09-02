@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [2.2.0] - 2022-09-02
+### Added
+- Read ticks for chat
+
+### Changed
+- Chat style
+
+### Fixed
+- Add channel now return a correct channelView
+
 ## [2.1.5] - 2022-06-28
 ### Changed
 - Update [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to v3.2.3

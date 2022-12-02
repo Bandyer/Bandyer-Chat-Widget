@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [2.3.0] - 2022-12-02
+### Added
+- Handle admin mute and kick from the call page
+
+### Changed
+- Update [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to v3.3.0
+- Update chat-sdk to v2.2.0
+- Default socket protocol to wss
+- Connect-error now try to polling-websocket and if fail  to use the cookie the connection target a single node
+
+### Fixed
+- Get permission request in audio-upgradable 
+- Safari and Chrome incognito problems on third party cookie
+- General bug fixing on disconnection and throwing errors
+
 ## [2.2.0] - 2022-09-02
 ### Added
 - Read ticks for chat

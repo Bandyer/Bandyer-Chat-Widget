@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [2.3.1] - 2022-01-09
+### Fixed
+- Fix channel add promise pending on existing channel
+- Fix forwarding of chat events 
+- Fix channel delete
+
 ## [2.3.0] - 2022-12-02
 ### Added
 - Handle admin mute and kick from the call page

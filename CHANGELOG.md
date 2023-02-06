@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [2.4.0] - 2023-02-06
+### Added
+- Ringing feedback in dial out
+- Handle new user details from remote user details provider
+### Changed
+- Update [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to v3.4.2
+### Fixed
+- Chat events
+- Channel add inc ase of existing user
+
 ## [2.3.1] - 2022-01-09
 ### Fixed
 - Fix channel add promise pending on existing channel

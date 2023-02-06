@@ -19,7 +19,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 <body>
-<script src="https://cdn.bandyer.com/sdk/js/chat/2.3.1/bandyer-widget.min.js" type="text/javascript" >
+<script src="https://cdn.bandyer.com/sdk/js/chat/2.4.0/bandyer-widget.min.js" type="text/javascript" >
 </script>
 </body>
 </html>
@@ -32,18 +32,17 @@ The script attaches in the window object the global variable **BandyerSDK** from
 
 | Browser 	          | min version |        Plugin requested        |
 |--------------------|:-----------:|:------------------------------:|
-| Chrome	           |    72		  |                                |
-| Firefox	           |    54		  |                                |
-| Safari	           |    12		  |                                |
-| Edge new           |    79	     |                                |
-| Internet Explorer	 |    11       | Temasys WebRTC Plugin for Call |
+| Chrome	           |    72		     |                                |
+| Firefox	           |    66		     |                                |
+| Safari	           |    12		     |                                |
+| Edge new           |     79	     |                                |
 
 
 
 #### Versions
 
-The latest version is: 2.3.1
-[https://cdn.bandyer.com/sdk/js/chat/2.3.1/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.3.1/bandyer-widget.min.js)
+The latest version is: 2.4.0
+[https://cdn.bandyer.com/sdk/js/chat/2.4.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.4.0/bandyer-widget.min.js)
 
 > if you're upgrading from v1.x.x you can find the migration guide [here](#migration)
 
@@ -246,16 +245,39 @@ BandyerSDK.configure({
 ```
 
 <a name="userdetailsprovider"></a>
-#### userDetailsProvider
 
-The widget has a custom configurable function that allows customizing the users' information, which later will be displayed in the UI.
+#### User details provider
 
+Since **Kaleyra Video** solution treats users of a company referring to them only via anonymous identifiers, in order to display users details on sdk integrations (chat widget, Android and iOS SDks) and call links each platform expose a set of client api to customize the user information (display name and avatar).
+
+In order to obtain user display name and image customization on the client call and chat UIs, has now been released a new convenient and centralized way to achieve the same result.
+We refer to this newly released API as **<i>Server side User Details Provider</i>**.
+
+
+##### Server side User Details Provider
+
+In order to enable this functionality you must specify a valid `user_details_provider_url` through the [company update rest API](https://docs.bandyer.com/Bandyer-RESTAPI/#update-company).
+
+The provider url, if defined, will be used as an endpoint to request the details of the users through a http post request whenever a client needs to display some user details.
+
+As mentioned above, the best use case scenario for the **Server side User Details Provider** implementation is represented by those integrations that rely on a heterogeneous usage of client sdks (e.g. mobile sdks alongside chat widget implementation) and call links. 
+Using the **Server side User Details Provider** will result in a more concise (and less error-prone too) way to display users information. Furthermore, it's not will be necessary to implement the **Client side user Details Provider** APIs for the client SDKs.
+
+Despite what has been mentioned, the **Client side user Details Provider** will be maintained for those integrations that cannot rely on webhook implementations.
+
+More details about the REST integration of the **Server side user Details Provider** can be found
+[here](https://docs.bandyer.com/Bandyer-RESTAPI/#remote-user-details-provider).
+
+##### Client side user Details Provider
+
+The *BandyerSDK* exposes the *Client side user Details Provider* API as a custom configurable function that allows customizing the users' information, which later will be displayed in the UI.
 The userDetailsProvider is optional, but if defined must be a function.
 
 This function takes an array of String (userId) as the only input parameter and must return a Promise that contains an Array of objects, one object for each userId provided as input.
 
-**Performance considerations**
-The userDetailsProvider function is called and waited internally for up to 1200 ms, otherwise it uses the default provider logic.
+> Beware **Client side user details Provider** has a higher priority over the server side one, so be careful in implementing both the solutions.
+
+> Beware of **Performance**, the userDetailsProvider function is called and waited internally for up to 1200 ms, otherwise it uses the default provider logic.
 For this reason your logic will be applied only if it is faster than 1200 ms.
 
 Every single object representing a user and must contain a userId key(otherwise the object will be ignored) and optionally other keys that can be used to define the logic used in your custom userDetailFormatter.
@@ -288,24 +310,33 @@ BandyerSDK.configure({
   userDetailsProvider: yourProviderFunction
 })
 ```
-N.B define a userDetailsProvider without the relative userDetailsFormatter is useless since the displayed result will be the userId as it is the default logic of userDetailsFormatter.
+N.B define a userDetailsProvider without the relative userDetailsFormatter is useless since the displayed result will be the server side information or the userId as it is the default logic of userDetailsFormatter.
 
 <a name="userdetailsformatter"></a>
-#### userDetailsFormatter
+##### Client side user details formatter
 
-The widget has a custom configurable function that lets you customize how users name are displayed in the UI.
-The userDetailsFoxrmatter is optional, but if defined, it must be a function.
+The local user details formatter API, if defined is a function that allows to use the information obtained from *Client side user Details Provider* in order to obtain a displayName to use in the different UIs
+
+The userDetailsFormatter is optional, but if defined, it must be a function.
 
 This function takes as input parameter an Object that represents one user and must return a String that represents how the user identity must be displayed in the UI.
 
-If the return value is not a String or the logic fails, the displayed information will be the userId.
+If the return value is not a String or the logic fails, the displayed information will be the remote (if provided) or the userId.
 
 Here an example:
 
 ```javascript
 
 yourFormatterFunction = function (user){
-  return user.firstName + " " + user.lastName;
+    /*
+    user = {
+        userId: userId
+        customParam1: the parameter provided in the providerFunction
+        customParam2:  another parameter provided in the providerFunction
+        displayName: optional parameter if you have defined a provider url for you company 
+        }
+     */
+  return user.customParam1 + " " + user.customParam2;
 }
 
 BandyerSDK.configure({
@@ -315,10 +346,6 @@ BandyerSDK.configure({
   userDetailsFormatter: yourFormatterFunction
 })
 ```
-N.B define a userDetailsFormatter without the relative userDetailsProvider can be useless since the displayed result will use the information provided at user creation.
-
-
-
 
 
 <a name="destroy-client"></a>

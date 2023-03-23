@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.5.2] - 2023-03-23
+- Fix reconnect and automatically logout clean  
+
+## [2.5.1] - 2023-03-17
+### Fixed
+- Fix uploads and feedback in US and IN
+
 ## [2.5.0] - 2023-03-15
 ### Added
 - Final support to US region

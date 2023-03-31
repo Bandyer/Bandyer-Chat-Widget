@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.5.3] - 2023-03-30
+### Fixed
+- Fix close window mode in dialing phase
+- Fix duplicated events on call_ended in window mode
+
 ## [2.5.2] - 2023-03-23
+### Fixed
 - Fix reconnect and automatically logout clean  
 
 ## [2.5.1] - 2023-03-17

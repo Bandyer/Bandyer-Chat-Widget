@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.5.4] - 2023-04-06
+### Changed
+- - Update [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to v3.5.3
+- - Update chat-sdk to v2.2.3
+
 ## [2.5.3] - 2023-03-30
 ### Fixed
 - Fix close window mode in dialing phase

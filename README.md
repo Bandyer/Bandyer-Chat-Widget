@@ -19,7 +19,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 <body>
-<script src="https://cdn.bandyer.com/sdk/js/chat/2.5.3/bandyer-widget.min.js" type="text/javascript" >
+<script src="https://cdn.bandyer.com/sdk/js/chat/2.5.4/bandyer-widget.min.js" type="text/javascript" >
 </script>
 </body>
 </html>
@@ -41,8 +41,8 @@ The script attaches in the window object the global variable **BandyerSDK** from
 
 #### Versions
 
-The latest version is: 2.5.3
-[https://cdn.bandyer.com/sdk/js/chat/2.5.3/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.5.3/bandyer-widget.min.js)
+The latest version is: 2.5.4
+[https://cdn.bandyer.com/sdk/js/chat/2.5.4/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.5.4/bandyer-widget.min.js)
 
 > if you're upgrading from v1.x.x you can find the migration guide [here](#migration)
 
@@ -669,12 +669,12 @@ The client expose apis and events in order to manage a call lifecycle
 
 ```javascript
 // triggered when a call is created (status equal to dialing)
-Client.on('call:incoming', (call: Call) => {
+Client.on('call:incoming', ({ call: Call }) => {
   // yuor logic 
 });
 
 // triggered when the call change the status (connecting, connected, ended)
-Client.on('call:status:changed', (call: Call, status) => {
+Client.on('call:status:changed', ({ call: Call, status }) => {
   // yuor logic, note if the status was ended, the call object can have a endReason
 });
 ```

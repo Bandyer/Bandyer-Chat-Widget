@@ -1020,8 +1020,6 @@ On this object you can perform all the UI operation
 | call | [Call](#call-type) | Allow to retrieve the logical call                    |
 | tone |       Object       | Allow to manage the audios of the  callView (ex ring) |
 
-callView.select();
-```
 
 #### Select method
 
@@ -1054,7 +1052,7 @@ Client.on('call:incoming', ({ call }) => {
   // ...
   Client.callView.tone.ring.play() // if needed you can play the ring tone
 })
-
+```
 
 
 <a name="call-type"></a>

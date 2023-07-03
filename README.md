@@ -19,7 +19,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 <body>
-<script src="https://cdn.bandyer.com/sdk/js/chat/2.5.4/bandyer-widget.min.js" type="text/javascript" >
+<script src="https://cdn.bandyer.com/sdk/js/chat/2.6.0/bandyer-widget.min.js" type="text/javascript" >
 </script>
 </body>
 </html>
@@ -41,8 +41,8 @@ The script attaches in the window object the global variable **BandyerSDK** from
 
 #### Versions
 
-The latest version is: 2.5.4
-[https://cdn.bandyer.com/sdk/js/chat/2.5.4/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.5.4/bandyer-widget.min.js)
+The latest version is: 2.6.0
+[https://cdn.bandyer.com/sdk/js/chat/2.6.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.6.0/bandyer-widget.min.js)
 
 > if you're upgrading from v1.x.x you can find the migration guide [here](#migration)
 
@@ -278,7 +278,7 @@ This function takes an array of String (userId) as the only input parameter and 
 > Beware **Client side user details Provider** has a higher priority over the server side one, so be careful in implementing both the solutions.
 
 > Beware of **Performance**, the userDetailsProvider function is called and waited internally for up to 1200 ms, otherwise it uses the default provider logic.
-For this reason your logic will be applied only if it is faster than 1200 ms.
+> For this reason your logic will be applied only if it is faster than 1200 ms.
 
 Every single object representing a user and must contain a userId key(otherwise the object will be ignored) and optionally other keys that can be used to define the logic used in your custom userDetailFormatter.
 
@@ -1013,14 +1013,17 @@ On this object you can perform all the UI operation
 
 * [select](#call-view-select)
 
-### Property
+### Properties
 
-| Name    |         Type          | Description                        |
-|---------|:---------------------:|------------------------------------|
-| call    |    [Call](#call-type) | Allow to retrieve the logical call |
+| Name |        Type        | Description                                           |
+|------|:------------------:|-------------------------------------------------------|
+| call | [Call](#call-type) | Allow to retrieve the logical call                    |
+| tone |       Object       | Allow to manage the audios of the  callView (ex ring) |
 
+callView.select();
+```
 
-#### Select
+#### Select method
 
 <a name="call-view-select"></a>
 > .select()
@@ -1033,6 +1036,27 @@ This method allow to change the currentView to the call one
 
 callView.select();
 ```
+
+#### Tone property
+
+| Name    |        Type        | Description                                           |
+|---------|:------------------:|-------------------------------------------------------|
+| ring    | {play: function, stop: function} | Allow to play or stop the ring tone  |
+
+
+```javascript
+
+// Example of how to use a ring tone 
+
+Client.on('call:incoming', ({ call }) => {
+  Client.callView.tone.ring.stop() // this avoid that the ring tone start
+  // do what you want
+  // ...
+  Client.callView.tone.ring.play() // if needed you can play the ring tone
+})
+
+
+
 <a name="call-type"></a>
 ## Call type
 

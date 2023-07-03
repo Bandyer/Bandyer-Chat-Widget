@@ -7,10 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.6.0] - 2023-07-03
+
+### Added
+- Tone getter to callView in order to manage the ring tone
+### Fixed
+- Window mode cache problems that sometimes display blank page
+
+## [2.5.5] - 2023-06-26
+### Changed
+- Updated [@bandyer/web-core-av](https://www.npmjs.com/package/@bandyer/web-core-av) to 1.20.0 version
+
+### Fixed
+- Browser not supported errors on new Apple devices
+
 ## [2.5.4] - 2023-04-06
 ### Changed
-- - Update [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to v3.5.3
-- - Update chat-sdk to v2.2.3
+- Update [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to v3.5.3
+- Update chat-sdk to v2.2.3
 
 ## [2.5.3] - 2023-03-30
 ### Fixed

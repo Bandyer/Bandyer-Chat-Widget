@@ -1,6 +1,6 @@
 # WEB BANDYER SDK
 
-The BandyerSDK is a fast and effective way to integrate a live videochat in your web application.
+The BandyerSDK is a fast and effective way to offer a live videochat in your web application.
 
 ### Consuming a library
 You can consume the library from NPM:

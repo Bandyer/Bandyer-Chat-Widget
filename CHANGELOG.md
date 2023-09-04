@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.7.0] - 2023-09-04
+### Added
+- New connect with access-link using joinCallURL method
+### Changed
+- Update [@bandyer/web-communication-center](https://www.npmjs.com/package/@bandyer/web-communication-center) to v3.6.0
+
 ## [2.6.1] - 2023-08-18
 
 ### Fixed

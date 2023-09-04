@@ -19,7 +19,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 <body>
-<script src="https://cdn.bandyer.com/sdk/js/chat/2.6.1/bandyer-widget.min.js" type="text/javascript" >
+<script src="https://cdn.bandyer.com/sdk/js/chat/2.7.0/bandyer-widget.min.js" type="text/javascript" >
 </script>
 </body>
 </html>
@@ -41,8 +41,8 @@ The script attaches in the window object the global variable **BandyerSDK** from
 
 #### Versions
 
-The latest version is: 2.6.1
-[https://cdn.bandyer.com/sdk/js/chat/2.6.1/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.6.1/bandyer-widget.min.js)
+The latest version is: 2.7.0
+[https://cdn.bandyer.com/sdk/js/chat/2.7.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.7.0/bandyer-widget.min.js)
 
 > if you're upgrading from v1.x.x you can find the migration guide [here](#migration)
 
@@ -256,7 +256,7 @@ We refer to this newly released API as **<i>Server side User Details Provider</i
 
 ##### Server side User Details Provider
 
-In order to enable this functionality you must specify a valid `user_details_provider_url` through the [company update rest API](https://docs.bandyer.com/Bandyer-RESTAPI/#update-company).
+In order to enable this functionality you must specify a valid `user_details_provider_url` through the [company update rest API](https://developers.kaleyra.io/reference/video-company-update).
 
 The provider url, if defined, will be used as an endpoint to request the details of the users through a http post request whenever a client needs to display some user details.
 
@@ -266,7 +266,7 @@ Using the **Server side User Details Provider** will result in a more concise (a
 Despite what has been mentioned, the **Client side user Details Provider** will be maintained for those integrations that cannot rely on webhook implementations.
 
 More details about the REST integration of the **Server side user Details Provider** can be found
-[here](https://docs.bandyer.com/Bandyer-RESTAPI/#remote-user-details-provider).
+[here](https://developers.kaleyra.io/reference/video-server-side-user-details-provider).
 
 ##### Client side user Details Provider
 
@@ -365,6 +365,7 @@ Allows to de-initialize the BandyerSDK, this operation destroys the client refer
 ### Methods
 
 * [connect](#connect)
+* [connect-with-access-link](#connect-with-access-link)
 * [disconnect](#disconnect)
 * [updateAccessToken](#update-token)
 * [addChannel](#add-channel)
@@ -415,8 +416,13 @@ Allows to de-initialize the BandyerSDK, this operation destroys the client refer
 <a name="client-life-cycle"></a>
 ### Client life cycle
 
+The Client can be connected in two ways:
 
-To connect the Client object you need a valid accessToken, you can obtain a valid access token via [rest API](https://docs.bandyer.com/Bandyer-RESTAPI/#generate-credentials)
+- With access token
+- With access link
+
+
+If you want to have a persisted user connected across the calls you need to obtain a valid accessToken token via [rest API](https://developers.kaleyra.io/reference/video-sdk-generatecredentials)
 
 In order to maintain the connected state you need to bind two events to the Client object(obtained with [Configure](#Configure)):
 - access\_token\_is\_about\_to\_expire
@@ -455,18 +461,37 @@ try {
 
 ```
 
+Otherwise, you can use a classic call link obtained from the create call [rest API](https://developers.kaleyra.io/reference/video-room-create)
+
+In that case the lifecycle is strictly related to the call, once the call finish the user is automatically disconnected.
+
+```javascript
+
+try {
+    const accessLink = 'https://sandbox.bandyer.com/eu/direct-rest-call-handler/adufj5769cnapmce';
+    // remember that the link must match the region and the environment forwarded in the configuration phase
+    await Client.joinCallUrl(accessLink);
+} catch (e) {
+    console.error('Fail to connect the client', error)
+}
+```
+
+
+There is no need to manage and handle the access Token.
+
+Following there are the two method for the connection
+
 <a name="connect"></a>
 #### Connect
 
-To connect the Client object you need a valid accessToken, you can obtain a valid access token via [rest API](https://docs.bandyer.com/Bandyer-RESTAPI/#generate-credentials)
+To connect the Client object you need a valid accessToken, you can obtain a valid access token via [rest API](https://developers.kaleyra.io/reference/video-sdk-generatecredentials)
 
 The access token must match the userId provided
-
 
 > .connect()
 
 
-```
+``` javascript
 try {
     await Client.connect(userId, accessToken);
 } catch (e) {
@@ -497,6 +522,53 @@ try {
 | access\_token\_invalid\_user      | The access token not belong to the userId forwarded in the connect method            |
 | user\_not\_found                 | The user does not exists                                                             |
 
+
+<a name="connect-with-access-link"></a>
+#### Connect with access link
+
+BandyerSDK can optionally be connected using a call url link. The session that will be created using the call url link as access link will last only for the duration of the joined call.
+
+All the sdk feature will be restricted on the call represented by the call link url.
+
+In addition, the only chat accessibile will be the chat related to the current call specified by the call link url.
+
+At the end of the call the BandyerSDK will be automatically disconnected and all persisted data will be cleared as well.
+
+Note that if BandyerSDK is already connected via access token, connecting via access link with the same user or with another user is not allowed. The current access link session must be ended before connecting again.
+
+
+> .joinCallURL(url)
+
+
+``` javascript
+try {
+    const call: CallView = await Client.joinCallURL(url);
+} catch (e) {
+    console.error('Fail to connect the client', error)
+}
+
+```
+
+##### Parameters
+
+
+| Name    |  Type  | Description            |
+|---------|:------:|------------------------|
+| url     | string | Valid url for the call |
+
+##### Errors
+
+| Name                  | description                                                                         |
+|-----------------------|-------------------------------------------------------------------------------------|
+| sdk\_version\_invalid | If one or more parameter have an incorrect type, see the message to knows which ones |
+| sdk\_version\_invalid | If one or more parameter have an incorrect type, see the message to knows which ones |
+| invalid\_access\_link | The access link is not a valid url             |
+| invalid\_access\_link | The access link is not valid, the room is inactive or the user does not belong to the URL         |
+| app\_id\_invalid      | The appId used in configuration step is invalid                                     |
+| user\_not\_found      | The user does not exists                                                            |
+
+
+
 #### Disconnect
 
 <a name="disconnect"></a>
@@ -510,7 +582,7 @@ try {
 #### Update access token
 <a name="update-token"></a>
 
-Allow to refresh the session, you can obtain a valid access token via [rest API](https://docs.bandyer.com/Bandyer-RESTAPI/#generate-credentials)
+Allow to refresh the session, you can obtain a valid access token via [rest API](https://developers.kaleyra.io/reference/video-sdk-generatecredentials)
 
 > .updateAccessToken()
 
@@ -730,7 +802,7 @@ In order to do that create this type of call with isAdmin: true
 
 > .joinCallURL(url)
 
-Join a call URL retrieved from the rest api integration Documentation can be found [here](https://docs.bandyer.com/Bandyer-RESTAPI/#create-a-room)
+Join a call URL retrieved from the rest api integration Documentation can be found [here](https://developers.kaleyra.io/reference/video-room-create)
 
 This method return a [callView](#call-view) that is a UI representation of the call, this object contains also the call(logical)
 
@@ -739,7 +811,6 @@ const call: CallView = Client.joinCallUrl('https://sandbox.bandyer.com/region/di
 ```
 
 **Note:** If the widget is in hidden mode, the joinCallURL method mode will display the widget.
-**Note:** The widget must be authenticated and the url must be coupled with the user authenticated on the widget.
 
 ##### Parameters
 

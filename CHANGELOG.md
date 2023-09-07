@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.7.1] - 2023-09-07
+### Fixed
+- Error on channel opening when a user have never read any message
+
 ## [2.7.0] - 2023-09-04
 ### Added
 - New connect with access-link using joinCallURL method

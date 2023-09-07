@@ -19,7 +19,7 @@ type="text/javascript" ></script>`
 <html>
 <head></head>
 <body>
-<script src="https://cdn.bandyer.com/sdk/js/chat/2.7.0/bandyer-widget.min.js" type="text/javascript" >
+<script src="https://cdn.bandyer.com/sdk/js/chat/2.7.1/bandyer-widget.min.js" type="text/javascript" >
 </script>
 </body>
 </html>
@@ -41,8 +41,8 @@ The script attaches in the window object the global variable **BandyerSDK** from
 
 #### Versions
 
-The latest version is: 2.7.0
-[https://cdn.bandyer.com/sdk/js/chat/2.7.0/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.7.0/bandyer-widget.min.js)
+The latest version is: 2.7.1
+[https://cdn.bandyer.com/sdk/js/chat/2.7.1/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.7.1/bandyer-widget.min.js)
 
 > if you're upgrading from v1.x.x you can find the migration guide [here](#migration)
 

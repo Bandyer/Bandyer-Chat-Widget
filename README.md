@@ -38,8 +38,8 @@ The script attaches in the window object the global variable **BandyerSDK** from
 
 #### Versions
 
-The latest version is: 2.7.3
-[https://cdn.bandyer.com/sdk/js/chat/2.7.3/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.7.5/bandyer-widget.min.js)
+The latest version is: 2.7.5
+[https://cdn.bandyer.com/sdk/js/chat/2.7.5/bandyer-widget.min.js](https://cdn.bandyer.com/sdk/js/chat/2.7.5/bandyer-widget.min.js)
 
 > if you're upgrading from v1.x.x you can find the migration guide [here](#migration)
 
